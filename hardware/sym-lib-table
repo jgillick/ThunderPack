@@ -1,3 +1,3 @@
 (sym_lib_table
-  (lib (name MCP73831T-2ACI_OT)(type Legacy)(uri /Users/Jeremy/Documents/KiCad/libs/MCP73831T-2ACI_OT/MCP73831T-2ACI_OT.lib)(options "")(descr ""))
+  (lib (name LEDRibbonController-rescue)(type Legacy)(uri ${KIPRJMOD}/LEDRibbonController-rescue.lib)(options "")(descr ""))
 )
