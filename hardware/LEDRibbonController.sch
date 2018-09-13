@@ -81,17 +81,6 @@ F 3 "" H 850 4350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LEDRibbonController-rescue:VCC #PWR05
-U 1 1 59C9D227
-P 650 4200
-F 0 "#PWR05" H 650 4050 50  0001 C CNN
-F 1 "VCC" H 650 4350 50  0000 C CNN
-F 2 "" H 650 4200 50  0001 C CNN
-F 3 "" H 650 4200 50  0001 C CNN
-	1    650  4200
-	1    0    0    -1  
-$EndComp
-$Comp
 L LEDRibbonController-rescue:Battery_Cell J3
 U 1 1 59C9D408
 P 5800 1500
@@ -529,17 +518,6 @@ F 3 "" H 2250 4350 50  0001 C CNN
 	1    2250 4350
 	0    1    1    0   
 $EndComp
-$Comp
-L LEDRibbonController-rescue:VCC #PWR016
-U 1 1 5B92C0FB
-P 2050 4200
-F 0 "#PWR016" H 2050 4050 50  0001 C CNN
-F 1 "VCC" H 2050 4350 50  0000 C CNN
-F 2 "" H 2050 4200 50  0001 C CNN
-F 3 "" H 2050 4200 50  0001 C CNN
-	1    2050 4200
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2350 3850 2450 3850
 Wire Wire Line
@@ -607,17 +585,6 @@ F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 3738 4200 50  
 F 3 "" H 3700 4350 50  0001 C CNN
 	1    3700 4350
 	0    1    1    0   
-$EndComp
-$Comp
-L LEDRibbonController-rescue:VCC #PWR018
-U 1 1 5B938E43
-P 3500 4200
-F 0 "#PWR018" H 3500 4050 50  0001 C CNN
-F 1 "VCC" H 3500 4350 50  0000 C CNN
-F 2 "" H 3500 4200 50  0001 C CNN
-F 3 "" H 3500 4200 50  0001 C CNN
-	1    3500 4200
-	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	3800 3850 3900 3850
@@ -1160,4 +1127,37 @@ Wire Wire Line
 	7800 3200 7800 3250
 Wire Wire Line
 	7800 3450 7800 3650
+$Comp
+L power:+5V #PWR?
+U 1 1 5BC46536
+P 650 4200
+F 0 "#PWR?" H 650 4050 50  0001 C CNN
+F 1 "+5V" H 665 4373 50  0000 C CNN
+F 2 "" H 650 4200 50  0001 C CNN
+F 3 "" H 650 4200 50  0001 C CNN
+	1    650  4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BC46D00
+P 2050 4200
+F 0 "#PWR?" H 2050 4050 50  0001 C CNN
+F 1 "+5V" H 2065 4373 50  0000 C CNN
+F 2 "" H 2050 4200 50  0001 C CNN
+F 3 "" H 2050 4200 50  0001 C CNN
+	1    2050 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BC475A3
+P 3500 4200
+F 0 "#PWR?" H 3500 4050 50  0001 C CNN
+F 1 "+5V" H 3515 4373 50  0000 C CNN
+F 2 "" H 3500 4200 50  0001 C CNN
+F 3 "" H 3500 4200 50  0001 C CNN
+	1    3500 4200
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
