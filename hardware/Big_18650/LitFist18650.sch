@@ -1,5 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:LEDRibbonController-cache
+LIBS:LitFist18650-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -119,38 +119,25 @@ F 8 "0.53 USD" H 2400 6150 50  0001 L BNN "Price"
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:SW_Push SW1
-U 1 1 59C9E82C
-P 3300 1600
-F 0 "SW1" H 3350 1700 50  0000 L CNN
-F 1 "Mode" H 3300 1540 50  0000 C CNN
-F 2 "Jeremy:Switch_TE_FSMSM" H 3300 1800 50  0001 C CNN
-F 3 "" H 3300 1800 50  0001 C CNN
-F 4 "FSMSM" H 3300 1600 60  0001 C CNN "MPN"
-F 5 "450-1140-ND" H 3300 1600 60  0001 C CNN "Digikey"
-	1    3300 1600
-	-1   0    0    -1  
-$EndComp
-$Comp
 L LEDRibbonController-rescue:GND #PWR02
 U 1 1 59C9E9ED
-P 3050 2050
-F 0 "#PWR02" H 3050 1800 50  0001 C CNN
-F 1 "GND" H 3050 1900 50  0000 C CNN
-F 2 "" H 3050 2050 50  0001 C CNN
-F 3 "" H 3050 2050 50  0001 C CNN
-	1    3050 2050
+P 3450 2150
+F 0 "#PWR02" H 3450 1900 50  0001 C CNN
+F 1 "GND" H 3450 2000 50  0000 C CNN
+F 2 "" H 3450 2150 50  0001 C CNN
+F 3 "" H 3450 2150 50  0001 C CNN
+	1    3450 2150
 	-1   0    0    -1  
 $EndComp
 $Comp
 L LEDRibbonController-rescue:R R1
 U 1 1 59C9EA25
-P 3050 1850
-F 0 "R1" V 3130 1850 50  0000 C CNN
-F 1 "20K" V 3050 1850 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 2980 1850 50  0001 C CNN
-F 3 "" H 3050 1850 50  0001 C CNN
-	1    3050 1850
+P 3650 1850
+F 0 "R1" V 3730 1850 50  0000 C CNN
+F 1 "20K" V 3650 1850 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 3580 1850 50  0001 C CNN
+F 3 "" H 3650 1850 50  0001 C CNN
+	1    3650 1850
 	-1   0    0    -1  
 $EndComp
 $Comp
@@ -282,8 +269,6 @@ Wire Wire Line
 Wire Wire Line
 	5600 1500 5600 1750
 Wire Wire Line
-	3050 2000 3050 2050
-Wire Wire Line
 	1100 6100 1100 6050
 Connection ~ 1450 6050
 Wire Wire Line
@@ -308,15 +293,9 @@ Wire Wire Line
 	3300 6550 3300 6750
 Connection ~ 3300 6250
 Wire Wire Line
-	3100 1600 3050 1600
-Wire Wire Line
 	1550 6450 1550 6750
 Wire Wire Line
 	5750 4550 5850 4550
-Wire Wire Line
-	3050 1700 3050 1600
-Wire Wire Line
-	3550 1600 3500 1600
 $Comp
 L LEDRibbonController-rescue:LED D2
 U 1 1 5B6A99E9
@@ -376,10 +355,10 @@ U 1 1 5B8DB65D
 P 5850 4050
 F 0 "J2" H 5905 4517 50  0000 C CNN
 F 1 "USB_B_Micro" H 5905 4426 50  0000 C CNN
-F 2 "Connector_USB:USB_Micro-B_Amphenol_10103594-0001LF_Horizontal" H 6000 4000 50  0001 C CNN
+F 2 "Jeremy:USB_Micro-B_Amphenol_10103594-0001LF_Horizontal" H 6000 4000 50  0001 C CNN
 F 3 "https://cdn.amphenol-icc.com/media/wysiwyg/files/documentation/datasheet/inputoutput/io_usb_micro.pdf" H 6000 4000 50  0001 C CNN
 F 4 "10103594-0001LF" H 5850 4050 50  0001 C CNN "MPN"
-F 5 "609-4050-2-ND" H 5850 4050 50  0001 C CNN "Digikey"
+F 5 "609-4050-1-ND" H 5850 4050 50  0001 C CNN "Digikey"
 	1    5850 4050
 	1    0    0    -1  
 $EndComp
@@ -740,7 +719,7 @@ U 1 1 5B9F4534
 P 1650 1600
 F 0 "U1" H 1250 2150 50  0000 R CNN
 F 1 "ATtiny85-20SU" H 2350 1050 50  0000 R CNN
-F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 1650 1600 50  0001 C CIN
+F 2 "Package_SO:SOIJ-8_5.3x5.3mm_P1.27mm" H 1650 1600 50  0001 C CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/atmel-2586-avr-8-bit-microcontroller-attiny25-attiny45-attiny85_datasheet.pdf" H 1650 1600 50  0001 C CNN
 F 4 "ATTINY85-20SU" H 1650 1600 50  0001 C CNN "MPN"
 F 5 "ATTINY85-20SU-ND" H 1650 1600 50  0001 C CNN "Digikey"
@@ -754,9 +733,6 @@ Wire Wire Line
 Connection ~ 2450 1500
 Wire Wire Line
 	2450 1500 2500 1500
-Wire Wire Line
-	2250 1600 3050 1600
-Connection ~ 3050 1600
 $Comp
 L PAM2401:PAM2401-8MSOP U3
 U 1 1 5BA17BA9
@@ -957,28 +933,6 @@ Wire Wire Line
 Wire Wire Line
 	2550 3000 2450 3000
 $Comp
-L power:+5V #PWR0103
-U 1 1 5BB08BE8
-P 5150 6050
-F 0 "#PWR0103" H 5150 5900 50  0001 C CNN
-F 1 "+5V" H 5165 6223 50  0000 C CNN
-F 2 "" H 5150 6050 50  0001 C CNN
-F 3 "" H 5150 6050 50  0001 C CNN
-	1    5150 6050
-	1    0    0    -1  
-$EndComp
-$Comp
-L LEDRibbonController-rescue:GND #PWR0104
-U 1 1 5BB1B404
-P 5150 6200
-F 0 "#PWR0104" H 5150 5950 50  0001 C CNN
-F 1 "GND" H 5155 6027 50  0000 C CNN
-F 2 "" H 5150 6200 50  0001 C CNN
-F 3 "" H 5150 6200 50  0001 C CNN
-	1    5150 6200
-	1    0    0    -1  
-$EndComp
-$Comp
 L Connector_Generic:Conn_01x04 J1
 U 1 1 5BB378B1
 P 2750 3100
@@ -992,30 +946,9 @@ $EndComp
 Wire Wire Line
 	2450 2950 2450 3000
 Wire Wire Line
-	5250 6200 5150 6200
-Wire Wire Line
-	5250 6100 5150 6100
-Wire Wire Line
-	5150 6100 5150 6050
-Wire Wire Line
 	2250 1800 2500 1800
-$Comp
-L Connector_Generic:Conn_01x02 J5
-U 1 1 5BB8559A
-P 5450 6100
-F 0 "J5" H 5530 6092 50  0000 L CNN
-F 1 "Power" H 5530 6001 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 5450 6100 50  0001 C CNN
-F 3 "~" H 5450 6100 50  0001 C CNN
-	1    5450 6100
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2450 1550 2800 1550
-Wire Wire Line
-	1650 950  3550 950 
-Wire Wire Line
-	3550 950  3550 1600
 Wire Wire Line
 	8450 4150 8850 4150
 Wire Wire Line
@@ -1087,7 +1020,7 @@ U 1 1 5BBFD474
 P 8000 3350
 F 0 "D6" V 8046 3282 50  0000 R CNN
 F 1 "20V2A" V 7955 3282 50  0000 R CNN
-F 2 "Diode_SMD:D_SOD-323" V 8000 3350 50  0001 C CNN
+F 2 "Diode_SMD:D_SOD-323_HandSoldering" V 8000 3350 50  0001 C CNN
 F 3 "~" V 8000 3350 50  0001 C CNN
 	1    8000 3350
 	0    -1   -1   0   
@@ -1107,7 +1040,7 @@ U 1 1 5BC30E7A
 P 7800 3350
 F 0 "D5" V 7850 3500 50  0000 R CNN
 F 1 "20V2A" V 7750 3650 50  0000 R CNN
-F 2 "Diode_SMD:D_SOD-323" V 7800 3350 50  0001 C CNN
+F 2 "Diode_SMD:D_SOD-323_HandSoldering" V 7800 3350 50  0001 C CNN
 F 3 "~" V 7800 3350 50  0001 C CNN
 	1    7800 3350
 	0    -1   -1   0   
@@ -1160,4 +1093,79 @@ F 3 "" H 2450 2950 50  0001 C CNN
 	1    2450 2950
 	1    0    0    -1  
 $EndComp
+$Comp
+L power:+5V #PWR01
+U 1 1 5BCD6CA6
+P 3800 800
+F 0 "#PWR01" H 3800 650 50  0001 C CNN
+F 1 "+5V" H 3815 973 50  0000 C CNN
+F 2 "" H 3800 800 50  0001 C CNN
+F 3 "" H 3800 800 50  0001 C CNN
+	1    3800 800 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 800  3800 1150
+$Comp
+L Device:C_Small C9
+U 1 1 5BCF8A90
+P 3250 1850
+F 0 "C9" H 3050 1900 50  0000 L CNN
+F 1 "0.1uF" H 3000 1750 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 3250 1850 50  0001 C CNN
+F 3 "~" H 3250 1850 50  0001 C CNN
+	1    3250 1850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3450 2050 3450 2150
+Wire Wire Line
+	3250 1950 3250 2050
+Wire Wire Line
+	3250 1750 3250 1600
+$Comp
+L LEDRibbonController-rescue:SW_Push SW1
+U 1 1 59C9E82C
+P 3800 1350
+F 0 "SW1" H 3850 1450 50  0000 L CNN
+F 1 "Mode" H 3800 1290 50  0000 C CNN
+F 2 "Jeremy:Switch_TE_FSMSM" H 3800 1550 50  0001 C CNN
+F 3 "" H 3800 1550 50  0001 C CNN
+F 4 "FSMSM" H 3800 1350 60  0001 C CNN "MPN"
+F 5 "450-1140-ND" H 3800 1350 60  0001 C CNN "Digikey"
+	1    3800 1350
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	3800 1550 3800 1600
+Wire Wire Line
+	2250 1600 3250 1600
+Wire Wire Line
+	3650 1700 3650 1600
+Wire Wire Line
+	3650 1600 3800 1600
+Wire Wire Line
+	3250 2050 3450 2050
+Wire Wire Line
+	3650 2000 3650 2050
+Wire Wire Line
+	3650 2050 3450 2050
+Connection ~ 3450 2050
+$Comp
+L Device:R R11
+U 1 1 5BD7A486
+P 3450 1600
+F 0 "R11" V 3350 1600 50  0000 C CNN
+F 1 "330" V 3450 1600 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 3380 1600 50  0001 C CNN
+F 3 "~" H 3450 1600 50  0001 C CNN
+	1    3450 1600
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3600 1600 3650 1600
+Connection ~ 3650 1600
+Wire Wire Line
+	3300 1600 3250 1600
+Connection ~ 3250 1600
 $EndSCHEMATC
