@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L LEDRibbonController-rescue:C C1
+L LitFist18650-rescue:C-LEDRibbonController-rescue C1
 U 1 1 59C9C8A6
 P 800 1600
 F 0 "C1" H 825 1700 50  0000 L CNN
@@ -26,7 +26,7 @@ F 3 "" H 800 1600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:GND #PWR07
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR07
 U 1 1 59C9C999
 P 1650 2350
 F 0 "#PWR07" H 1650 2100 50  0001 C CNN
@@ -37,7 +37,7 @@ F 3 "" H 1650 2350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:MMBF170 Q1
+L LitFist18650-rescue:MMBF170-LEDRibbonController-rescue Q1
 U 1 1 59C9CEA8
 P 1350 3800
 F 0 "Q1" H 1550 3875 50  0000 L CNN
@@ -48,7 +48,7 @@ F 3 "" H 1350 3800 50  0001 L CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:R R2
+L LitFist18650-rescue:R-LEDRibbonController-rescue R2
 U 1 1 59C9CF55
 P 1050 4100
 F 0 "R2" V 1130 4100 50  0000 C CNN
@@ -59,7 +59,7 @@ F 3 "" H 1050 4100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:GND #PWR03
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR03
 U 1 1 59C9CFCF
 P 1050 4400
 F 0 "#PWR03" H 1050 4150 50  0001 C CNN
@@ -70,7 +70,7 @@ F 3 "" H 1050 4400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:C C2
+L LitFist18650-rescue:C-LEDRibbonController-rescue C2
 U 1 1 59C9D1BD
 P 850 4350
 F 0 "C2" V 900 4200 50  0000 L CNN
@@ -81,7 +81,7 @@ F 3 "" H 850 4350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LEDRibbonController-rescue:Battery_Cell J3
+L LitFist18650-rescue:Battery_Cell-LEDRibbonController-rescue J3
 U 1 1 59C9D408
 P 5800 1500
 F 0 "J3" V 5650 1500 50  0000 L CNN
@@ -92,7 +92,7 @@ F 3 "" V 5800 1560 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LEDRibbonController-rescue:GND #PWR09
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR09
 U 1 1 59C9D5B4
 P 5600 1750
 F 0 "#PWR09" H 5600 1500 50  0001 C CNN
@@ -103,7 +103,7 @@ F 3 "" H 5600 1750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:MCP73831T-2ACI_OT U2
+L LitFist18650-rescue:MCP73831T-2ACI_OT-LEDRibbonController-rescue U2
 U 1 1 59C9DDF2
 P 2400 6150
 F 0 "U2" H 1900 5550 50  0000 L BNN
@@ -119,7 +119,7 @@ F 8 "0.53 USD" H 2400 6150 50  0001 L BNN "Price"
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:GND #PWR02
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR02
 U 1 1 59C9E9ED
 P 3450 2150
 F 0 "#PWR02" H 3450 1900 50  0001 C CNN
@@ -130,7 +130,7 @@ F 3 "" H 3450 2150 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:R R1
+L LitFist18650-rescue:R-LEDRibbonController-rescue R1
 U 1 1 59C9EA25
 P 3650 1850
 F 0 "R1" V 3730 1850 50  0000 C CNN
@@ -141,7 +141,7 @@ F 3 "" H 3650 1850 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:C C3
+L LitFist18650-rescue:C-LEDRibbonController-rescue C3
 U 1 1 59C9EFD0
 P 1100 6250
 F 0 "C3" H 1125 6350 50  0000 L CNN
@@ -152,7 +152,7 @@ F 3 "" H 1100 6250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:LED D1
+L LitFist18650-rescue:LED-LEDRibbonController-rescue D1
 U 1 1 59C9F30F
 P 2300 5700
 F 0 "D1" H 2400 5750 50  0000 C CNN
@@ -163,7 +163,7 @@ F 3 "" H 2300 5700 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L LEDRibbonController-rescue:R R5
+L LitFist18650-rescue:R-LEDRibbonController-rescue R5
 U 1 1 59C9F7BB
 P 2700 5700
 F 0 "R5" V 2780 5700 50  0000 C CNN
@@ -174,7 +174,7 @@ F 3 "" H 2700 5700 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LEDRibbonController-rescue:R_Small R3
+L LitFist18650-rescue:R_Small-LEDRibbonController-rescue R3
 U 1 1 59C9F949
 P 1550 6350
 F 0 "R3" H 1600 6400 50  0000 L CNN
@@ -185,7 +185,7 @@ F 3 "" H 1550 6350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:GND #PWR010
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR010
 U 1 1 59C9FB34
 P 1100 6750
 F 0 "#PWR010" H 1100 6500 50  0001 C CNN
@@ -196,7 +196,7 @@ F 3 "" H 1100 6750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:GND #PWR08
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR08
 U 1 1 59C9FC10
 P 5850 4650
 F 0 "#PWR08" H 5850 4400 50  0001 C CNN
@@ -207,7 +207,7 @@ F 3 "" H 5850 4650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:C C5
+L LitFist18650-rescue:C-LEDRibbonController-rescue C5
 U 1 1 59C9FF60
 P 3300 6400
 F 0 "C5" H 3325 6500 50  0000 L CNN
@@ -218,7 +218,7 @@ F 3 "" H 3300 6400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:GND #PWR015
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR015
 U 1 1 59CA0181
 P 3300 6750
 F 0 "#PWR015" H 3300 6500 50  0001 C CNN
@@ -229,7 +229,7 @@ F 3 "" H 3300 6750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:SW_SPST SW2
+L LitFist18650-rescue:SW_SPST-LEDRibbonController-rescue SW2
 U 1 1 59C9E171
 P 8250 3650
 F 0 "SW2" H 8250 3775 50  0000 C CNN
@@ -241,7 +241,7 @@ F 4 "GPTS203211B" H 8250 3650 60  0001 C CNN "MPN"
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:GND #PWR011
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR011
 U 1 1 5B6A6B40
 P 1550 6750
 F 0 "#PWR011" H 1550 6500 50  0001 C CNN
@@ -297,7 +297,7 @@ Wire Wire Line
 Wire Wire Line
 	5750 4550 5850 4550
 $Comp
-L LEDRibbonController-rescue:LED D2
+L LitFist18650-rescue:LED-LEDRibbonController-rescue D2
 U 1 1 5B6A99E9
 P 7350 2550
 F 0 "D2" H 7350 2650 50  0000 C CNN
@@ -308,7 +308,7 @@ F 3 "" H 7350 2550 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L LEDRibbonController-rescue:GND #PWR014
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR014
 U 1 1 5B6A9E89
 P 7650 2650
 F 0 "#PWR014" H 7650 2400 50  0001 C CNN
@@ -323,7 +323,7 @@ Wire Wire Line
 Wire Wire Line
 	7650 2550 7650 2650
 $Comp
-L LEDRibbonController-rescue:R R8
+L LitFist18650-rescue:R-LEDRibbonController-rescue R8
 U 1 1 5B6AAD79
 P 7000 2550
 F 0 "R8" V 7080 2550 50  0000 C CNN
@@ -367,7 +367,7 @@ Wire Wire Line
 Wire Wire Line
 	9100 1000 9100 1100
 $Comp
-L LEDRibbonController-rescue:GND #PWR024
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR024
 U 1 1 5B8E5889
 P 9100 2100
 F 0 "#PWR024" H 9100 1850 50  0001 C CNN
@@ -454,7 +454,7 @@ Wire Wire Line
 Wire Wire Line
 	1450 4000 1450 4350
 $Comp
-L LEDRibbonController-rescue:MMBF170 Q2
+L LitFist18650-rescue:MMBF170-LEDRibbonController-rescue Q2
 U 1 1 5B92C0E3
 P 2750 3800
 F 0 "Q2" H 2950 3875 50  0000 L CNN
@@ -465,7 +465,7 @@ F 3 "" H 2750 3800 50  0001 L CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:R R4
+L LitFist18650-rescue:R-LEDRibbonController-rescue R4
 U 1 1 5B92C0E9
 P 2450 4100
 F 0 "R4" V 2530 4100 50  0000 C CNN
@@ -476,7 +476,7 @@ F 3 "" H 2450 4100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:GND #PWR017
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR017
 U 1 1 5B92C0EF
 P 2450 4400
 F 0 "#PWR017" H 2450 4150 50  0001 C CNN
@@ -487,7 +487,7 @@ F 3 "" H 2450 4400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:C C4
+L LitFist18650-rescue:C-LEDRibbonController-rescue C4
 U 1 1 5B92C0F5
 P 2250 4350
 F 0 "C4" V 2300 4200 50  0000 L CNN
@@ -522,7 +522,7 @@ Wire Wire Line
 Text GLabel 2350 3850 0    39   Input ~ 0
 PWM2
 $Comp
-L LEDRibbonController-rescue:MMBF170 Q3
+L LitFist18650-rescue:MMBF170-LEDRibbonController-rescue Q3
 U 1 1 5B938E2B
 P 4200 3800
 F 0 "Q3" H 4400 3875 50  0000 L CNN
@@ -533,7 +533,7 @@ F 3 "" H 4200 3800 50  0001 L CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:R R6
+L LitFist18650-rescue:R-LEDRibbonController-rescue R6
 U 1 1 5B938E31
 P 3900 4100
 F 0 "R6" V 3980 4100 50  0000 C CNN
@@ -544,7 +544,7 @@ F 3 "" H 3900 4100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:GND #PWR019
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR019
 U 1 1 5B938E37
 P 3900 4400
 F 0 "#PWR019" H 3900 4150 50  0001 C CNN
@@ -555,7 +555,7 @@ F 3 "" H 3900 4400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:C C6
+L LitFist18650-rescue:C-LEDRibbonController-rescue C6
 U 1 1 5B938E3D
 P 3700 4350
 F 0 "C6" V 3750 4200 50  0000 L CNN
@@ -714,7 +714,7 @@ Wire Wire Line
 	2750 1400 2750 1350
 Connection ~ 2750 1350
 $Comp
-L MCU_Microchip_ATtiny:ATtiny85-20SU U1
+L LitFist18650-rescue:ATtiny85-20SU-MCU_Microchip_ATtiny U1
 U 1 1 5B9F4534
 P 1650 1600
 F 0 "U1" H 1250 2150 50  0000 R CNN
@@ -784,7 +784,7 @@ Connection ~ 8700 3650
 Wire Wire Line
 	8700 3650 8850 3650
 $Comp
-L LEDRibbonController-rescue:GND #PWR022
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR022
 U 1 1 5BA3B12B
 P 8700 3850
 F 0 "#PWR022" H 8700 3600 50  0001 C CNN
@@ -817,7 +817,7 @@ F 3 "~" H 10350 3950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LEDRibbonController-rescue:GND #PWR026
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR026
 U 1 1 5BA44CCE
 P 10350 4050
 F 0 "#PWR026" H 10350 3800 50  0001 C CNN
@@ -863,7 +863,7 @@ Wire Wire Line
 	9900 4350 9800 4350
 Connection ~ 9900 4200
 $Comp
-L LEDRibbonController-rescue:GND #PWR025
+L LitFist18650-rescue:GND-LEDRibbonController-rescue #PWR025
 U 1 1 5BA66DE2
 P 9900 4400
 F 0 "#PWR025" H 9900 4150 50  0001 C CNN
@@ -1124,7 +1124,7 @@ Wire Wire Line
 Wire Wire Line
 	3250 1750 3250 1600
 $Comp
-L LEDRibbonController-rescue:SW_Push SW1
+L LitFist18650-rescue:SW_Push-LEDRibbonController-rescue SW1
 U 1 1 59C9E82C
 P 3800 1350
 F 0 "SW1" H 3850 1450 50  0000 L CNN
