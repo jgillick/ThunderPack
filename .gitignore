@@ -1,2 +1,6 @@
 *.kicad_pcb-bak
 *.bak
+
+build/*
+.dep/*
+.vscode/*
