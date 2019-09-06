@@ -85,7 +85,7 @@ endif
 # Define project name here
 PROJECT = ch
 
-include ../../shared/shared.mk
+include ../shared/shared.mk
 
 # Licensing files.
 include $(CHIBIOS)/os/license/license.mk
