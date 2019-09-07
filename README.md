@@ -15,6 +15,6 @@ More details: https://hackaday.io/project/161054-lit-fist
 * 4 high-current PWM outputs (2.3A per channel)
 * On-board LEDs for each PWM output for debugging.
 * Tactile on/off switch
-* Tactile user button.
+* Tactile user button with built-in debounce circuit.
 * Breadboard friendly.
 * Access to 14 GPIO pins.

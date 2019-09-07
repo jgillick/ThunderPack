@@ -176,12 +176,16 @@
  */
 #define LINE_ARD_A0                 PAL_LINE(GPIOA, 0U)
 #define LINE_ACD1_IN0               PAL_LINE(GPIOA, 0U)
+#define LINE_LED_0                  PAL_LINE(GPIOA, 0U)
 #define LINE_ARD_A1                 PAL_LINE(GPIOA, 1U)
 #define LINE_ACD1_IN1               PAL_LINE(GPIOA, 1U)
+#define LINE_LED_1                  PAL_LINE(GPIOA, 1U)
 #define LINE_ARD_D1                 PAL_LINE(GPIOA, 2U)
 #define LINE_USART2_TX              PAL_LINE(GPIOA, 2U)
+#define LINE_LED_2                  PAL_LINE(GPIOA, 2U)
 #define LINE_ARD_D0                 PAL_LINE(GPIOA, 3U)
 #define LINE_USART2_RX              PAL_LINE(GPIOA, 3U)
+#define LINE_LED_3                  PAL_LINE(GPIOA, 3U)
 #define LINE_ARD_A2                 PAL_LINE(GPIOA, 4U)
 #define LINE_ACD1_IN4               PAL_LINE(GPIOA, 4U)
 #define LINE_LED_GREEN              PAL_LINE(GPIOA, 5U)
@@ -198,6 +202,7 @@
 #define LINE_SWO                    PAL_LINE(GPIOB, 3U)
 #define LINE_ARD_D3                 PAL_LINE(GPIOB, 3U)
 #define LINE_ARD_D5                 PAL_LINE(GPIOB, 4U)
+#define LINE_USER_BTN               PAL_LINE(GPIOB, 4U)
 #define LINE_ARD_D4                 PAL_LINE(GPIOB, 5U)
 #define LINE_ARD_D10                PAL_LINE(GPIOB, 6U)
 #define LINE_ARD_D15                PAL_LINE(GPIOB, 8U)
@@ -255,10 +260,10 @@
 /*
  * GPIOA setup:
  *
- * PA0  - ARD_A0 ACD1_IN0           (input pullup).
- * PA1  - ARD_A1 ACD1_IN1           (input pullup).
- * PA2  - ARD_D1 USART2_TX          (alternate 4).
- * PA3  - ARD_D0 USART2_RX          (alternate 4).
+ * PA0  - ARD_A0 ACD1_IN0           (alternate 2).
+ * PA1  - ARD_A1 ACD1_IN1           (alternate 2).
+ * PA2  - ARD_D1 USART2_TX          (alternate 2).
+ * PA3  - ARD_D0 USART2_RX          (alternate 2).
  * PA4  - ARD_A2 ACD1_IN4           (input pullup).
  * PA5  - LED_GREEN ARD_D13         (output pushpull maximum).
  * PA6  - ARD_D12                   (input pullup).
@@ -376,7 +381,7 @@
  * PB1  - PIN1                      (input pullup).
  * PB2  - PIN2                      (input pullup).
  * PB3  - SWO ARD_D3                (alternate 0).
- * PB4  - ARD_D5                    (input pullup).
+ * PB4  - ARD_D5                    (input pulldown).
  * PB5  - ARD_D4                    (input pullup).
  * PB6  - ARD_D10                   (input pullup).
  * PB7  - PIN7                      (input pullup).
@@ -441,7 +446,7 @@
                                      PIN_PUPDR_PULLUP(GPIOB_PIN1) |         \
                                      PIN_PUPDR_PULLUP(GPIOB_PIN2) |         \
                                      PIN_PUPDR_PULLUP(GPIOB_SWO) |          \
-                                     PIN_PUPDR_PULLUP(GPIOB_ARD_D5) |       \
+                                     PIN_PUPDR_PULLDOWN(GPIOB_ARD_D5) |     \
                                      PIN_PUPDR_PULLUP(GPIOB_ARD_D4) |       \
                                      PIN_PUPDR_PULLUP(GPIOB_ARD_D10) |      \
                                      PIN_PUPDR_PULLUP(GPIOB_PIN7) |         \

@@ -53,7 +53,7 @@ int main(void) {
   unsigned int lastBtnVal = 0;
   while (1) {
     unsigned int btnVal = palReadPad(GPIOB, 4);
-    if (!btnVal && btnVal != lastBtnVal) {
+    if (btnVal && btnVal != lastBtnVal) {
       progCtrl.incrementProgram();
     }
     lastBtnVal = btnVal;
