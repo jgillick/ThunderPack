@@ -1,8 +1,5 @@
 /*
   Turns on the LED (PA0). When the user button (PB4) is pressed.
-
-  Uses virtual timers to blink the LED without blocking the main loop.
-  http://www.chibios.org/dokuwiki/doku.php?id=chibios:book:kernel_vt
 */
 
 #include "ch.hpp"
