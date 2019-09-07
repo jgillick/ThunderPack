@@ -1,4 +1,0 @@
-(sym_lib_table
-  (lib (name LEDRibbonController-rescue)(type Legacy)(uri ${KIPRJMOD}/LEDRibbonController-rescue.lib)(options "")(descr ""))
-  (lib (name LitFist18650-rescue)(type Legacy)(uri ${KIPRJMOD}/LitFist18650-rescue.lib)(options "")(descr ""))
-)
