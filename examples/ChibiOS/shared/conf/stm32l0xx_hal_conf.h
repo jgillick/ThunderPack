@@ -2,33 +2,19 @@
   ******************************************************************************
   * @file    stm32l0xx_hal_conf.h
   * @author  MCD Application Team
-  * @brief   HAL configuration file. 
+  * @brief   HAL configuration template file. 
+  *          This file should be copied to the application folder and renamed
+  *          to stm32l0xx_hal_conf.h.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
+  * <h2><center>&copy; Copyright (c) 2016 STMicroelectronics. 
+  * All rights reserved.</center></h2>
   *
-  * Redistribution and use in source and binary forms, with or without modification,
-  * are permitted provided that the following conditions are met:
-  *   1. Redistributions of source code must retain the above copyright notice,
-  *      this list of conditions and the following disclaimer.
-  *   2. Redistributions in binary form must reproduce the above copyright notice,
-  *      this list of conditions and the following disclaimer in the documentation
-  *      and/or other materials provided with the distribution.
-  *   3. Neither the name of STMicroelectronics nor the names of its contributors
-  *      may be used to endorse or promote products derived from this software
-  *      without specific prior written permission.
-  *
-  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  * This software component is licensed by ST under BSD 3-Clause license,
+  * the "License"; You may not use this file except in compliance with the 
+  * License. You may obtain a copy of the License at:
+  *                        opensource.org/licenses/BSD-3-Clause
   *
   ******************************************************************************
   */ 
@@ -48,37 +34,39 @@
 /**
   * @brief This is the list of modules to be used in the HAL driver 
   */
-#define HAL_MODULE_ENABLED  
-/* #define HAL_ADC_MODULE_ENABLED    */
-/* #define HAL_COMP_MODULE_ENABLED  */
-/* #define HAL_CRC_MODULE_ENABLED   */
-/* #define HAL_CRYP_MODULE_ENABLED   */
-/* #define HAL_DAC_MODULE_ENABLED    */
-#define HAL_DMA_MODULE_ENABLED
-/* #define HAL_FIREWALL_MODULE_ENABLED */
-#define HAL_FLASH_MODULE_ENABLED
-#define HAL_GPIO_MODULE_ENABLED
-/* #define HAL_I2C_MODULE_ENABLED */
-/* #define HAL_I2S_MODULE_ENABLED    */
-/* #define HAL_IWDG_MODULE_ENABLED */
-/* #define HAL_LCD_MODULE_ENABLED  */
-/* #define HAL_LPTIM_MODULE_ENABLED */
-#define HAL_PWR_MODULE_ENABLED  
-#define HAL_RCC_MODULE_ENABLED 
-/* #define HAL_RNG_MODULE_ENABLED    */
-/* #define HAL_RTC_MODULE_ENABLED */
-/* #define HAL_SPI_MODULE_ENABLED    */
-/* #define HAL_TIM_MODULE_ENABLED */
-/* #define HAL_TSC_MODULE_ENABLED    */
-#define HAL_UART_MODULE_ENABLED 
-/* #define HAL_USART_MODULE_ENABLED  */
-/* #define HAL_IRDA_MODULE_ENABLED  */
-/* #define HAL_SMARTCARD_MODULE_ENABLED  */
-/* #define HAL_SMBUS_MODULE_ENABLED  */
-/* #define HAL_WWDG_MODULE_ENABLED   */
-#define HAL_CORTEX_MODULE_ENABLED
-/* #define HAL_PCD_MODULE_ENABLED  */
 
+#define HAL_MODULE_ENABLED  
+  /*#define HAL_ADC_MODULE_ENABLED   */
+/*#define HAL_CRYP_MODULE_ENABLED   */
+/*#define HAL_COMP_MODULE_ENABLED   */
+/*#define HAL_CRC_MODULE_ENABLED   */
+/*#define HAL_CRYP_MODULE_ENABLED   */
+/*#define HAL_DAC_MODULE_ENABLED   */
+/*#define HAL_FIREWALL_MODULE_ENABLED   */
+/*#define HAL_I2S_MODULE_ENABLED   */
+/*#define HAL_IWDG_MODULE_ENABLED   */
+/*#define HAL_LCD_MODULE_ENABLED   */
+/*#define HAL_LPTIM_MODULE_ENABLED   */
+/*#define HAL_RNG_MODULE_ENABLED   */
+/*#define HAL_RTC_MODULE_ENABLED   */
+/*#define HAL_SPI_MODULE_ENABLED   */
+/*#define HAL_TIM_MODULE_ENABLED   */
+/*#define HAL_TSC_MODULE_ENABLED   */
+/*#define HAL_UART_MODULE_ENABLED   */
+/*#define HAL_USART_MODULE_ENABLED   */
+/*#define HAL_IRDA_MODULE_ENABLED   */
+/*#define HAL_SMARTCARD_MODULE_ENABLED   */
+/*#define HAL_SMBUS_MODULE_ENABLED   */
+/*#define HAL_WWDG_MODULE_ENABLED   */
+/*#define HAL_PCD_MODULE_ENABLED   */
+/*#define HAL_EXTI_MODULE_ENABLED   */
+#define HAL_GPIO_MODULE_ENABLED
+#define HAL_DMA_MODULE_ENABLED
+#define HAL_I2C_MODULE_ENABLED
+#define HAL_RCC_MODULE_ENABLED
+#define HAL_FLASH_MODULE_ENABLED
+#define HAL_PWR_MODULE_ENABLED
+#define HAL_CORTEX_MODULE_ENABLED
 
 /* ########################## Oscillator Values adaptation ####################*/
 /**
@@ -91,7 +79,7 @@
 #endif /* HSE_VALUE */
 
 #if !defined  (HSE_STARTUP_TIMEOUT)
-  #define HSE_STARTUP_TIMEOUT    ((uint32_t)100)   /*!< Time out for HSE start up, in ms */
+  #define HSE_STARTUP_TIMEOUT    ((uint32_t)100U)   /*!< Time out for HSE start up, in ms */
 #endif /* HSE_STARTUP_TIMEOUT */
 
 /**
@@ -99,8 +87,9 @@
   *        This value is the default MSI range value after Reset.
   */
 #if !defined  (MSI_VALUE)
-  #define MSI_VALUE    ((uint32_t)2000000U) /*!< Value of the Internal oscillator in Hz*/
+  #define MSI_VALUE    ((uint32_t)2097000U) /*!< Value of the Internal oscillator in Hz*/
 #endif /* MSI_VALUE */
+   
 /**
   * @brief Internal High Speed oscillator (HSI) value.
   *        This value is used by the RCC HAL module to compute the system frequency
@@ -126,7 +115,7 @@
  #define LSI_VALUE  ((uint32_t)37000U)       /*!< LSI Typical Value in Hz*/
 #endif /* LSI_VALUE */                      /*!< Value of the Internal Low Speed oscillator in Hz
                                              The real value may vary depending on the variations
-                                             in voltage and temperature.*/
+                                             in voltage and temperature.*/   
 /**
   * @brief External Low Speed oscillator (LSE) value.
   *        This value is used by the UART, RTC HAL module to compute the system frequency
@@ -135,14 +124,10 @@
   #define LSE_VALUE    ((uint32_t)32768U) /*!< Value of the External oscillator in Hz*/
 #endif /* LSE_VALUE */
 
-/**
-  * @brief Time out for LSE start up value in ms.
-  */
 #if !defined  (LSE_STARTUP_TIMEOUT)
-  #define LSE_STARTUP_TIMEOUT    ((uint32_t)5000U)   /*!< Time out for LSE start up, in ms */
+  #define LSE_STARTUP_TIMEOUT  ((uint32_t)5000U)   /*!< Time out for LSE start up, in ms */
 #endif /* LSE_STARTUP_TIMEOUT */
 
-   
 /* Tip: To avoid modifying this file each time you need to use different HSE,
    ===  you can define the HSE value in your toolchain compiler preprocessor. */
 
@@ -150,11 +135,11 @@
 /**
   * @brief This is the HAL system configuration section
   */     
-#define  VDD_VALUE                    ((uint32_t)3300U) /*!< Value of VDD in mv */
-#define  TICK_INT_PRIORITY            (((uint32_t)1U<<__NVIC_PRIO_BITS) - 1U)    /*!< tick interrupt priority */            
+#define  VDD_VALUE                    ((uint32_t)3300U) /*!< Value of VDD in mv */           
+#define  TICK_INT_PRIORITY            ((uint32_t)0U)    /*!< tick interrupt priority */            
 #define  USE_RTOS                     0U     
-#define  PREFETCH_ENABLE              1U              
-#define  PREREAD_ENABLE               0U
+#define  PREFETCH_ENABLE              0U              
+#define  PREREAD_ENABLE               1U
 #define  BUFFER_CACHE_DISABLE         0U
 
 /* ########################## Assert Selection ############################## */
@@ -162,7 +147,7 @@
   * @brief Uncomment the line below to expanse the "assert_param" macro in the 
   *        HAL drivers code
   */
-/* #define USE_FULL_ASSERT    1 */
+/* #define USE_FULL_ASSERT    1U */
 
 /* Includes ------------------------------------------------------------------*/
 /**
@@ -172,7 +157,11 @@
 #ifdef HAL_RCC_MODULE_ENABLED
   #include "stm32l0xx_hal_rcc.h"
 #endif /* HAL_RCC_MODULE_ENABLED */
-  
+
+#ifdef HAL_EXTI_MODULE_ENABLED
+  #include "stm32l0xx_hal_exti.h"
+#endif /* HAL_EXTI_MODULE_ENABLED */
+
 #ifdef HAL_GPIO_MODULE_ENABLED
   #include "stm32l0xx_hal_gpio.h"
 #endif /* HAL_GPIO_MODULE_ENABLED */
@@ -180,7 +169,7 @@
 #ifdef HAL_DMA_MODULE_ENABLED
   #include "stm32l0xx_hal_dma.h"
 #endif /* HAL_DMA_MODULE_ENABLED */
-
+   
 #ifdef HAL_CORTEX_MODULE_ENABLED
   #include "stm32l0xx_hal_cortex.h"
 #endif /* HAL_CORTEX_MODULE_ENABLED */
@@ -192,7 +181,7 @@
 #ifdef HAL_COMP_MODULE_ENABLED
   #include "stm32l0xx_hal_comp.h"
 #endif /* HAL_COMP_MODULE_ENABLED */
-
+   
 #ifdef HAL_CRC_MODULE_ENABLED
   #include "stm32l0xx_hal_crc.h"
 #endif /* HAL_CRC_MODULE_ENABLED */
@@ -243,6 +232,7 @@
 
 #ifdef HAL_RTC_MODULE_ENABLED
  #include "stm32l0xx_hal_rtc.h"
+
 #endif /* HAL_RTC_MODULE_ENABLED */
 
 #ifdef HAL_SPI_MODULE_ENABLED
@@ -310,4 +300,3 @@
  
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
-
