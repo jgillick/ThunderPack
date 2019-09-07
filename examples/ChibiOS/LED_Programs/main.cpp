@@ -41,9 +41,6 @@ int main(void) {
   // Init event source, for communicating button press to the fading thread
   chEvtObjectInit(&programEvtSrc);
 
-  // Button mode
-  palSetPadMode(GPIOB, 4, PAL_MODE_INPUT);
-
   // Start PWM thread
   pwmStart(&PWMD2, &pwmcfg);
 
@@ -52,7 +49,7 @@ int main(void) {
   // Update the program when the button is pressed
   unsigned int lastBtnVal = 0;
   while (1) {
-    unsigned int btnVal = palReadPad(GPIOB, 4);
+    unsigned int btnVal = palReadLine(LINE_USER_BTN);
     if (btnVal && btnVal != lastBtnVal) {
       progCtrl.incrementProgram();
     }
