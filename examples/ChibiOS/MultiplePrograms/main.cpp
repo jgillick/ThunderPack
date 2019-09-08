@@ -41,7 +41,7 @@ int main(void) {
   // Init event source, for communicating button press to the fading thread
   chEvtObjectInit(&programEvtSrc);
 
-  // Start PWM thread
+  // Start PWM
   pwmStart(&PWMD2, &pwmcfg);
 
   led.start(NORMALPRIO);

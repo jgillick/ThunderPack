@@ -176,16 +176,12 @@
  */
 #define LINE_ARD_A0                 PAL_LINE(GPIOA, 0U)
 #define LINE_ACD1_IN0               PAL_LINE(GPIOA, 0U)
-#define LINE_LED_0                  PAL_LINE(GPIOA, 0U)
 #define LINE_ARD_A1                 PAL_LINE(GPIOA, 1U)
 #define LINE_ACD1_IN1               PAL_LINE(GPIOA, 1U)
-#define LINE_LED_1                  PAL_LINE(GPIOA, 1U)
 #define LINE_ARD_D1                 PAL_LINE(GPIOA, 2U)
 #define LINE_USART2_TX              PAL_LINE(GPIOA, 2U)
-#define LINE_LED_2                  PAL_LINE(GPIOA, 2U)
 #define LINE_ARD_D0                 PAL_LINE(GPIOA, 3U)
 #define LINE_USART2_RX              PAL_LINE(GPIOA, 3U)
-#define LINE_LED_3                  PAL_LINE(GPIOA, 3U)
 #define LINE_ARD_A2                 PAL_LINE(GPIOA, 4U)
 #define LINE_ACD1_IN4               PAL_LINE(GPIOA, 4U)
 #define LINE_LED_GREEN              PAL_LINE(GPIOA, 5U)
@@ -218,6 +214,16 @@
 #define LINE_OSC32_OUT              PAL_LINE(GPIOC, 15U)
 #define LINE_OSC_IN                 PAL_LINE(GPIOH, 0U)
 #define LINE_OSC_OUT                PAL_LINE(GPIOH, 1U)
+
+#define LINE_LED_0                  PAL_LINE(GPIOA, 0U)
+#define LINE_LED_1                  PAL_LINE(GPIOA, 1U)
+#define LINE_LED_2                  PAL_LINE(GPIOA, 2U)
+#define LINE_LED_3                  PAL_LINE(GPIOA, 3U)
+
+#define LED_PAD_0                   0u
+#define LED_PAD_1                   1u
+#define LED_PAD_2                   2u
+#define LED_PAD_3                   3u
 
 /*===========================================================================*/
 /* Driver pre-compile time settings.                                         */

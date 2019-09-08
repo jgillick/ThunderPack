@@ -41,7 +41,7 @@ void LEDController::main(void) {
   // Subscribe to program change event.
   chEvtRegisterMask(&progCtrl->evtSrc, &programChangeListener, PROGRAM_CHANGE_EVT);
 
-  // Starts the PWM channel 0 using 75% duty cycle.
+  // Starts the PWM channel 0 using 100% duty cycle.
   pwmEnableChannel(pwmDrvr, pwmChannel, PWM_PERCENTAGE_TO_WIDTH(pwmDrvr, 10000));
 
   while (1) {
