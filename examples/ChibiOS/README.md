@@ -32,8 +32,14 @@ make
 
 ## Flashing
 
-Put the board into flash (DFU) mode by pressing the user button while turning the board on. Now you can run the following command to flash the program to the board:
+Put the board into bootloader (DFU) mode by pressing the user button while turning the board on. Now you can run the following command to flash the program to the board:
 
 ```bash
 dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D build/program.bin
+```
+
+Or you can simply run:
+
+```bash
+make flash-dfu
 ```
