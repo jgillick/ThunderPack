@@ -7,7 +7,6 @@
 
 #define SPEED 20
 #define PWM_INC 100
-#define MIN_PWM 0
 #define MAX_PWM 10000
 
 // PWM Config
@@ -45,9 +44,9 @@ int main(void) {
     if (pwmVal >= MAX_PWM) {
       direction = -1;
       pwmVal = MAX_PWM;
-    } else if (pwmVal <= MIN_PWM) {
+    } else if (pwmVal <= 0) {
       direction = 1;
-      pwmVal = MIN_PWM;
+      pwmVal = 0;
     }
 
     chThdSleepMilliseconds(SPEED);
