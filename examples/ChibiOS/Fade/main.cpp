@@ -32,7 +32,6 @@ int main(void) {
   halInit();
   chSysInit();
   pwmStart(&PWMD2, &pwmcfg);
-  palSetPadMode(GPIOA, 0, PAL_MODE_ALTERNATE(2));
 
   int pwmVal = 0;
   int direction = 1;
