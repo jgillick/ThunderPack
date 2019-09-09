@@ -10,12 +10,13 @@ More details: https://hackaday.io/project/161054-lit-fist
 ## Features
 
 * Ultra-low-power 32-bit microcontroller ([STM32L072xB](https://www.st.com/resource/en/datasheet/stm32l072v8.pdf))
-* Integrated high-capacity 18650 lithium battery.
-* Built-in USB charger.
-* USB bootloader.
+* Integrated high-capacity 18650 lithium battery
+* Built-in USB charger
+* USB bootloader
 * 4 high-current PWM outputs (2.3A per channel)
-* LED on each PWM output for debugging.
+* LED on each PWM output for debugging
 * Tactile on/off switch
-* Tactile user button with built-in debounce circuit.
-* Breadboard friendly.
-* Access to 14 GPIO pins.
+* Tactile user button with built-in debounce circuit
+* Breadboard friendly
+* 14 GPIO
+* Peripheral interfaces: USART, I2C, SPI, USB
