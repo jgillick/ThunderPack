@@ -1,5 +1,6 @@
 # Hardware
 *.kicad_pcb-bak
+*.sch-bak
 *.bak
 
 # Code
