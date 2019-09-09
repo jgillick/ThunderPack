@@ -19,7 +19,7 @@ static virtual_timer_t blinkTimer;
  * This is invoked by the virtual timer.
  */
 static void toggleLED(void *arg) {
-  palToggleLine(LINE_LED_0);
+  palToggleLine(LINE_LED_1);
 }
 
 /*
@@ -32,7 +32,7 @@ int main(void) {
   chVTObjectInit(&blinkTimer);
 
   // Set LED mode to digital output
-  palSetLineMode(LINE_LED_0, PAL_MODE_OUTPUT_PUSHPULL);
+  palSetLineMode(LINE_LED_1, PAL_MODE_OUTPUT_PUSHPULL);
 
   // Main loop
   int blinkSpeed = MAX_SPEED;

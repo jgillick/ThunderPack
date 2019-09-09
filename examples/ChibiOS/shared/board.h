@@ -215,10 +215,10 @@
 #define LINE_OSC_IN                 PAL_LINE(GPIOH, 0U)
 #define LINE_OSC_OUT                PAL_LINE(GPIOH, 1U)
 
-#define LINE_LED_0                  PAL_LINE(GPIOA, 0U)
-#define LINE_LED_1                  PAL_LINE(GPIOA, 1U)
-#define LINE_LED_2                  PAL_LINE(GPIOA, 2U)
-#define LINE_LED_3                  PAL_LINE(GPIOA, 3U)
+#define LINE_LED_1                  PAL_LINE(GPIOA, 0U)
+#define LINE_LED_2                  PAL_LINE(GPIOA, 1U)
+#define LINE_LED_3                  PAL_LINE(GPIOA, 2U)
+#define LINE_LED_4                  PAL_LINE(GPIOA, 3U)
 
 #define LED_PAD_0                   0u
 #define LED_PAD_1                   1u
