@@ -134,6 +134,13 @@
 #define STM32_SERIAL_LPUART1_PRIORITY       3
 
 /*
+ * USB driver system settings.
+ */
+#define STM32_USB_USE_USB1                  TRUE
+#define STM32_USB_LOW_POWER_ON_SUSPEND      FALSE
+#define STM32_USB_USB1_LP_IRQ_PRIORITY      3
+
+/*
  * SPI driver system settings.
  */
 #define STM32_SPI_USE_SPI1                  FALSE
