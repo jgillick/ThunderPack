@@ -1,6 +1,6 @@
 # ChibiOS Examples
 
-These examples are written using the [ChibiOS ecosystem](http://chibios.org/dokuwiki/doku.php) (RTOS, HAL, peripheral drivers, etc).
+These examples are written using the [ChibiOS RTOS](http://chibios.org/dokuwiki/doku.php). 
 
 ## Prerequisites
 
