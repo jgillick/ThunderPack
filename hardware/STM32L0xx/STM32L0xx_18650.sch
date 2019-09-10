@@ -28,17 +28,6 @@ F 5 "10103594-0001LF" H 2750 6900 50  0001 C CNN "MPN"
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3V3 #PWR0102
-U 1 1 5BD53A46
-P 5050 6900
-F 0 "#PWR0102" H 5050 6750 50  0001 C CNN
-F 1 "+3V3" H 5065 7073 50  0000 C CNN
-F 2 "" H 5050 6900 50  0001 C CNN
-F 3 "" H 5050 6900 50  0001 C CNN
-	1    5050 6900
-	1    0    0    -1  
-$EndComp
-$Comp
 L Switch:SW_SPST SW?
 U 1 1 5BD6823A
 P 1300 1450
@@ -94,23 +83,10 @@ Wire Wire Line
 	2750 7400 2700 7400
 Connection ~ 2700 7400
 NoConn ~ 3050 7100
-$Comp
-L power:GND #PWR0108
-U 1 1 5BD85B6B
-P 4500 7450
-F 0 "#PWR0108" H 4500 7200 50  0001 C CNN
-F 1 "GND" H 4505 7277 50  0000 C CNN
-F 2 "" H 4500 7450 50  0001 C CNN
-F 3 "" H 4500 7450 50  0001 C CNN
-	1    4500 7450
-	1    0    0    -1  
-$EndComp
 Text Label 1700 1450 0    50   ~ 0
 VIN
 Wire Wire Line
 	1500 1450 1700 1450
-Text Label 4100 7000 2    50   ~ 0
-VIN
 $Comp
 L STM32L0xx_18650-rescue:MCP73831T-2ACI_OT-LEDRibbonController-rescue-LitFist18650-rescue U?
 U 1 1 5BD9534D
@@ -300,12 +276,6 @@ Wire Notes Line
 	2450 6450 2450 7700
 Text Notes 2450 6450 0    50   ~ 0
 USB Connector
-Wire Wire Line
-	5050 6900 5050 7000
-Wire Wire Line
-	5050 7000 4950 7000
-Text Notes 3950 6650 0    50   ~ 0
-3.3v Power
 $Comp
 L Transistor_FET:MMBF170 Q?
 U 1 1 5BE03ADD
@@ -900,26 +870,6 @@ Wire Wire Line
 Connection ~ 10100 5400
 Wire Wire Line
 	10100 5400 10400 5400
-$Comp
-L Jeremy:AP2210-3.3TRG1 U2
-U 1 1 5CD3E552
-P 4250 7050
-F 0 "U2" H 4350 6750 50  0000 C CNN
-F 1 "AP2210N-3.3TRG1" H 4525 7234 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 4200 7450 50  0001 C CNN
-F 3 "" H 4200 7450 50  0001 C CNN
-F 4 "AP2210N-3.3TRG1" H 4250 7050 50  0001 C CNN "MPN"
-	1    4250 7050
-	1    0    0    -1  
-$EndComp
-Wire Notes Line
-	3950 6650 5200 6650
-Wire Notes Line
-	5200 6650 5200 7700
-Wire Notes Line
-	3950 7700 5200 7700
-Wire Notes Line
-	3950 6650 3950 7700
 Wire Wire Line
 	4450 2800 4300 2800
 Wire Wire Line
@@ -1624,12 +1574,6 @@ Wire Notes Line
 	2450 7700 3700 7700
 Wire Notes Line
 	2450 6450 3700 6450
-Text Label 1850 6100 0    50   ~ 0
-SWDIO
-Text Label 1850 6000 0    50   ~ 0
-SWCLK
-Text Label 1850 5900 0    50   ~ 0
-RESET
 $Comp
 L Device:R R?
 U 1 1 5BF9E96B
@@ -1644,15 +1588,144 @@ F 4 "0603" V 1000 4250 50  0001 C CNN "Package"
 	1    1000 4250
 	0    1    1    0   
 $EndComp
+Text Label 4800 6800 0    50   ~ 0
+SWDIO
+Text Label 4800 6700 0    50   ~ 0
+SWCLK
+Text Label 4800 6500 0    50   ~ 0
+RESET
 $Comp
-L Connector_Generic:Conn_01x03 J1
+L power:+3.3V #PWR0104
+U 1 1 5D7E89AF
+P 4300 6200
+F 0 "#PWR0104" H 4300 6050 50  0001 C CNN
+F 1 "+3.3V" H 4315 6373 50  0000 C CNN
+F 2 "" H 4300 6200 50  0001 C CNN
+F 3 "" H 4300 6200 50  0001 C CNN
+	1    4300 6200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0105
+U 1 1 5D7E99F4
+P 4250 7450
+F 0 "#PWR0105" H 4250 7200 50  0001 C CNN
+F 1 "GND" H 4255 7277 50  0000 C CNN
+F 2 "" H 4250 7450 50  0001 C CNN
+F 3 "" H 4250 7450 50  0001 C CNN
+	1    4250 7450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 7400 4200 7450
+Wire Wire Line
+	4200 7450 4250 7450
+Wire Wire Line
+	4250 7450 4300 7450
+Wire Wire Line
+	4300 7450 4300 7400
+Connection ~ 4250 7450
+Wire Wire Line
+	4800 6900 4800 7000
+Wire Wire Line
+	4800 7450 4300 7450
+Connection ~ 4800 7000
+Wire Wire Line
+	4800 7000 4800 7450
+Connection ~ 4300 7450
+Wire Notes Line
+	3850 5950 3850 7700
+Wire Notes Line
+	5100 7700 5100 5950
+Wire Notes Line
+	3850 7700 5100 7700
+Wire Notes Line
+	3850 5950 5100 5950
+Wire Notes Line
+	5200 6650 5200 7700
+Wire Notes Line
+	5200 7700 6450 7700
+Wire Notes Line
+	6450 6650 6450 7700
+Wire Notes Line
+	5200 6650 6450 6650
+$Comp
+L Jeremy:AP2210-3.3TRG1 U2
+U 1 1 5CD3E552
+P 5500 7050
+F 0 "U2" H 5600 6750 50  0000 C CNN
+F 1 "AP2210N-3.3TRG1" H 5775 7234 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 5450 7450 50  0001 C CNN
+F 3 "" H 5450 7450 50  0001 C CNN
+F 4 "AP2210N-3.3TRG1" H 5500 7050 50  0001 C CNN "MPN"
+	1    5500 7050
+	1    0    0    -1  
+$EndComp
+Text Notes 5200 6650 0    50   ~ 0
+3.3v Power
+Wire Wire Line
+	6300 7000 6200 7000
+Wire Wire Line
+	6300 6900 6300 7000
+Text Label 5350 7000 2    50   ~ 0
+VIN
+$Comp
+L power:GND #PWR0108
+U 1 1 5BD85B6B
+P 5750 7450
+F 0 "#PWR0108" H 5750 7200 50  0001 C CNN
+F 1 "GND" H 5755 7277 50  0000 C CNN
+F 2 "" H 5750 7450 50  0001 C CNN
+F 3 "" H 5750 7450 50  0001 C CNN
+	1    5750 7450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0102
+U 1 1 5BD53A46
+P 6300 6900
+F 0 "#PWR0102" H 6300 6750 50  0001 C CNN
+F 1 "+3V3" H 6315 7073 50  0000 C CNN
+F 2 "" H 6300 6900 50  0001 C CNN
+F 3 "" H 6300 6900 50  0001 C CNN
+	1    6300 6900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_ARM_JTAG_SWD_10 J1
 U 1 1 5D4460E4
-P 1650 6000
-F 0 "J1" H 1800 6000 50  0000 C CNN
-F 1 "Debug" H 1850 5900 50  0000 C CNN
-F 2 "Connector_PinHeader_1.27mm:PinHeader_1x03_P1.27mm_Vertical" H 1650 6000 50  0001 C CNN
-F 3 "~" H 1650 6000 50  0001 C CNN
-	1    1650 6000
-	-1   0    0    1   
+P 4300 6800
+F 0 "J1" H 3950 6200 50  0000 C CNN
+F 1 "SW Debug" H 4550 6250 50  0000 C CNN
+F 2 "Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical" H 4300 6800 50  0001 C CNN
+F 3 "~" H 4300 6800 50  0001 C CNN
+	1    4300 6800
+	1    0    0    -1  
+$EndComp
+Text Notes 3850 5950 0    50   ~ 0
+JTAG / SWD
+Connection ~ 800  6950
+Connection ~ 1200 6950
+$Comp
+L Connector_Generic:Conn_01x01 J8
+U 1 1 5D90FB9A
+P 800 7150
+F 0 "J8" V 900 7100 50  0000 L CNN
+F 1 "Conn_01x01" V 900 7050 50  0001 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 800 7150 50  0001 C CNN
+F 3 "~" H 800 7150 50  0001 C CNN
+	1    800  7150
+	0    1    1    0   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x01 J9
+U 1 1 5D9108FC
+P 1200 7150
+F 0 "J9" V 1300 7100 50  0000 L CNN
+F 1 "Conn_01x01" V 1300 7050 50  0001 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1200 7150 50  0001 C CNN
+F 3 "~" H 1200 7150 50  0001 C CNN
+	1    1200 7150
+	0    1    1    0   
 $EndComp
 $EndSCHEMATC
