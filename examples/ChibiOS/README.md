@@ -22,7 +22,7 @@ For example, in a bash environment you would set the variable in `~/.base_profil
 export CHIBIOS="${HOME}/Documents/ChibiOS_18.2.1"
 ```
 
-## Building
+## Compiling
 
 Now that you have all the prerequisites out of the way, you can compile and flash the board:
 
@@ -30,7 +30,7 @@ Now that you have all the prerequisites out of the way, you can compile and flas
 make
 ```
 
-## Flashing
+## Flash the program
 
 Put the board into bootloader (DFU) mode by pressing the user button while turning the board on. Now you can run the following command to flash the program to the board:
 

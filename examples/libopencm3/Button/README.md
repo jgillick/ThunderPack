@@ -1,5 +1,4 @@
 # Button Example
-
 Simply turns on the LED when the button is pressed.
 
 ## Compiling/Flashing
