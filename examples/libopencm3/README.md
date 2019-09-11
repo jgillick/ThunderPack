@@ -2,8 +2,6 @@
 
 Examples written using the [libopencm3](https://github.com/libopencm3/libopencm3) library.
 
-The Makefiles have been borrowed/adapted from the excellent [1Bitsy](https://github.com/1Bitsy/1bitsy-examples) project.
-
 ## Prerequisites
 
  * GCC build essentials
