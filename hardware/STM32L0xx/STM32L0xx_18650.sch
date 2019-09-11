@@ -1449,30 +1449,6 @@ F 3 "~" H 4300 6800 50  0001 C CNN
 $EndComp
 Text Notes 3850 5950 0    50   ~ 0
 JTAG / SWD
-Connection ~ 800  6950
-Connection ~ 1200 6950
-$Comp
-L Connector_Generic:Conn_01x01 J8
-U 1 1 5D90FB9A
-P 800 7150
-F 0 "J8" V 900 7100 50  0000 L CNN
-F 1 "Conn_01x01" V 900 7050 50  0001 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 800 7150 50  0001 C CNN
-F 3 "~" H 800 7150 50  0001 C CNN
-	1    800  7150
-	0    1    1    0   
-$EndComp
-$Comp
-L Connector_Generic:Conn_01x01 J9
-U 1 1 5D9108FC
-P 1200 7150
-F 0 "J9" V 1300 7100 50  0000 L CNN
-F 1 "Conn_01x01" V 1300 7050 50  0001 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1200 7150 50  0001 C CNN
-F 3 "~" H 1200 7150 50  0001 C CNN
-	1    1200 7150
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	2800 3450 2850 3450
 Wire Wire Line
