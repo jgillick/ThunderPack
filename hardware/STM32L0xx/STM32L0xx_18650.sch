@@ -87,191 +87,12 @@ Text Label 1700 1450 0    50   ~ 0
 VIN
 Wire Wire Line
 	1500 1450 1700 1450
-$Comp
-L STM32L0xx_18650-rescue:MCP73831T-2ACI_OT-LEDRibbonController-rescue-LitFist18650-rescue U?
-U 1 1 5BD9534D
-P 9200 5300
-AR Path="/5BD64BD8/5BD9534D" Ref="U?"  Part="1" 
-AR Path="/5BD9534D" Ref="U3"  Part="1" 
-F 0 "U3" H 8700 4700 50  0000 L BNN
-F 1 "MCP73831T-2ACI/OT" H 9050 4700 50  0000 L BNN
-F 2 "Package_TO_SOT_SMD:SOT-23-5_HandSoldering" H 9200 5300 50  0001 L BNN
-F 3 "SOT-23 Microchip" H 9200 5300 50  0001 L BNN
-F 4 "MCP73831T-2ACI/OTCT-ND" H 9200 5300 50  0001 C CNN "Digikey"
-F 5 "MCP73831T-2ACI/OT" H 9200 5300 50  0001 L BNN "MP"
-F 6 "MCP73831 Series Single-Cell Li-Ion/Li-Polymer Battery Charge Controller SOT-23-5" H 9200 5300 50  0001 L BNN "Description"
-F 7 "Microchip" H 9200 5300 50  0001 L BNN "MF"
-F 8 "Good" H 9200 5300 50  0001 L BNN "Availability"
-F 9 "0.53 USD" H 9200 5300 50  0001 L BNN "Price"
-	1    9200 5300
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C?
-U 1 1 5BD95354
-P 7900 5400
-AR Path="/5BD64BD8/5BD95354" Ref="C?"  Part="1" 
-AR Path="/5BD95354" Ref="C9"  Part="1" 
-F 0 "C9" H 7925 5500 50  0000 L CNN
-F 1 "4.7uF" H 7925 5300 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 7938 5250 50  0001 C CNN
-F 3 "" H 7900 5400 50  0001 C CNN
-F 4 "KEMET C0603C475K9PACTU" H 7900 5400 50  0001 C CNN "MPN"
-F 5 "0603" H 0   0   50  0001 C CNN "Package"
-	1    7900 5400
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:LED D?
-U 1 1 5BD9535B
-P 9100 4850
-AR Path="/5BD64BD8/5BD9535B" Ref="D?"  Part="1" 
-AR Path="/5BD9535B" Ref="D6"  Part="1" 
-F 0 "D6" H 9200 4900 50  0000 C CNN
-F 1 "LED" H 9100 4750 50  0001 C CNN
-F 2 "LED_SMD:LED_0603_1608Metric_Castellated" H 9100 4850 50  0001 C CNN
-F 3 "" H 9100 4850 50  0001 C CNN
-F 4 "150060VS75000" H 9100 4850 50  0001 C CNN "MPN"
-F 5 "0603" H 0   0   50  0001 C CNN "Package"
-	1    9100 4850
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5BD95362
-P 9500 4850
-AR Path="/5BD64BD8/5BD95362" Ref="R?"  Part="1" 
-AR Path="/5BD95362" Ref="R11"  Part="1" 
-F 0 "R11" V 9580 4850 50  0000 C CNN
-F 1 "430" V 9500 4850 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 9430 4850 50  0001 C CNN
-F 3 "" H 9500 4850 50  0001 C CNN
-F 4 "ERJ-PA3F4300V" H 9500 4850 50  0001 C CNN "MPN"
-F 5 "0603" H 0   0   50  0001 C CNN "Package"
-	1    9500 4850
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:R_Small R?
-U 1 1 5BD95369
-P 8350 5500
-AR Path="/5BD64BD8/5BD95369" Ref="R?"  Part="1" 
-AR Path="/5BD95369" Ref="R6"  Part="1" 
-F 0 "R6" H 8400 5550 50  0000 L CNN
-F 1 "2k" H 8400 5450 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 8350 5500 50  0001 C CNN
-F 3 "" H 8350 5500 50  0001 C CNN
-F 4 "0603" H 0   0   50  0001 C CNN "Package"
-	1    8350 5500
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5BD95370
-P 7900 5900
-AR Path="/5BD64BD8/5BD95370" Ref="#PWR?"  Part="1" 
-AR Path="/5BD95370" Ref="#PWR0109"  Part="1" 
-F 0 "#PWR0109" H 7900 5650 50  0001 C CNN
-F 1 "GND" H 7900 5750 50  0000 C CNN
-F 2 "" H 7900 5900 50  0001 C CNN
-F 3 "" H 7900 5900 50  0001 C CNN
-	1    7900 5900
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C?
-U 1 1 5BD95376
-P 10100 5600
-AR Path="/5BD64BD8/5BD95376" Ref="C?"  Part="1" 
-AR Path="/5BD95376" Ref="C11"  Part="1" 
-F 0 "C11" H 10125 5700 50  0000 L CNN
-F 1 "4.7uF" H 10125 5500 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 10138 5450 50  0001 C CNN
-F 3 "" H 10100 5600 50  0001 C CNN
-F 4 "KEMET C0603C475K9PACTU" H 10100 5600 50  0001 C CNN "MPN"
-F 5 "0603" H 0   0   50  0001 C CNN "Package"
-	1    10100 5600
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5BD9537D
-P 10100 5900
-AR Path="/5BD64BD8/5BD9537D" Ref="#PWR?"  Part="1" 
-AR Path="/5BD9537D" Ref="#PWR0110"  Part="1" 
-F 0 "#PWR0110" H 10100 5650 50  0001 C CNN
-F 1 "GND" H 10100 5750 50  0000 C CNN
-F 2 "" H 10100 5900 50  0001 C CNN
-F 3 "" H 10100 5900 50  0001 C CNN
-	1    10100 5900
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5BD95383
-P 8350 5900
-AR Path="/5BD64BD8/5BD95383" Ref="#PWR?"  Part="1" 
-AR Path="/5BD95383" Ref="#PWR0111"  Part="1" 
-F 0 "#PWR0111" H 8350 5650 50  0001 C CNN
-F 1 "GND" H 8350 5750 50  0000 C CNN
-F 2 "" H 8350 5900 50  0001 C CNN
-F 3 "" H 8350 5900 50  0001 C CNN
-	1    8350 5900
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7900 5250 7900 5200
-Connection ~ 8250 5200
-Wire Wire Line
-	8250 5200 8250 4850
-Wire Wire Line
-	8250 4850 8950 4850
-Wire Wire Line
-	9250 4850 9350 4850
-Wire Wire Line
-	9650 4850 9900 4850
-Wire Wire Line
-	9900 4850 9900 5200
-Wire Wire Line
-	8350 5400 8500 5400
-Wire Wire Line
-	8500 5600 8350 5600
-Wire Wire Line
-	7900 5550 7900 5900
-Wire Wire Line
-	8350 5600 8350 5900
-Wire Wire Line
-	7900 5200 8250 5200
-Wire Wire Line
-	8250 5200 8500 5200
-$Comp
-L power:+BATT #PWR?
-U 1 1 5BD9539B
-P 10400 5150
-AR Path="/5BD64BD8/5BD9539B" Ref="#PWR?"  Part="1" 
-AR Path="/5BD9539B" Ref="#PWR0112"  Part="1" 
-F 0 "#PWR0112" H 10400 5000 50  0001 C CNN
-F 1 "+BATT" H 10415 5323 50  0000 C CNN
-F 2 "" H 10400 5150 50  0001 C CNN
-F 3 "" H 10400 5150 50  0001 C CNN
-	1    10400 5150
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	10400 5150 10400 5400
-Wire Wire Line
-	7750 5200 7900 5200
-Connection ~ 7900 5200
 Wire Notes Line
 	7500 4600 7500 6200
 Wire Notes Line
 	7500 6200 10600 6200
 Wire Notes Line
 	10600 6200 10600 4600
-Wire Notes Line
-	10600 4600 7500 4600
-Text Label 7750 5200 2    50   ~ 0
-VUSB
 Wire Notes Line
 	2450 6450 2450 7700
 Text Notes 2450 6450 0    50   ~ 0
@@ -843,8 +664,6 @@ TODO: ^ Add diode here\n(PMEG045T100EPDAZ)
 Wire Wire Line
 	850  2900 850  3300
 Wire Wire Line
-	9900 5400 10100 5400
-Wire Wire Line
 	850  1450 1050 1450
 $Comp
 L Device:D_Schottky_Small D?
@@ -867,13 +686,6 @@ Wire Wire Line
 Connection ~ 1050 1450
 Wire Wire Line
 	1050 1450 1100 1450
-Wire Wire Line
-	10100 5750 10100 5900
-Wire Wire Line
-	10100 5450 10100 5400
-Connection ~ 10100 5400
-Wire Wire Line
-	10100 5400 10400 5400
 Wire Wire Line
 	4950 2700 4800 2700
 Wire Wire Line
@@ -1650,4 +1462,221 @@ Wire Notes Line
 	2600 3050 3650 3050
 Text Notes 2600 3050 0    50   ~ 0
 Optional RTC Source
+Text Label 7750 4800 2    50   ~ 0
+VUSB
+Wire Notes Line
+	10600 4600 7500 4600
+$Comp
+L power:+BATT #PWR?
+U 1 1 5BD9539B
+P 9850 5450
+AR Path="/5BD64BD8/5BD9539B" Ref="#PWR?"  Part="1" 
+AR Path="/5BD9539B" Ref="#PWR0112"  Part="1" 
+F 0 "#PWR0112" H 9850 5300 50  0001 C CNN
+F 1 "+BATT" H 9865 5623 50  0000 C CNN
+F 2 "" H 9850 5450 50  0001 C CNN
+F 3 "" H 9850 5450 50  0001 C CNN
+	1    9850 5450
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5BD95376
+P 9600 5750
+AR Path="/5BD64BD8/5BD95376" Ref="C?"  Part="1" 
+AR Path="/5BD95376" Ref="C11"  Part="1" 
+F 0 "C11" H 9625 5850 50  0000 L CNN
+F 1 "1uf" H 9625 5650 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 9638 5600 50  0001 C CNN
+F 3 "" H 9600 5750 50  0001 C CNN
+F 4 "0603" H -500 150 50  0001 C CNN "Package"
+	1    9600 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 5BD95369
+P 8150 5500
+AR Path="/5BD64BD8/5BD95369" Ref="R?"  Part="1" 
+AR Path="/5BD95369" Ref="R6"  Part="1" 
+F 0 "R6" H 8200 5550 50  0000 L CNN
+F 1 "1k" H 8200 5450 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 8150 5500 50  0001 C CNN
+F 3 "" H 8150 5500 50  0001 C CNN
+F 4 "0603" H -200 0   50  0001 C CNN "Package"
+	1    8150 5500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5BD95354
+P 7900 5500
+AR Path="/5BD64BD8/5BD95354" Ref="C?"  Part="1" 
+AR Path="/5BD95354" Ref="C9"  Part="1" 
+F 0 "C9" H 7925 5600 50  0000 L CNN
+F 1 "1uF" H 7925 5400 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 7938 5350 50  0001 C CNN
+F 3 "" H 7900 5500 50  0001 C CNN
+F 4 "0603" H 0   100 50  0001 C CNN "Package"
+	1    7900 5500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5BD95370
+P 8150 5900
+AR Path="/5BD64BD8/5BD95370" Ref="#PWR?"  Part="1" 
+AR Path="/5BD95370" Ref="#PWR0109"  Part="1" 
+F 0 "#PWR0109" H 8150 5650 50  0001 C CNN
+F 1 "GND" H 8150 5750 50  0000 C CNN
+F 2 "" H 8150 5900 50  0001 C CNN
+F 3 "" H 8150 5900 50  0001 C CNN
+	1    8150 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R14
+U 1 1 5DCE3195
+P 8400 5500
+F 0 "R14" H 8459 5546 50  0000 L CNN
+F 1 "10k" H 8459 5455 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 8400 5500 50  0001 C CNN
+F 3 "~" H 8400 5500 50  0001 C CNN
+F 4 "0603" H 8459 5409 50  0001 L CNN "Package"
+	1    8400 5500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8550 5250 8150 5250
+Wire Wire Line
+	8150 5250 8150 5400
+Wire Wire Line
+	8550 5350 8400 5350
+Wire Wire Line
+	8400 5350 8400 5400
+Wire Wire Line
+	8150 5600 8150 5750
+Wire Wire Line
+	8400 5600 8400 5750
+Wire Wire Line
+	8400 5750 8150 5750
+Connection ~ 8150 5750
+Wire Wire Line
+	8150 5750 8150 5900
+Wire Wire Line
+	7900 5650 7900 5750
+Wire Wire Line
+	7900 5750 8150 5750
+Wire Wire Line
+	9350 5450 9600 5450
+Wire Wire Line
+	9600 5450 9600 5550
+Wire Wire Line
+	9350 5550 9600 5550
+Connection ~ 9600 5550
+Wire Wire Line
+	9600 5550 9600 5600
+Wire Wire Line
+	9600 5450 9850 5450
+Connection ~ 9600 5450
+$Comp
+L power:GND #PWR?
+U 1 1 5DDADF96
+P 8950 5900
+AR Path="/5BD64BD8/5DDADF96" Ref="#PWR?"  Part="1" 
+AR Path="/5DDADF96" Ref="#PWR04"  Part="1" 
+F 0 "#PWR04" H 8950 5650 50  0001 C CNN
+F 1 "GND" H 8950 5750 50  0000 C CNN
+F 2 "" H 8950 5900 50  0001 C CNN
+F 3 "" H 8950 5900 50  0001 C CNN
+	1    8950 5900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8950 5750 8950 5900
+$Comp
+L power:GND #PWR?
+U 1 1 5DDC81C6
+P 9600 5900
+AR Path="/5BD64BD8/5DDC81C6" Ref="#PWR?"  Part="1" 
+AR Path="/5DDC81C6" Ref="#PWR05"  Part="1" 
+F 0 "#PWR05" H 9600 5650 50  0001 C CNN
+F 1 "GND" H 9600 5750 50  0000 C CNN
+F 2 "" H 9600 5900 50  0001 C CNN
+F 3 "" H 9600 5900 50  0001 C CNN
+	1    9600 5900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7750 4800 7900 4800
+Wire Wire Line
+	7900 5350 7900 4800
+Connection ~ 7900 4800
+Wire Wire Line
+	8850 4800 8850 4850
+Wire Wire Line
+	7900 4800 8850 4800
+Wire Wire Line
+	8850 4800 8950 4800
+Wire Wire Line
+	8950 4800 8950 4850
+Connection ~ 8850 4800
+Connection ~ 8950 4800
+$Comp
+L Device:LED D?
+U 1 1 5BD9535B
+P 9300 4800
+AR Path="/5BD64BD8/5BD9535B" Ref="D?"  Part="1" 
+AR Path="/5BD9535B" Ref="D6"  Part="1" 
+F 0 "D6" H 9400 4850 50  0000 C CNN
+F 1 "LED" H 9300 4700 50  0001 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Castellated" H 9300 4800 50  0001 C CNN
+F 3 "" H 9300 4800 50  0001 C CNN
+F 4 "150060VS75000" H 9300 4800 50  0001 C CNN "MPN"
+F 5 "0603" H 200 -50 50  0001 C CNN "Package"
+	1    9300 4800
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5BD95362
+P 9600 4800
+AR Path="/5BD64BD8/5BD95362" Ref="R?"  Part="1" 
+AR Path="/5BD95362" Ref="R11"  Part="1" 
+F 0 "R11" V 9680 4800 50  0000 C CNN
+F 1 "430" V 9600 4800 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 9530 4800 50  0001 C CNN
+F 3 "" H 9600 4800 50  0001 C CNN
+F 4 "ERJ-PA3F4300V" H 9600 4800 50  0001 C CNN "MPN"
+F 5 "0603" H 100 -50 50  0001 C CNN "Package"
+	1    9600 4800
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8950 4800 9150 4800
+Wire Wire Line
+	9750 4800 9750 5150
+Wire Wire Line
+	9750 5150 9350 5150
+$Comp
+L dk_PMIC-Battery-Chargers:MCP73833-AMI_UN U3
+U 1 1 5DC5FC9A
+P 8850 5150
+F 0 "U3" H 9100 4550 60  0000 C CNN
+F 1 "MCP73833-AMI_UN" H 8750 5600 60  0000 C CNN
+F 2 "Package_SO:TSSOP-10_3x3mm_P0.5mm" H 9050 5350 60  0001 L CNN
+F 3 "http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en027983" H 9050 5450 60  0001 L CNN
+F 4 "MCP73833-AMI/UN-ND" H 9050 5550 60  0001 L CNN "Digi-Key_PN"
+F 5 "MCP73833-AMI/UN" H 9050 5650 60  0001 L CNN "MPN"
+F 6 "Integrated Circuits (ICs)" H 9050 5750 60  0001 L CNN "Category"
+F 7 "PMIC - Battery Chargers" H 9050 5850 60  0001 L CNN "Family"
+F 8 "http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en027983" H 9050 5950 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/microchip-technology/MCP73833-AMI-UN/MCP73833-AMI-UN-ND/1223157" H 9050 6050 60  0001 L CNN "DK_Detail_Page"
+F 10 "IC LI-ION/LI-POLY CTRLR 10MSOP" H 9050 6150 60  0001 L CNN "Description"
+F 11 "Microchip Technology" H 9050 6250 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 9050 6350 60  0001 L CNN "Status"
+F 13 "10-MSOP " H 8700 4500 50  0001 C CNN "Package"
+	1    8850 5150
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
