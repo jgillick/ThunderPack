@@ -1,5 +1,5 @@
 CFILES = main.c 
-PROJECT = button
+PROJECT = fade
 BUILD_DIR = build
 
 # DEVICE=STM32L072KZTx
@@ -10,5 +10,5 @@ LIB_TARGET = stm32/l0
 OPENCM3_DIR = ../shared/libopencm3
 
 include $(OPENCM3_DIR)/mk/genlink-config.mk
-include ../shared/rule.mk
+include ../shared/rules.mk
 include $(OPENCM3_DIR)/mk/genlink-rules.mk

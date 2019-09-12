@@ -10,5 +10,5 @@ LIB_TARGET = stm32/l0
 OPENCM3_DIR = ../shared/libopencm3
 
 include $(OPENCM3_DIR)/mk/genlink-config.mk
-include ../shared/flash.mk
+include ../shared/rules.mk
 include $(OPENCM3_DIR)/mk/genlink-rules.mk
