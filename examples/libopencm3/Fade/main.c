@@ -92,25 +92,25 @@ static void timer_setup(void) {
 }
 
 int main(void) {
-	gpioa_setup();
-	timer_setup();
+  gpioa_setup();
+  timer_setup();
 
   int i;
   uint16_t fadeVal = 0;
   int8_t direction = 1;
-	while (1) {
-		// Set the LED PWM value
-		timer_set_oc_value(TIM2, TIM_OC1, fadeVal);
+  while (1) {
+    // Set the LED PWM value
+    timer_set_oc_value(TIM2, TIM_OC1, fadeVal);
 
-		// Increment and reverse if we've reached the limits
-		fadeVal += PWM_INC * direction;
-		if (fadeVal <= 0 || fadeVal >= MAX_PWM) {
-			direction *= -1;
-		}
+    // Increment and reverse if we've reached the limits
+    fadeVal += PWM_INC * direction;
+    if (fadeVal <= 0 || fadeVal >= MAX_PWM) {
+      direction *= -1;
+    }
 
-		// A brief pause
+    // A brief pause
     for (i = 0; i < 500; i++) __asm__("nop");
-	}
+  }
 
-	return 0;
+  return 0;
 }
