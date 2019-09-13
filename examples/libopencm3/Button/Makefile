@@ -7,8 +7,8 @@ DEVICE=STM32L072CBT6
 LIB_TARGET = stm32/l0
 
 # Path to the libopencm3 source
-OPENCM3_DIR = ../shared/libopencm3
+OPENCM3_DIR = ../lib/libopencm3
 
 include $(OPENCM3_DIR)/mk/genlink-config.mk
-include ../shared/rule.mk
+include ../lib/rules.mk
 include $(OPENCM3_DIR)/mk/genlink-rules.mk
