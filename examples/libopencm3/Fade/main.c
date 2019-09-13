@@ -4,12 +4,9 @@
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/timer.h>
-// #include <libopencm3/cm3/nvic.h>
-// #include <libopencm3/stm32/exti.h>
-// #include <libopencmsis/core_cm3.h>
 
-#define MAX_PWM   0xFFFF // We're using a 16-bit timer, might as well use all of it
-#define PWM_INC   45
+#define MAX_PWM   0xFFF
+#define PWM_INC   9
 
 // Setup GPIO pins
 static void gpioa_setup(void) {
@@ -32,38 +29,12 @@ static void timer_setup(void) {
   timer_set_mode(TIM2, TIM_CR1_CKD_CK_INT, TIM_CR1_CMS_EDGE, TIM_CR1_DIR_UP);
   timer_set_prescaler(TIM2, 0);
   
-  //timer_set_repetition_counter(TIM2, 0);
-
-  // Disable auto-reload buffering, so the PWM value is changed as soon as it's set.
-  // Otherwise, the value will be updated at the next cycle.
-  // timer_disable_preload(TIM2);
-
   // Run the timer continously
   timer_continuous_mode(TIM2);
 
   // The PWM period is the total clock cycles for both HIGH & LOW signals of the PWM
   // period = HIGH time + LOW time
   timer_set_period(TIM2, MAX_PWM);
-
-  // Disable all timer outputs
-  // timer_disable_oc_output(TIM2, TIM_OC1);
-  // timer_disable_oc_output(TIM2, TIM_OC2);
-  // timer_disable_oc_output(TIM2, TIM_OC3);
-  // timer_disable_oc_output(TIM2, TIM_OC4);
-
-  // https://hasanyavuz.ozderya.net/?p=437
-  // timer_set_deadtime(TIM2, 0);
-
-  // timer_set_enabled_off_state_in_idle_mode(TIM2);
-
-  // timer_disable_break(TIM2);
-  // timer_set_break_polarity_high(TIM2);
-  // timer_disable_break_automatic_output(TIM2);
-  // timer_set_break_lock(TIM2, TIM_BDTR_LOCK_OFF);
-
-  /* -- OC1 configuration -- */
-  /* Configure global mode of line 1. */
-  // timer_disable_oc_clear(TIM2, TIM_OC1);
 
   // Enable preload register on channel 1, to allow independent PWM values 
   timer_enable_oc_preload(TIM2, TIM_OC1);
@@ -77,17 +48,9 @@ static void timer_setup(void) {
   
   // When the timer is active, set the pin output to HIGH
   timer_set_oc_polarity_high(TIM2, TIM_OC1);
-  // timer_set_oc_idle_state_set(TIM2, TIM_OC1);
 
-  // 50% PWM
-  // timer_set_oc_value(TIM2, TIM_OC1, MAX_PWM/2);
-
-  // Enable channel 1 output
+  // Enable channel 1 output and enable the counter
   timer_enable_oc_output(TIM2, TIM_OC1);
-  // timer_enable_preload(TIM2);
-  // timer_enable_break_main_output(TIM2);
-  
-  // Now that it's setup, enable the counter
   timer_enable_counter(TIM2);
 }
 
@@ -96,7 +59,7 @@ int main(void) {
   timer_setup();
 
   int i;
-  uint16_t fadeVal = 0;
+  uint32_t fadeVal = 0;
   int8_t direction = 1;
   while (1) {
     // Set the LED PWM value

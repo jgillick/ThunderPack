@@ -3,7 +3,12 @@
 *.sch-bak
 *.bak
 
-# Code
+# C/CPP Code
 build/
 .dep/
+*.elf
+*.bin
+generated.STM32*
+
+# IDEs
 .vscode/
