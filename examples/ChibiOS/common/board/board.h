@@ -54,7 +54,7 @@
 /*
  * MCU type as defined in the ST header.
  */
-#define STM32L073xx
+#define STM32L072xx
 
 /*
  * IO pins assignments.

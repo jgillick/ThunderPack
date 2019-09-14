@@ -98,16 +98,6 @@ CONFDIR  ?= ./cfg
 BUILDDIR ?= ./build
 DEPDIR   ?= ./.dep
 
-# Includes
-ALLINC += $(CONFDIR) \
-          $(BOARD_DIR) \
-          $(HAL_DRIVER)/Inc \
-          $(CMSIS)/Device/ST/STM32L0xx/Include \
-		      $(CMSIS)/Include
-
-# C Sources
-ALLCSRC +=  $(BOARD_DIR)/board.c
-
 # Licensing files.
 include $(CHIBIOS)/os/license/license.mk
 # Startup files.
@@ -130,8 +120,8 @@ LDSCRIPT= $(STARTUPLD)/STM32L073xZ.ld
 
 # C sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
-CSRC += $(ALLCSRC) \
-       $(TESTSRC)
+CSRC += $(BOARD_DIR)/board.c \
+        $(ALLCSRC)
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -144,7 +134,16 @@ ASMSRC = $(ALLASMSRC)
 ASMXSRC = $(ALLXASMSRC)
 
 # Inclusion directories.
-INCDIR = $(CONFDIR) $(ALLINC) $(TESTINC)
+ALLINC += $(CONFDIR) \
+          $(HAL_DRIVER)/Inc \
+          $(CMSIS)/Include \
+          $(CHIBIOS)/os/common/ext/ST/STM32L0xx/
+          # $(CMSIS)/Device/ST/STM32L0xx/Include \
+          # $(CUBEMX_DRIVERS)/STM32L0xx_HAL_Driver/Inc \
+          # $(CUBEMX_DRIVERS)/CMSIS/Device/ST/STM32L0xx/Include/ \
+          # $(CUBEMX_DRIVERS)/CMSIS/Include
+INCDIR = $(BOARD_DIR) $(ALLINC)
+
 
 # Define C warning options here.
 CWARN = -Wall -Wextra -Wundef -Wstrict-prototypes
