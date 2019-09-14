@@ -31,4 +31,16 @@ CONFDIR = ../common/conf
 
 ######
 
+#
+# Dependencies
+#
+
+# Required for readint/writing to internal EEPROM
+ALLCSRC +=  $(BOARD_DIR)/board.c \
+            $(HAL_DRIVER)/Src/stm32l0xx_hal.c \
+            $(HAL_DRIVER)/Src/stm32l0xx_hal_flash_ramfunc.c \
+            $(HAL_DRIVER)/Src/stm32l0xx_hal_flash.c \
+            $(HAL_DRIVER)/Src/stm32l0xx_hal_flash_ex.c \
+            $(HAL_DRIVER)/Src/stm32l0xx_hal_cortex.c
+
 include ../common/Makefile

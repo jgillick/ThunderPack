@@ -137,9 +137,9 @@ ASMXSRC = $(ALLXASMSRC)
 ALLINC += $(CONFDIR) \
           $(HAL_DRIVER)/Inc \
           $(CMSIS)/Include \
-          $(CHIBIOS)/os/common/ext/ST/STM32L0xx/
-          # $(CMSIS)/Device/ST/STM32L0xx/Include \
+          $(CMSIS)/Device/ST/STM32L0xx/Include \
           # $(CUBEMX_DRIVERS)/STM32L0xx_HAL_Driver/Inc \
+          # $(CHIBIOS)/os/common/ext/ST/STM32L0xx/
           # $(CUBEMX_DRIVERS)/CMSIS/Device/ST/STM32L0xx/Include/ \
           # $(CUBEMX_DRIVERS)/CMSIS/Include
 INCDIR = $(BOARD_DIR) $(ALLINC)
