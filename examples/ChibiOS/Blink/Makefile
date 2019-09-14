@@ -1,25 +1,29 @@
 # Source files to compile
 CPPSRC = main.cpp
 
-# Set paths
-SHARED_DIR = $(realpath ../shared/)
+#
+# Define the environment
+#
 
 # ChibiOS lib directory
-CHIBIOS = ../shared/ChibiOS
+CHIBIOS = ../common/ChibiOS
 
 # Directory with board.[ch] files
-BOARD_DIR = ../shared/board
+BOARD_DIR = ../common/board
 
-# HAL driver folder root (should have an Inc directory inside of it)
-HAL_DRIVER = ../shared/STM32L0xx_HAL_Driver
+# HAL driver folder root 
+# (should have an "Inc" directory inside of it)
+HAL_DRIVER = ../common/STM32L0xx_HAL_Driver
 
-# Path to CMSIS directory (should contain "Device" & "Include" directories)
-CMSIS = ../shared/CMSIS
+# Path to CMSIS directory 
+# (should contain "Device" & "Include" directories)
+CMSIS = ../common/CMSIS
 
-# Path to directory which contains halconf.h, mcuconf.h, chconf.h & stm32l0xx_hal_conf
-CONFDIR = ../shared/conf
+# Conf directory. 
+#(should contain halconf.h, mcuconf.h, chconf.h & stm32l0xx_hal_conf)
+CONFDIR = ../common/conf
 
-ALLINC += ../shared
-
+#
 # Build rules
-include ../shared/Makefile
+#
+include ../common/Makefile
