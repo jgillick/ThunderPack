@@ -1,3 +1,6 @@
-[submodule "examples/libopencm3/shared/libopencm3"]
+[submodule "examples/libopencm3/lib/libopencm3"]
 	path = examples/libopencm3/lib/libopencm3
 	url = https://github.com/libopencm3/libopencm3.git
+[submodule "examples/ChibiOS/shared/ChibiOS"]
+	path = examples/ChibiOS/shared/ChibiOS
+	url = https://github.com/ChibiOS/ChibiOS.git
