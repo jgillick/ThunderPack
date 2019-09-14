@@ -23,7 +23,6 @@ CMSIS = ../common/CMSIS
 #(should contain halconf.h, mcuconf.h, chconf.h & stm32l0xx_hal_conf)
 CONFDIR = ../common/conf
 
-#
-# Build rules
-#
+######
+
 include ../common/Makefile

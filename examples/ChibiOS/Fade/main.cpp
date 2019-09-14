@@ -5,8 +5,8 @@
 #include "ch.hpp"
 #include "hal.h"
 
-#define SPEED 20
-#define PWM_INC 100
+#define SPEED 5
+#define PWM_INC 50
 #define MAX_PWM 10000
 
 // PWM Config

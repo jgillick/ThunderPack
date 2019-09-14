@@ -1,3 +1,3 @@
-# Shared Build Files
+# Common Build Files
 
-These files are shared by all ChibiOS examples and used to build the binary code. You should not need to make any changes to these files, unless you know what you're doing.
+These files are shared by all ChibiOS examples and used to build the binary code. The only files you might need to change are the ones in the `conf` directory.
