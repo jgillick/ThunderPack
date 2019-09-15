@@ -15,7 +15,7 @@ endif
 
 # C++ specific options here (added to USE_OPT).
 ifeq ($(USE_CPPOPT),)
-  USE_CPPOPT = -fno-rtti
+  USE_CPPOPT = -std=gnu++11 -fno-exceptions -fno-rtti
 endif
 
 # Enable this if you want the linker to remove unused code and data
@@ -134,16 +134,9 @@ ASMSRC = $(ALLASMSRC)
 ASMXSRC = $(ALLXASMSRC)
 
 # Inclusion directories.
-ALLINC += $(CONFDIR) \
-          $(HAL_DRIVER)/Inc \
-          $(CMSIS)/Include \
-          $(CMSIS)/Device/ST/STM32L0xx/Include \
-          # $(CUBEMX_DRIVERS)/STM32L0xx_HAL_Driver/Inc \
-          # $(CHIBIOS)/os/common/ext/ST/STM32L0xx/
-          # $(CUBEMX_DRIVERS)/CMSIS/Device/ST/STM32L0xx/Include/ \
-          # $(CUBEMX_DRIVERS)/CMSIS/Include
-INCDIR = $(BOARD_DIR) $(ALLINC)
-
+INCDIR += $(BOARD_DIR) \
+          $(CONFDIR) \
+          $(ALLINC)
 
 # Define C warning options here.
 CWARN = -Wall -Wextra -Wundef -Wstrict-prototypes

@@ -30,6 +30,8 @@
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 
+#define STM32L072xx
+
 /* ########################## Module Selection ############################## */
 /**
   * @brief This is the list of modules to be used in the HAL driver 
