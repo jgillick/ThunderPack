@@ -1,5 +1,5 @@
 /*
-    ChibiOS - Copyright (C) 2006..2017 Giovanni Di Sirio
+    ChibiOS - Copyright (C) 2006..2018 Giovanni Di Sirio
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@
 #define HALCONF_H
 
 #define _CHIBIOS_HAL_CONF_
-#define _CHIBIOS_HAL_CONF_VER_6_0_
+#define _CHIBIOS_HAL_CONF_VER_7_0_
 
 #include "mcuconf.h"
 
@@ -66,13 +66,6 @@
  */
 #if !defined(HAL_USE_DAC) || defined(__DOXYGEN__)
 #define HAL_USE_DAC                         FALSE
-#endif
-
-/**
- * @brief   Enables the EXT subsystem.
- */
-#if !defined(HAL_USE_EXT) || defined(__DOXYGEN__)
-#define HAL_USE_EXT                         FALSE
 #endif
 
 /**
@@ -125,13 +118,6 @@
 #endif
 
 /**
- * @brief   Enables the QSPI subsystem.
- */
-#if !defined(HAL_USE_QSPI) || defined(__DOXYGEN__)
-#define HAL_USE_QSPI                        FALSE
-#endif
-
-/**
  * @brief   Enables the RTC subsystem.
  */
 #if !defined(HAL_USE_RTC) || defined(__DOXYGEN__)
@@ -160,10 +146,24 @@
 #endif
 
 /**
+ * @brief   Enables the SIO subsystem.
+ */
+#if !defined(HAL_USE_SIO) || defined(__DOXYGEN__)
+#define HAL_USE_SIO                         FALSE
+#endif
+
+/**
  * @brief   Enables the SPI subsystem.
  */
 #if !defined(HAL_USE_SPI) || defined(__DOXYGEN__)
 #define HAL_USE_SPI                         FALSE
+#endif
+
+/**
+ * @brief   Enables the TRNG subsystem.
+ */
+#if !defined(HAL_USE_TRNG) || defined(__DOXYGEN__)
+#define HAL_USE_TRNG                        FALSE
 #endif
 
 /**
@@ -185,6 +185,13 @@
  */
 #if !defined(HAL_USE_WDG) || defined(__DOXYGEN__)
 #define HAL_USE_WDG                         FALSE
+#endif
+
+/**
+ * @brief   Enables the WSPI subsystem.
+ */
+#if !defined(HAL_USE_WSPI) || defined(__DOXYGEN__)
+#define HAL_USE_WSPI                        FALSE
 #endif
 
 /*===========================================================================*/
@@ -330,26 +337,6 @@
  */
 #if !defined(MMC_NICE_WAITING) || defined(__DOXYGEN__)
 #define MMC_NICE_WAITING                    TRUE
-#endif
-
-/*===========================================================================*/
-/* QSPI driver related settings.                                             */
-/*===========================================================================*/
-
-/**
- * @brief   Enables synchronous APIs.
- * @note    Disabling this option saves both code and data space.
- */
-#if !defined(QSPI_USE_WAIT) || defined(__DOXYGEN__)
-#define QSPI_USE_WAIT                       TRUE
-#endif
-
-/**
- * @brief   Enables the @p qspiAcquireBus() and @p qspiReleaseBus() APIs.
- * @note    Disabling this option saves both code and data space.
- */
-#if !defined(QSPI_USE_MUTUAL_EXCLUSION) || defined(__DOXYGEN__)
-#define QSPI_USE_MUTUAL_EXCLUSION           TRUE
 #endif
 
 /*===========================================================================*/
@@ -511,6 +498,26 @@
  */
 #if !defined(USB_USE_WAIT) || defined(__DOXYGEN__)
 #define USB_USE_WAIT                        FALSE
+#endif
+
+/*===========================================================================*/
+/* WSPI driver related settings.                                             */
+/*===========================================================================*/
+
+/**
+ * @brief   Enables synchronous APIs.
+ * @note    Disabling this option saves both code and data space.
+ */
+#if !defined(WSPI_USE_WAIT) || defined(__DOXYGEN__)
+#define WSPI_USE_WAIT                       TRUE
+#endif
+
+/**
+ * @brief   Enables the @p wspiAcquireBus() and @p wspiReleaseBus() APIs.
+ * @note    Disabling this option saves both code and data space.
+ */
+#if !defined(WSPI_USE_MUTUAL_EXCLUSION) || defined(__DOXYGEN__)
+#define WSPI_USE_MUTUAL_EXCLUSION           TRUE
 #endif
 
 #endif /* HALCONF_H */

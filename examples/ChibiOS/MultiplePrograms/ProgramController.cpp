@@ -1,3 +1,5 @@
+#define USE_HAL_DRIVER
+
 #include "ch.hpp"
 #include "hal.h"
 #include <stm32l0xx.h>

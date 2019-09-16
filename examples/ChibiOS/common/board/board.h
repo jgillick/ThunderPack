@@ -54,7 +54,7 @@
 /*
  * MCU type as defined in the ST header.
  */
-#define STM32L073xx
+#define STM32L072xx
 
 /*
  * IO pins assignments.
@@ -317,8 +317,8 @@
                                      PIN_OTYPE_PUSHPULL(GPIOA_PIN15))
 #define VAL_GPIOA_OSPEEDR           (PIN_OSPEED_HIGH(GPIOA_ARD_A0) |        \
                                      PIN_OSPEED_HIGH(GPIOA_ARD_A1) |        \
-                                     PIN_OSPEED_HIGH(GPIOA_ARD_D1) |      \
-                                     PIN_OSPEED_HIGH(GPIOA_ARD_D0) |      \
+                                     PIN_OSPEED_MEDIUM(GPIOA_ARD_D1) |      \
+                                     PIN_OSPEED_MEDIUM(GPIOA_ARD_D0) |      \
                                      PIN_OSPEED_HIGH(GPIOA_ARD_A2) |        \
                                      PIN_OSPEED_HIGH(GPIOA_LED_GREEN) |     \
                                      PIN_OSPEED_HIGH(GPIOA_ARD_D12) |       \

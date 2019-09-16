@@ -4,31 +4,26 @@ These examples are written using the [ChibiOS RTOS](http://chibios.org/dokuwiki/
 
 ## Prerequisites
 
+### Software
+
  * GCC build essentials
  * [The ARM gcc toolchain, 7.3.1 or above](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm)
  * [dfu-util](http://dfu-util.sourceforge.net/)
  * ChibiOS Supporting Files (see below)
 
-## ChibiOS Supporting Files
+### ChibiOS Library
 
-In order to compile the examples, you'll need to download the ChibiOS 18.2.x files to a directory on your computer:
-http://chibios.org/dokuwiki/doku.php?id=chibios:downloads:start
-
-Then you'll need to set a global environment variable to that directory (this variable needs to be accessible by the Makefile). 
-
-For example, in a bash environment you would set the variable in `~/.base_profile`
+The ChibiOS library is included as a git submodule and needs to be initialized before you can compile any of the examples. (These steps should only need to be run once)
 
 ```bash
-export CHIBIOS="${HOME}/Documents/ChibiOS_18.2.1"
+git submodule init
+git submodule update
 ```
 
 ## Compiling
 
-Now that you have all the prerequisites out of the way, you can compile and flash the board:
-
-```bash
-make
-```
+1. Be sure you've installed the prerequisite software and initialized the ChibiOS library first. (see instructions above)
+2. Now go into one of the example directories and run `make`.
 
 ## Flash the program
 

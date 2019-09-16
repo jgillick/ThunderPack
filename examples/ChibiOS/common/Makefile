@@ -1,7 +1,3 @@
-# Get the path to this directory
-THIS_FILE := $(lastword $(MAKEFILE_LIST))
-SHARED_DIR := $(realpath $(dir $(abspath $(THIS_FILE))))
-
 ##############################################################################
 # Build global options
 # NOTE: Can be overridden externally.
@@ -34,12 +30,7 @@ endif
 
 # Enable this if you want link time optimizations (LTO)
 ifeq ($(USE_LTO),)
-  USE_LTO = no
-endif
-
-# If enabled, this option allows to compile the application in THUMB mode.
-ifeq ($(USE_THUMB),)
-  USE_THUMB = yes
+  USE_LTO = yes
 endif
 
 # Enable this if you want to see the full log while compiling.
@@ -55,7 +46,7 @@ endif
 
 # Config directory
 ifeq ($(CONFDIR),)
-  CONFDIR = $(SHARED_DIR)/conf
+  CONFDIR = ./conf
 endif
 
 #
@@ -83,26 +74,29 @@ ifeq ($(USE_FPU),)
   USE_FPU = no
 endif
 
+# FPU-related options.
+ifeq ($(USE_FPU_OPT),)
+  USE_FPU_OPT = -mfloat-abi=$(USE_FPU) -mfpu=fpv4-sp-d16
+endif
+
 #
 # Architecture or project specific options
 ##############################################################################
 
 ##############################################################################
-# Project, sources and paths
+# Project, target, sources and paths
 #
 
 # Define project name here
 PROJECT = program
 
-# Includes
-ALLINC += $(SHARED_DIR) \
-          $(CONFDIR) \
-          $(SHARED_DIR)/STM32L0xx_HAL_Driver/Inc \
-          $(SHARED_DIR)/CMSIS/Device/ST/STM32L0xx/Include \
-		      $(SHARED_DIR)/CMSIS/Include
+# Target settings.
+MCU  = cortex-m0
 
-# C Sources
-ALLCSRC +=  $(SHARED_DIR)/board.c
+# Imported source files and paths.
+CONFDIR  ?= ./cfg
+BUILDDIR ?= ./build
+DEPDIR   ?= ./.dep
 
 # Licensing files.
 include $(CHIBIOS)/os/license/license.mk
@@ -115,6 +109,8 @@ include $(CHIBIOS)/os/hal/osal/rt/osal.mk
 # RTOS files (optional).
 include $(CHIBIOS)/os/rt/rt.mk
 include $(CHIBIOS)/os/common/ports/ARMCMx/compilers/GCC/mk/port_v6m.mk
+# Auto-build files in ./source recursively.
+include $(CHIBIOS)/tools/mk/autobuild.mk
 # Other files (optional).
 include $(CHIBIOS)/os/various/cpp_wrappers/chcpp.mk
 include $(CHIBIOS)/os/hal/lib/streams/streams.mk
@@ -124,81 +120,32 @@ LDSCRIPT= $(STARTUPLD)/STM32L073xZ.ld
 
 # C sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
-CSRC = $(ALLCSRC) \
-       $(TESTSRC)
+CSRC += $(BOARD_DIR)/board.c \
+        $(ALLCSRC)
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
-CPPSRC = $(ALLCPPSRC)
+CPPSRC += $(ALLCPPSRC)
 
-# C sources to be compiled in ARM mode regardless of the global setting.
-# NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
-#       option that results in lower performance and larger code size.
-ACSRC =
-
-# C++ sources to be compiled in ARM mode regardless of the global setting.
-# NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
-#       option that results in lower performance and larger code size.
-ACPPSRC =
-
-# C sources to be compiled in THUMB mode regardless of the global setting.
-# NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
-#       option that results in lower performance and larger code size.
-TCSRC =
-
-# C sources to be compiled in THUMB mode regardless of the global setting.
-# NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
-#       option that results in lower performance and larger code size.
-TCPPSRC =
-
-# List ASM source files here
+# List ASM source files here.
 ASMSRC = $(ALLASMSRC)
+
+# List ASM with preprocessor source files here.
 ASMXSRC = $(ALLXASMSRC)
 
-INCDIR = . $(ALLINC) $(TESTINC)
+# Inclusion directories.
+INCDIR += $(BOARD_DIR) \
+          $(CONFDIR) \
+          $(ALLINC)
 
-#
-# Project, sources and paths
-##############################################################################
-
-##############################################################################
-# Compiler settings
-#
-
-MCU  = cortex-m0plus
-
-#TRGT = arm-elf-
-TRGT = arm-none-eabi-
-CC   = $(TRGT)gcc
-CPPC = $(TRGT)g++
-# Enable loading with g++ only if you need C++ runtime support.
-# NOTE: You can use C++ even without C++ support if you are careful. C++
-#       runtime support makes code size explode.
-LD   = $(TRGT)gcc
-#LD   = $(TRGT)g++
-CP   = $(TRGT)objcopy
-AS   = $(TRGT)gcc -x assembler-with-cpp
-AR   = $(TRGT)ar
-OD   = $(TRGT)objdump
-SZ   = $(TRGT)size
-HEX  = $(CP) -O ihex
-BIN  = $(CP) -O binary
-COLLECT_GCC = $(TRGT)gcc
-
-# ARM-specific options here
-AOPT =
-
-# THUMB-specific options here
-TOPT = -mthumb -DTHUMB
-
-# Define C warning options here
+# Define C warning options here.
 CWARN = -Wall -Wextra -Wundef -Wstrict-prototypes
 
-# Define C++ warning options here
+# Define C++ warning options here.
 CPPWARN = -Wall -Wextra -Wundef
 
 #
-# Compiler settings
+# Project, sources and paths
 ##############################################################################
 
 ##############################################################################
@@ -206,14 +153,13 @@ CPPWARN = -Wall -Wextra -Wundef
 #
 
 # List all user C define here, like -D_DEBUG=1
-UDEFS = -D_COLLECT_GCC=$(CC)
-  # -DUSE_HAL_DRIVER \
+UDEFS ?=
 
 # Define ASM defines here
-UADEFS =
+UADEFS ?=
 
 # List all user directories here
-UINCDIR =
+UINCDIR = 
 
 # List the user directory to look for the libraries here
 ULIBDIR =
@@ -222,5 +168,42 @@ ULIBDIR =
 ULIBS =
 
 #
-# End of user defines
+# End of user section
+##############################################################################
+
+##############################################################################
+# Common rules
+#
+
+RULESPATH = $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC/mk
+include $(RULESPATH)/arm-none-eabi.mk
+include $(RULESPATH)/rules.mk
+
+#
+# Common rules
+##############################################################################
+
+##############################################################################
+# Custom rules
+#
+
+# Override premake rule to verify the CHIBIOS directory is present
+PRE_MAKE_ALL_RULE_HOOK:
+ifeq (,$(wildcard $(CHIBIOS)))
+	$(info ######## ERROR!!! ########)
+	$(info The ChibiOS directory doesn't exist or was not initialized.)
+	$(info Try running these two commands before running make again)
+	$(info (you should only need to do this once):)
+	$(info * git submodule init)
+	$(info * git submodule update)
+	$(error )
+endif
+
+# Flash to the device using dfu-util
+flash-dfu: all
+	@echo Flashing via DFU
+	dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D $(BUILDDIR)/$(PROJECT).bin
+
+#
+# Custom rules
 ##############################################################################
