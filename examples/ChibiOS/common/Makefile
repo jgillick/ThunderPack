@@ -187,6 +187,18 @@ include $(RULESPATH)/rules.mk
 # Custom rules
 #
 
+# Override premake rule to verify the CHIBIOS directory is present
+PRE_MAKE_ALL_RULE_HOOK:
+ifeq (,$(wildcard $(CHIBIOS)))
+	$(info ######## ERROR!!! ########)
+	$(info The ChibiOS directory doesn't exist or was not initialized.)
+	$(info Try running these two commands before running make again)
+	$(info (you should only need to do this once):)
+	$(info * git submodule init)
+	$(info * git submodule update)
+	$(error )
+endif
+
 # Flash to the device using dfu-util
 flash-dfu: all
 	@echo Flashing via DFU

@@ -107,7 +107,7 @@ LDLIBS += -Wl,--start-group -lc -lgcc -lnosys -Wl,--end-group
 %: s.%
 %: SCCS/s.%
 
-all: $(PROJECT).elf $(PROJECT).bin
+all: lib-check $(PROJECT).elf $(PROJECT).bin
 flash: $(PROJECT).flash
 
 # error if not using linker script generator
@@ -164,6 +164,19 @@ else
 		$(OOCD) -f $(OOCD_FILE) \
 		-c "program $(realpath $(*).elf) verify reset exit" \
 		$(NULL)
+endif
+
+# Verify the lib has been initialized
+lib-check:
+ifeq (,$(wildcard $(OPENCM3_DIR)))
+	$(info ######## ERROR!!! ########)
+	$(info libopencm3 is not initialized.)
+	$(info Try running these two commands before running make again)
+	$(info (you should only need to do this once):)
+	$(info * git submodule init)
+	$(info * git submodule update)
+	$(info Then run 'make' from the examples/libopencm3 directory to build the library.)
+	$(error )
 endif
 
 # Flash to the device using dfu-util

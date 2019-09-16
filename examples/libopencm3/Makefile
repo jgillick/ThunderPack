@@ -31,17 +31,18 @@ MAKEFLAGS += --no-print-directory
 endif
 
 libopencm3:
-	$(Q)if [ ! "`ls -A $(OPENCM3_DIR)`" ] ; then \
-		printf "######## ERROR ########\n"; \
-		printf "\tlibopencm3 is not initialized.\n"; \
-		printf "\tPlease run:\n"; \
-		printf "\t$$ git submodule init\n"; \
-		printf "\t$$ git submodule update\n"; \
-		printf "\tbefore running make.\n"; \
-		printf "######## ERROR ########\n"; \
-		exit 1; \
-		fi
+ifeq (,$(wildcard $(OPENCM3_DIR)))
+	$(info ######## ERROR!!! ########)
+	$(info libopencm3 is not initialized.)
+	$(info Try running these commands before running make again)
+	$(info (you should only need to do this once):)
+	$(info * git submodule init)
+	$(info * git submodule update)
+	$(info * make)
+	$(error )
+else 
 	$(Q)$(MAKE) -C $(OPENCM3_DIR) lib TARGETS="$(LIB_TARGET)"
+endif
 
 clean:
 	$(Q)$(MAKE) -C $(OPENCM3_DIR) clean
