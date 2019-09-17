@@ -1,5 +1,5 @@
 # Serial over USB
-A simple program which demonstrates 2-way serial communication over USB by echoing back any character you send to it.
+A simple program which demonstrates outputting serial data over USB. In this case it simply outputs the state (0/1) of the button, repeatedly, to the serial console. 
 
 ## Compiling/Flashing
 See the instructions [here](../README.md)
@@ -23,4 +23,4 @@ Once you have flashed the program, you can connect to your device with a termina
  * Stop bits: 1
 
 ### Usage
-Once you connect, you should see the message: "USB connection ready! Type a character: ". Now type any character and the program will repeat it back to you on the terminal.
+Once connected you should see the number `0` output, repeatedly. As you press and hold the button on the board, it should output `1`.
