@@ -122,7 +122,7 @@ AS_INCLUDES =
 
 # C includes
 C_INCLUDES =  \
--I$(SHARED_DIR)/Inc \
+-IInc \
 -I$(SHARED_DIR)/Drivers/STM32L0xx_HAL_Driver/Inc \
 -I$(SHARED_DIR)/Drivers/STM32L0xx_HAL_Driver/Inc/Legacy \
 -I$(SHARED_DIR)/Drivers/CMSIS/Device/ST/STM32L0xx/Include \
