@@ -53,6 +53,28 @@ endif
 # Build global options
 ##############################################################################
 
+
+
+##############################################################################
+# Flashing options
+#
+
+# dfu-util executable
+DFU_UTIL ?= dfu-util
+
+# Device vendor:product string
+DFU_DEVICE = 0483:df11
+
+# Address for raw file download (-s command)
+DFU_ADDR = 0x08000000:leave
+
+# Other flags to send to the DFU_UTIL
+DFU_FLAGS =
+
+#
+# Flashing options
+##############################################################################
+
 ##############################################################################
 # Architecture or project specific options
 #
@@ -200,9 +222,9 @@ ifeq (,$(wildcard $(CHIBIOS)))
 endif
 
 # Flash to the device using dfu-util
-flash-dfu: all
+flash: all
 	@echo Flashing via DFU
-	dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D $(BUILDDIR)/$(PROJECT).bin
+	$(DFU_UTIL) -d $(DFU_UTIL) -a 0 -s $(DFU_ADDR) -D $(BUILDDIR)/$(PROJECT).bin $(DFU_FLAGS)
 
 #
 # Custom rules

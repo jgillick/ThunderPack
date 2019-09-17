@@ -48,7 +48,12 @@ CC	= $(PREFIX)gcc
 LD	= $(PREFIX)gcc
 OBJCOPY	= $(PREFIX)objcopy
 OBJDUMP	= $(PREFIX)objdump
-OOCD	?= openocd
+
+# DFU Util values
+DFU_UTIL ?= dfu-util
+DFU_DEVICE = 0483:df11 # Device vendor:product string
+DFU_ADDR = 0x08000000:leave # Address for raw file download (-s command)
+DFU_FLAGS = # Other flags to send to the DFU_UTIL
 
 OPENCM3_INC = $(OPENCM3_DIR)/include
 
@@ -153,18 +158,7 @@ $(PROJECT).elf: $(OBJS) $(LDSCRIPT) $(LIBDEPS)
 
 %.flash: %.elf
 	@printf "  FLASH\t$<\n"
-ifeq (,$(OOCD_FILE))
-	$(Q)(echo "halt; program $(realpath $(*).elf) verify reset" | nc -4 localhost 4444 2>/dev/null) || \
-		$(OOCD) -f interface/$(OOCD_INTERFACE).cfg \
-		-f target/$(OOCD_TARGET).cfg \
-		-c "program $(realpath $(*).elf) verify reset exit" \
-		$(NULL)
-else
-	$(Q)(echo "halt; program $(realpath $(*).elf) verify reset" | nc -4 localhost 4444 2>/dev/null) || \
-		$(OOCD) -f $(OOCD_FILE) \
-		-c "program $(realpath $(*).elf) verify reset exit" \
-		$(NULL)
-endif
+	$(DFU_UTIL) -d $(DFU_UTIL) -a 0 -s $(DFU_ADDR) -D $(BUILDDIR)/$(PROJECT).bin $(DFU_FLAGS)
 
 # Verify the lib has been initialized
 lib-check:
