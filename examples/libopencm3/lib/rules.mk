@@ -158,7 +158,7 @@ $(PROJECT).elf: $(OBJS) $(LDSCRIPT) $(LIBDEPS)
 
 %.flash: %.elf
 	@printf "  FLASH\t$<\n"
-	$(DFU_UTIL) -d $(DFU_UTIL) -a 0 -s $(DFU_ADDR) -D $(BUILDDIR)/$(PROJECT).bin $(DFU_FLAGS)
+	$(DFU_UTIL) -d $(DFU_UTIL) -a 0 -s $(DFU_ADDR) -D $(PROJECT).bin $(DFU_FLAGS)
 
 # Verify the lib has been initialized
 lib-check:
@@ -172,11 +172,6 @@ ifeq (,$(wildcard $(OPENCM3_DIR)))
 	$(info Then run 'make' from the examples/libopencm3 directory to build the library.)
 	$(error )
 endif
-
-# Flash to the device using dfu-util
-flash-dfu: all
-	@echo Flashing via DFU
-	dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D $(PROJECT).bin
 
 clean:
 	rm -rf $(BUILD_DIR) $(GENERATED_BINS)
