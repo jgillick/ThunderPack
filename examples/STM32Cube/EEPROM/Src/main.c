@@ -1,5 +1,5 @@
 /**
- * Light up the next LED in sequence each time you press the button.
+ * Lights up the next LED in sequence each time you press the button.
  * When you turn the board off and on again, the last LED will be remembered and be
  * the starting LED in the sequence.
  */
