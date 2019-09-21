@@ -13,30 +13,23 @@ CHIBIOS = ../common/ChibiOS
 # Directory with board.[ch] files
 BOARD_DIR = ../common/board
 
-# Drivers directory, from STM32CubMX
-# (should contain "CMSIS" & "STM32L0xx_HAL_Driver" directories)
-CUBEMX_DRIVERS = ../common/drivers
-
-# HAL driver folder root 
-
 # Conf directory. 
-#(should contain halconf.h, mcuconf.h, chconf.h & stm32l0xx_hal_conf)
+# (should contain halconf.h, mcuconf.h, chconf.h & stm32l0xx_hal_conf)
 CONFDIR = ../common/conf
 
 ##############################################################################
 
 ###############################################################################
-# Dependencies
+# Include STM32 HAL drivers for EEPROM
 #
-STM32L0_HAL = $(CUBEMX_DRIVERS)/STM32L0xx_HAL_Driver
-CMSIS = $(CUBEMX_DRIVERS)/CMSIS
+STM32L0_HAL = ../../STM32Cube/shared/Drivers/STM32L0xx_HAL_Driver
+CMSIS = ../../STM32Cube/shared/Drivers/CMSIS/Device/ST/STM32L0xx
+UDEFS = -DSTM32L073xx -DUSE_HAL_DRIVER -DPORT_IGNORE_GCC_VERSION_CHECK
 
 # Required for readint/writing to internal EEPROM
 ALLCSRC +=  $(STM32L0_HAL)/Src/stm32l0xx_hal.c \
-            $(STM32L0_HAL)/Src/stm32l0xx_hal_flash_ramfunc.c \
             $(STM32L0_HAL)/Src/stm32l0xx_hal_flash.c \
-            $(STM32L0_HAL)/Src/stm32l0xx_hal_flash_ex.c \
-            $(STM32L0_HAL)/Src/stm32l0xx_hal_cortex.c
+            $(STM32L0_HAL)/Src/stm32l0xx_hal_flash_ex.c
 
 ALLINC += $(STM32L0_HAL)/Inc \
           $(CMSIS)/Include \
