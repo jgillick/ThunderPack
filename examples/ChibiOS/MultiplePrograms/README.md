@@ -15,7 +15,7 @@ This is a more advanced example which creates a series of lighting programs on L
 This program makes use of multiple ChibiOS threads: one to manage the current program and another to listen for a button press. Then it uses [events](http://wiki.chibios.org/dokuwiki/doku.php?id=chibios:kb:events) to communicate between them.
 
 ### Exponential PWM Fading
-The PWM value is incremented exponentially to provide a more natural fade. [More inf,](https://diarmuid.ie/blog/pwm-exponential-led-fading-on-arduino-or-other-platforms/).
+The PWM value is incremented exponentially to provide a more natural fade. [More info](https://diarmuid.ie/blog/pwm-exponential-led-fading-on-arduino-or-other-platforms/).
 
 ### EEPROM
 ChibiOS doesn't have built-in EEPROM functions. So, following the [EEPROM example](../EEPROM/), this program uses the EEPROM functions from the STM32Cube library.
