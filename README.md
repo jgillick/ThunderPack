@@ -1,6 +1,6 @@
 # Thunder Pack
 
-<img src="./images/rev-pArm.jpg" alt="ThunderPack Board" style="width: 100%; max-width:500px" />
+<img src="./images/rev-pArm.jpg" alt="ThunderPack Board" style="max-width:700px" />
 
 An ARM microcontroller with built-in battery and power management system, all in a compact package that fits in your pocket.
 
@@ -19,6 +19,6 @@ More details: https://hackaday.io/project/161054-lit-fist
 * Tactile user button with built-in debounce circuit
 * Breadboard friendly
 
-<img src="./images/breadboard.jpg" alt="On the breadboard" style="width: 100%; max-width:500px" />
+<img src="./images/breadboard.jpg" alt="On the breadboard" style="max-width:500px" />
 
 _Breadboard friendly_
