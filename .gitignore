@@ -1,4 +1,4 @@
-# Hardware
+# Kicad
 *.kicad_pcb-bak
 *.sch-bak
 *.bak
@@ -12,3 +12,6 @@ generated.STM32*
 
 # IDEs
 .vscode/
+
+# OS files
+.DS_Store
