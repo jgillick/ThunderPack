@@ -1,4 +1,4 @@
-update=Friday, September 20, 2019 at 09:09:34 AM
+update=Thursday, October 03, 2019 at 08:44:55 PM
 version=1
 last_client=kicad
 [general]
@@ -35,7 +35,7 @@ TrackWidth4=0.762
 ViaDiameter1=0.508
 ViaDrill1=0.254
 dPairWidth1=0.1524
-dPairGap1=0.1524
+dPairGap1=0.2032
 dPairViaGap1=0.25
 SilkLineWidth=0.15
 SilkTextSizeV=0.5
@@ -237,5 +237,5 @@ ViaDrill=0.254
 uViaDiameter=0.4572
 uViaDrill=0.254
 dPairWidth=0.1524
-dPairGap=0.1524
+dPairGap=0.2032
 dPairViaGap=0.25
