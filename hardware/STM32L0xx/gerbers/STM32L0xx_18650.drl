@@ -1,7 +1,7 @@
 M48
-; DRILL file {KiCad (5.1.4-0-10_14)} date Thursday, October 03, 2019 at 10:44:11 PM
+; DRILL file {KiCad (5.1.4-0-10_14)} date Friday, October 04, 2019 at 05:46:19 PM
 ; FORMAT={-:-/ absolute / metric / decimal}
-; #@! TF.CreationDate,2019-10-03T22:44:11-07:00
+; #@! TF.CreationDate,2019-10-04T17:46:19-07:00
 ; #@! TF.GenerationSoftware,Kicad,Pcbnew,(5.1.4-0-10_14)
 FMAT,2
 METRIC
@@ -18,7 +18,7 @@ T1
 X64.44Y-106.33
 X64.775Y-99.094
 X64.775Y-99.806
-X80.495Y-102.183
+X80.495Y-101.823
 X82.5Y-94.1
 X84.625Y-98.775
 X88.95Y-99.094
