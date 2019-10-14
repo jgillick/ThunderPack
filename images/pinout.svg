@@ -68,11 +68,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.53044191"
-     inkscape:cx="546.58659"
-     inkscape:cy="433.11031"
+     inkscape:zoom="1.1155486"
+     inkscape:cx="116.31714"
+     inkscape:cy="285.021"
      inkscape:document-units="mm"
-     inkscape:current-layer="svg8"
+     inkscape:current-layer="layer4"
      inkscape:document-rotation="0"
      showgrid="false"
      showguides="true"
@@ -94,7 +94,16 @@
      inkscape:window-x="0"
      inkscape:window-y="23"
      inkscape:window-maximized="0"
-     showborder="true" />
+     showborder="true">
+    <sodipodi:guide
+       id="guide1377"
+       orientation="1,0"
+       position="12.734827,10.80687" />
+    <sodipodi:guide
+       id="guide1415"
+       orientation="1,0"
+       position="8.448109,82.146606" />
+  </sodipodi:namedview>
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -2945,14 +2954,6 @@
            id="tspan3981"
            sodipodi:role="line">PA2</tspan></text>
     </g>
-    <path
-       inkscape:connector-curvature="0"
-       id="path4037"
-       d="m 10.980018,74.425455 v 9.40205 h 5.259889"
-       style="fill:none;stroke:#4e4c4c;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       inkscape:export-filename="/board_horizontal2.png"
-       inkscape:export-xdpi="146.3"
-       inkscape:export-ydpi="146.3" />
     <g
        id="g1449"
        inkscape:export-filename="/board_horizontal2.png"
@@ -2971,7 +2972,7 @@
          inkscape:connector-curvature="0" />
     </g>
     <g
-       transform="matrix(1,0.02729455,0,1,-160.70933,-41.218932)"
+       transform="matrix(0.55121805,0.83480756,-0.81915204,0.57357644,7.4558331,-141.79451)"
        id="g4025"
        inkscape:export-filename="/board_horizontal2.png"
        inkscape:export-xdpi="146.3"
@@ -3097,6 +3098,11 @@
            y="107.47148"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif';letter-spacing:0.00264583px;word-spacing:0.264583px;fill:#423f42;fill-opacity:1;stroke-width:0.282223px">USB-</tspan></text>
     </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path1417"
+       d="M 16.38875,86.858838 V 67.393685"
+       style="fill:none;stroke:#4e4c4c;stroke-width:0.319449px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -3105,22 +3111,19 @@
      style="display:inline"
      transform="translate(-7.9875139,2.6023148)">
     <g
-       id="g1679"
-       transform="translate(-199.76698,-47.03744)"
-       inkscape:export-filename="/board_horizontal2.png"
-       inkscape:export-xdpi="146.3"
-       inkscape:export-ydpi="146.3">
+       transform="translate(0,-5.2916667)"
+       id="g1413">
       <rect
-         ry="0.94170737"
-         y="174.9614"
-         x="210.77855"
-         height="37"
+         ry="1.0766006"
+         y="127.92396"
+         x="11.011569"
+         height="42.299999"
          width="55.35379"
          id="rect1647"
-         style="opacity:1;fill:#f2f2f2;fill-opacity:1;stroke:#4e4c4c;stroke-width:0.0630769;stroke-opacity:1" />
+         style="opacity:1;fill:#f2f2f2;fill-opacity:1;stroke:#4e4c4c;stroke-width:0.0674433;stroke-opacity:1;stop-opacity:1" />
       <g
-         transform="translate(-26.183679,0.05351764)"
-         style="display:inline;opacity:1"
+         transform="translate(-225.95066,-46.983922)"
+         style="display:inline;opacity:1;stop-opacity:1"
          id="g1486">
         <path
            style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;white-space:normal;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#4e4c4c;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.524742;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-opacity:1"
@@ -3141,8 +3144,8 @@
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif';letter-spacing:0.00264583px;word-spacing:0.264583px;fill:#000000;stroke-width:0.282223px">Pin</tspan></text>
       </g>
       <g
-         transform="translate(-26.183679,0.05351764)"
-         style="display:inline;opacity:1"
+         transform="translate(-225.95066,-46.983922)"
+         style="display:inline;opacity:1;stop-opacity:1"
          id="g1504">
         <path
            sodipodi:nodetypes="ccccccccc"
@@ -3163,8 +3166,8 @@
              sodipodi:role="line">Serial</tspan></text>
       </g>
       <g
-         transform="translate(-26.183679,0.05351764)"
-         style="display:inline;opacity:1"
+         transform="translate(-225.95066,-46.983922)"
+         style="display:inline;opacity:1;stop-opacity:1"
          id="g1520">
         <path
            style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;white-space:normal;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#b8cfb9;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.524742;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-opacity:1"
@@ -3185,8 +3188,8 @@
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif';letter-spacing:0.00264583px;word-spacing:0.264583px;fill:#000000;stroke-width:0.282223px">Timer/PWM</tspan></text>
       </g>
       <g
-         transform="translate(-26.183679,0.05351764)"
-         style="display:inline;opacity:1"
+         transform="translate(-225.95066,-46.983922)"
+         style="display:inline;opacity:1;stop-opacity:1"
          id="g1536">
         <path
            sodipodi:nodetypes="ccccccccc"
@@ -3207,8 +3210,8 @@
              sodipodi:role="line">Touch Sensor Cntrl (TSC)</tspan></text>
       </g>
       <g
-         transform="translate(-26.183679,0.05351764)"
-         style="display:inline;opacity:1"
+         transform="translate(-225.95066,-46.983922)"
+         style="display:inline;opacity:1;stop-opacity:1"
          id="g1552">
         <path
            style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;white-space:normal;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#eec07e;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.524742;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-opacity:1"
@@ -3229,7 +3232,8 @@
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif';letter-spacing:0.00264583px;word-spacing:0.264583px;fill:#000000;stroke-width:0.282223px">Debug (SWD)</tspan></text>
       </g>
       <g
-         transform="translate(0.11816191,-1.5109025)"
+         style="opacity:1;stop-opacity:1"
+         transform="translate(-199.64882,-48.548342)"
          id="g1652">
         <path
            sodipodi:nodetypes="ccccccccc"
@@ -3248,6 +3252,27 @@
              x="226.86821"
              id="tspan1556"
              sodipodi:role="line">Function</tspan></text>
+      </g>
+      <g
+         id="g1382"
+         transform="translate(-2.0371159e-4,2.1516333e-4)">
+        <path
+           style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;white-space:normal;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#e63e3e;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.524743;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-opacity:1"
+           d="m 14.77228,162.43947 c -0.0725,1.3e-4 -0.13761,0.0982 -0.16415,0.24717 l -0.752,4.22029 c -0.0455,0.25565 0.0397,0.53222 0.16415,0.53254 h 4.90229 c 0.0727,6e-5 0.13806,-0.0984 0.16453,-0.24806 l 0.74455,-4.22116 c 0.0448,-0.25546 -0.0405,-0.53062 -0.16455,-0.53078 z"
+           id="path543"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccccccc" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777px;line-height:125%;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.282223px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stop-opacity:1"
+           x="25.416021"
+           y="166.14481"
+           id="text547"><tspan
+             sodipodi:role="line"
+             id="tspan545"
+             x="25.417345"
+             y="166.14481"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif';letter-spacing:0.00264583px;word-spacing:0.264583px;fill:#000000;stroke-width:0.282223px">Power</tspan></text>
       </g>
     </g>
   </g>
