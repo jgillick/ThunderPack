@@ -26,6 +26,8 @@ _Breadboard friendly_
 
 ## Board & Pinout
 
+Full list of pin functions can be found in table 17 (page 51) of the [datasheet](https://www.st.com/resource/en/datasheet/stm32l072kz.pdf).
+
 <img src="./images/pinout.svg" alt="Pinout diagram" />
 
 _([png version](./images/pinout.png))_
