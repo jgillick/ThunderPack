@@ -19,7 +19,7 @@
 ##
 
 LIB_TARGET = stm32/l0
-OPENCM3_DIR ?= $(realpath ./shared/libopencm3)
+OPENCM3_DIR ?= $(realpath ./lib/libopencm3)
 
 PREFIX		?= arm-none-eabi
 
