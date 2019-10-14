@@ -28,4 +28,4 @@ _Breadboard friendly_
 
 <img src="./images/pinout.svg" alt="Pinout diagram" />
 
-_([png version](./images/pinout.svg))_
+_([png version](./images/pinout.png))_
