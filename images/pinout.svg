@@ -15,7 +15,7 @@
    id="svg8"
    sodipodi:docname="pinout.svg"
    inkscape:version="1.0beta1 (32d4812, 2019-09-19)"
-   inkscape:export-filename="/Users/Jeremy/board_horizontal.png"
+   inkscape:export-filename="/Users/Jeremy/pinout.png"
    inkscape:export-xdpi="97.08503"
    inkscape:export-ydpi="97.08503">
   <defs
@@ -68,9 +68,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.1155486"
-     inkscape:cx="116.31714"
-     inkscape:cy="285.021"
+     inkscape:zoom="4.7400925"
+     inkscape:cx="58.740022"
+     inkscape:cy="289.96504"
      inkscape:document-units="mm"
      inkscape:current-layer="layer4"
      inkscape:document-rotation="0"
@@ -102,6 +102,10 @@
     <sodipodi:guide
        id="guide1415"
        orientation="1,0"
+       position="8.448109,82.146606" />
+    <sodipodi:guide
+       id="guide1419"
+       orientation="0,-1"
        position="8.448109,82.146606" />
   </sodipodi:namedview>
   <metadata
@@ -2971,6 +2975,11 @@
          id="path4047"
          inkscape:connector-curvature="0" />
     </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path1417"
+       d="m 16.437514,83.864518 v -17"
+       style="fill:none;stroke:#4e4c4c;stroke-width:0.298537px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <g
        transform="matrix(0.55121805,0.83480756,-0.81915204,0.57357644,7.4558331,-141.79451)"
        id="g4025"
@@ -3098,11 +3107,6 @@
            y="107.47148"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif';letter-spacing:0.00264583px;word-spacing:0.264583px;fill:#423f42;fill-opacity:1;stroke-width:0.282223px">USB-</tspan></text>
     </g>
-    <path
-       inkscape:connector-curvature="0"
-       id="path1417"
-       d="M 16.38875,86.858838 V 67.393685"
-       style="fill:none;stroke:#4e4c4c;stroke-width:0.319449px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
   </g>
   <g
      inkscape:groupmode="layer"
