@@ -26,6 +26,6 @@ _Breadboard friendly_
 
 ## Board & Pinout
 
-<a href="./images/pinout.svg"><img src="./images/pinout.svg" alt="On the breadboard" width="400" /></a>
+<img src="./images/pinout.svg" alt="Pinout diagram" />
 
 _([png version](./images/pinout.svg))_
