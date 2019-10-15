@@ -1,4 +1,4 @@
-update=Thursday, October 03, 2019 at 08:44:55 PM
+update=Tuesday, October 15, 2019 at 12:27:07 AM
 version=1
 last_client=kicad
 [general]
@@ -34,7 +34,7 @@ TrackWidth3=0.31
 TrackWidth4=0.762
 ViaDiameter1=0.508
 ViaDrill1=0.254
-dPairWidth1=0.1524
+dPairWidth1=0.254
 dPairGap1=0.2032
 dPairViaGap1=0.25
 SilkLineWidth=0.15
@@ -236,6 +236,16 @@ ViaDiameter=0.508
 ViaDrill=0.254
 uViaDiameter=0.4572
 uViaDrill=0.254
-dPairWidth=0.1524
+dPairWidth=0.254
 dPairGap=0.2032
 dPairViaGap=0.25
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=./
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceAjustPassiveValues=0
+LabSize=50
+ERC_TestSimilarLabels=1
