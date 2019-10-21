@@ -41,19 +41,6 @@ F 4 "GPTS203211B" H 1300 1450 60  0001 C CNN "MPN"
 	1    1300 1450
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:+BATT #PWR?
-U 1 1 5BD682A0
-P 1050 1000
-AR Path="/5BD64BD8/5BD682A0" Ref="#PWR?"  Part="1" 
-AR Path="/5BD682A0" Ref="#PWR0106"  Part="1" 
-F 0 "#PWR0106" H 1050 850 50  0001 C CNN
-F 1 "+BATT" H 1065 1173 50  0000 C CNN
-F 2 "" H 1050 1000 50  0001 C CNN
-F 3 "" H 1050 1000 50  0001 C CNN
-	1    1050 1000
-	1    0    0    -1  
-$EndComp
 Text Label 850  1000 1    50   ~ 0
 VUSB
 Text Notes 7500 4550 0    50   ~ 0
@@ -267,51 +254,20 @@ F 3 "~" H 10850 1700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:Battery_Cell J?
-U 1 1 5BE26BC9
-P 1750 3300
-AR Path="/5BD64BD8/5BE26BC9" Ref="J?"  Part="1" 
-AR Path="/5BE26BC9" Ref="J2"  Part="1" 
-F 0 "J2" V 1600 3300 50  0000 L CNN
-F 1 "Battery" V 1950 3250 50  0000 L CNN
-F 2 "BatteryClips:Keystone54_18650_PTC" V 1750 3360 50  0001 C CNN
-F 3 "" V 1750 3360 50  0001 C CNN
-F 4 "Keystone Electronics" H 1750 3300 50  0001 C CNN "MFN"
-F 5 "	Keystone 54" H 1750 3300 50  0001 C CNN "MPN"
-F 6 "36-54-ND" H 1750 3300 50  0001 C CNN "Digikey"
-	1    1750 3300
-	0    -1   1    0   
-$EndComp
-$Comp
 L power:GND #PWR?
 U 1 1 5BE26BD0
-P 1950 3550
+P 1650 3550
 AR Path="/5BD64BD8/5BE26BD0" Ref="#PWR?"  Part="1" 
 AR Path="/5BE26BD0" Ref="#PWR0118"  Part="1" 
-F 0 "#PWR0118" H 1950 3300 50  0001 C CNN
-F 1 "GND" H 1950 3400 50  0000 C CNN
-F 2 "" H 1950 3550 50  0001 C CNN
-F 3 "" H 1950 3550 50  0001 C CNN
-	1    1950 3550
+F 0 "#PWR0118" H 1650 3300 50  0001 C CNN
+F 1 "GND" H 1650 3400 50  0000 C CNN
+F 2 "" H 1650 3550 50  0001 C CNN
+F 3 "" H 1650 3550 50  0001 C CNN
+	1    1650 3550
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	1850 3300 1950 3300
-Wire Wire Line
-	1950 3300 1950 3550
-$Comp
-L power:+BATT #PWR?
-U 1 1 5BE26BD9
-P 850 2900
-AR Path="/5BD64BD8/5BE26BD9" Ref="#PWR?"  Part="1" 
-AR Path="/5BE26BD9" Ref="#PWR0119"  Part="1" 
-F 0 "#PWR0119" H 850 2750 50  0001 C CNN
-F 1 "+BATT" H 865 3073 50  0000 C CNN
-F 2 "" H 850 2900 50  0001 C CNN
-F 3 "" H 850 2900 50  0001 C CNN
-	1    850  2900
-	-1   0    0    -1  
-$EndComp
+	1650 3300 1650 3550
 Wire Wire Line
 	8600 2900 8600 3000
 Wire Wire Line
@@ -648,38 +604,9 @@ Wire Wire Line
 	10350 1150 9550 1150
 Connection ~ 9550 1150
 Wire Wire Line
-	850  3300 1400 3300
-Text Label 1400 3000 0    50   ~ 0
-BATT_CHRG
-Wire Wire Line
-	1400 3000 1400 3300
-Connection ~ 1400 3300
-Wire Wire Line
-	1400 3300 1550 3300
-Text Notes 700  3450 0    39   ~ 0
-TODO: ^ Add diode here\n(PMEG045T100EPDAZ)
-Wire Wire Line
 	850  2900 850  3300
 Wire Wire Line
 	850  1450 1050 1450
-$Comp
-L Device:D_Schottky_Small D?
-U 1 1 5BE0C7B2
-P 1050 1150
-AR Path="/5BD64BD8/5BE0C7B2" Ref="D?"  Part="1" 
-AR Path="/5BE0C7B2" Ref="D2"  Part="1" 
-F 0 "D2" V 1100 1100 50  0000 R CNN
-F 1 "20V2A" V 1000 1100 50  0000 R CNN
-F 2 "Diode_SMD:D_SOD-323_HandSoldering" V 1050 1150 50  0001 C CNN
-F 3 "~" V 1050 1150 50  0001 C CNN
-F 4 "SMD22WS-TP" H 1050 1150 50  0001 C CNN "MPN"
-	1    1050 1150
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	1050 1000 1050 1050
-Wire Wire Line
-	1050 1250 1050 1450
 Connection ~ 1050 1450
 Wire Wire Line
 	1050 1450 1100 1450
@@ -1343,223 +1270,8 @@ Wire Notes Line
 	2600 3050 3650 3050
 Text Notes 2600 3050 0    50   ~ 0
 Optional RTC Source
-Text Label 7750 4800 2    50   ~ 0
-VUSB
 Wire Notes Line
 	10600 4600 7500 4600
-$Comp
-L power:+BATT #PWR?
-U 1 1 5BD9539B
-P 9850 5450
-AR Path="/5BD64BD8/5BD9539B" Ref="#PWR?"  Part="1" 
-AR Path="/5BD9539B" Ref="#PWR0112"  Part="1" 
-F 0 "#PWR0112" H 9850 5300 50  0001 C CNN
-F 1 "+BATT" H 9865 5623 50  0000 C CNN
-F 2 "" H 9850 5450 50  0001 C CNN
-F 3 "" H 9850 5450 50  0001 C CNN
-	1    9850 5450
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:C C?
-U 1 1 5BD95376
-P 9600 5750
-AR Path="/5BD64BD8/5BD95376" Ref="C?"  Part="1" 
-AR Path="/5BD95376" Ref="C11"  Part="1" 
-F 0 "C11" H 9625 5850 50  0000 L CNN
-F 1 "1uf" H 9625 5650 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 9638 5600 50  0001 C CNN
-F 3 "" H 9600 5750 50  0001 C CNN
-F 4 "0603" H -500 150 50  0001 C CNN "Package"
-	1    9600 5750
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_Small R?
-U 1 1 5BD95369
-P 8150 5500
-AR Path="/5BD64BD8/5BD95369" Ref="R?"  Part="1" 
-AR Path="/5BD95369" Ref="R6"  Part="1" 
-F 0 "R6" H 8200 5550 50  0000 L CNN
-F 1 "1k" H 8200 5450 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 8150 5500 50  0001 C CNN
-F 3 "" H 8150 5500 50  0001 C CNN
-F 4 "0603" H -200 0   50  0001 C CNN "Package"
-	1    8150 5500
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C?
-U 1 1 5BD95354
-P 7900 5500
-AR Path="/5BD64BD8/5BD95354" Ref="C?"  Part="1" 
-AR Path="/5BD95354" Ref="C9"  Part="1" 
-F 0 "C9" H 7925 5600 50  0000 L CNN
-F 1 "1uF" H 7925 5400 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 7938 5350 50  0001 C CNN
-F 3 "" H 7900 5500 50  0001 C CNN
-F 4 "0603" H 0   100 50  0001 C CNN "Package"
-	1    7900 5500
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5BD95370
-P 8150 5900
-AR Path="/5BD64BD8/5BD95370" Ref="#PWR?"  Part="1" 
-AR Path="/5BD95370" Ref="#PWR0109"  Part="1" 
-F 0 "#PWR0109" H 8150 5650 50  0001 C CNN
-F 1 "GND" H 8150 5750 50  0000 C CNN
-F 2 "" H 8150 5900 50  0001 C CNN
-F 3 "" H 8150 5900 50  0001 C CNN
-	1    8150 5900
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_Small R14
-U 1 1 5DCE3195
-P 8400 5500
-F 0 "R14" H 8459 5546 50  0000 L CNN
-F 1 "10k" H 8459 5455 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 8400 5500 50  0001 C CNN
-F 3 "~" H 8400 5500 50  0001 C CNN
-F 4 "0603" H 8459 5409 50  0001 L CNN "Package"
-	1    8400 5500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8550 5250 8150 5250
-Wire Wire Line
-	8150 5250 8150 5400
-Wire Wire Line
-	8550 5350 8400 5350
-Wire Wire Line
-	8400 5350 8400 5400
-Wire Wire Line
-	8150 5600 8150 5750
-Wire Wire Line
-	8400 5600 8400 5750
-Wire Wire Line
-	8400 5750 8150 5750
-Connection ~ 8150 5750
-Wire Wire Line
-	8150 5750 8150 5900
-Wire Wire Line
-	7900 5650 7900 5750
-Wire Wire Line
-	7900 5750 8150 5750
-Wire Wire Line
-	9350 5450 9600 5450
-Wire Wire Line
-	9600 5450 9600 5550
-Wire Wire Line
-	9350 5550 9600 5550
-Connection ~ 9600 5550
-Wire Wire Line
-	9600 5550 9600 5600
-Wire Wire Line
-	9600 5450 9850 5450
-Connection ~ 9600 5450
-$Comp
-L power:GND #PWR?
-U 1 1 5DDADF96
-P 8950 5900
-AR Path="/5BD64BD8/5DDADF96" Ref="#PWR?"  Part="1" 
-AR Path="/5DDADF96" Ref="#PWR04"  Part="1" 
-F 0 "#PWR04" H 8950 5650 50  0001 C CNN
-F 1 "GND" H 8950 5750 50  0000 C CNN
-F 2 "" H 8950 5900 50  0001 C CNN
-F 3 "" H 8950 5900 50  0001 C CNN
-	1    8950 5900
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8950 5750 8950 5900
-$Comp
-L power:GND #PWR?
-U 1 1 5DDC81C6
-P 9600 5900
-AR Path="/5BD64BD8/5DDC81C6" Ref="#PWR?"  Part="1" 
-AR Path="/5DDC81C6" Ref="#PWR05"  Part="1" 
-F 0 "#PWR05" H 9600 5650 50  0001 C CNN
-F 1 "GND" H 9600 5750 50  0000 C CNN
-F 2 "" H 9600 5900 50  0001 C CNN
-F 3 "" H 9600 5900 50  0001 C CNN
-	1    9600 5900
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7750 4800 7900 4800
-Wire Wire Line
-	7900 5350 7900 4800
-Connection ~ 7900 4800
-Wire Wire Line
-	8850 4800 8850 4850
-Wire Wire Line
-	7900 4800 8850 4800
-Wire Wire Line
-	8850 4800 8950 4800
-Wire Wire Line
-	8950 4800 8950 4850
-Connection ~ 8850 4800
-Connection ~ 8950 4800
-$Comp
-L Device:LED D?
-U 1 1 5BD9535B
-P 9300 4800
-AR Path="/5BD64BD8/5BD9535B" Ref="D?"  Part="1" 
-AR Path="/5BD9535B" Ref="D6"  Part="1" 
-F 0 "D6" H 9400 4850 50  0000 C CNN
-F 1 "LED" H 9300 4700 50  0001 C CNN
-F 2 "LED_SMD:LED_0603_1608Metric_Castellated" H 9300 4800 50  0001 C CNN
-F 3 "" H 9300 4800 50  0001 C CNN
-F 4 "150060VS75000" H 9300 4800 50  0001 C CNN "MPN"
-F 5 "0603" H 200 -50 50  0001 C CNN "Package"
-	1    9300 4800
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5BD95362
-P 9600 4800
-AR Path="/5BD64BD8/5BD95362" Ref="R?"  Part="1" 
-AR Path="/5BD95362" Ref="R11"  Part="1" 
-F 0 "R11" V 9680 4800 50  0000 C CNN
-F 1 "430" V 9600 4800 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 9530 4800 50  0001 C CNN
-F 3 "" H 9600 4800 50  0001 C CNN
-F 4 "ERJ-PA3F4300V" H 9600 4800 50  0001 C CNN "MPN"
-F 5 "0603" H 100 -50 50  0001 C CNN "Package"
-	1    9600 4800
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	8950 4800 9150 4800
-Wire Wire Line
-	9750 4800 9750 5150
-Wire Wire Line
-	9750 5150 9350 5150
-$Comp
-L dk_PMIC-Battery-Chargers:MCP73833-AMI_UN U3
-U 1 1 5DC5FC9A
-P 8850 5150
-F 0 "U3" H 9100 4550 60  0000 C CNN
-F 1 "MCP73833-AMI_UN" H 8750 5600 60  0000 C CNN
-F 2 "Package_SO:TSSOP-10_3x3mm_P0.5mm" H 9050 5350 60  0001 L CNN
-F 3 "http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en027983" H 9050 5450 60  0001 L CNN
-F 4 "MCP73833-AMI/UN-ND" H 9050 5550 60  0001 L CNN "Digi-Key_PN"
-F 5 "MCP73833-AMI/UN" H 9050 5650 60  0001 L CNN "MPN"
-F 6 "Integrated Circuits (ICs)" H 9050 5750 60  0001 L CNN "Category"
-F 7 "PMIC - Battery Chargers" H 9050 5850 60  0001 L CNN "Family"
-F 8 "http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en027983" H 9050 5950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/microchip-technology/MCP73833-AMI-UN/MCP73833-AMI-UN-ND/1223157" H 9050 6050 60  0001 L CNN "DK_Detail_Page"
-F 10 "IC LI-ION/LI-POLY CTRLR 10MSOP" H 9050 6150 60  0001 L CNN "Description"
-F 11 "Microchip Technology" H 9050 6250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 9050 6350 60  0001 L CNN "Status"
-F 13 "10-MSOP " H 8700 4500 50  0001 C CNN "Package"
-	1    8850 5150
-	1    0    0    -1  
-$EndComp
 Text Label 1000 5650 0    50   ~ 0
 PA13
 Text Label 1000 5550 0    50   ~ 0
@@ -1737,6 +1449,250 @@ Wire Wire Line
 Connection ~ 3800 6950
 Wire Wire Line
 	3800 6950 4300 6950
-NoConn ~ 9350 5250
-NoConn ~ 9350 5350
+Wire Wire Line
+	1050 1250 1050 1450
+Wire Wire Line
+	1050 1000 1050 1050
+$Comp
+L power:+BATT #PWR?
+U 1 1 5BE26BD9
+P 850 2900
+AR Path="/5BD64BD8/5BE26BD9" Ref="#PWR?"  Part="1" 
+AR Path="/5BE26BD9" Ref="#PWR0119"  Part="1" 
+F 0 "#PWR0119" H 850 2750 50  0001 C CNN
+F 1 "+BATT" H 865 3073 50  0000 C CNN
+F 2 "" H 850 2900 50  0001 C CNN
+F 3 "" H 850 2900 50  0001 C CNN
+	1    850  2900
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:D_Schottky_Small D?
+U 1 1 5BE0C7B2
+P 1050 1150
+AR Path="/5BD64BD8/5BE0C7B2" Ref="D?"  Part="1" 
+AR Path="/5BE0C7B2" Ref="D2"  Part="1" 
+F 0 "D2" V 1100 1100 50  0000 R CNN
+F 1 "20V2A" V 1000 1100 50  0000 R CNN
+F 2 "Diode_SMD:D_SOD-323_HandSoldering" V 1050 1150 50  0001 C CNN
+F 3 "~" V 1050 1150 50  0001 C CNN
+F 4 "SMD22WS-TP" H 1050 1150 50  0001 C CNN "MPN"
+	1    1050 1150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+BATT #PWR?
+U 1 1 5BD682A0
+P 1050 1000
+AR Path="/5BD64BD8/5BD682A0" Ref="#PWR?"  Part="1" 
+AR Path="/5BD682A0" Ref="#PWR0106"  Part="1" 
+F 0 "#PWR0106" H 1050 850 50  0001 C CNN
+F 1 "+BATT" H 1065 1173 50  0000 C CNN
+F 2 "" H 1050 1000 50  0001 C CNN
+F 3 "" H 1050 1000 50  0001 C CNN
+	1    1050 1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Battery_Cell J?
+U 1 1 5BE26BC9
+P 1300 3300
+AR Path="/5BD64BD8/5BE26BC9" Ref="J?"  Part="1" 
+AR Path="/5BE26BC9" Ref="J2"  Part="1" 
+F 0 "J2" V 1150 3300 50  0000 L CNN
+F 1 "Battery" V 1500 3250 50  0000 L CNN
+F 2 "BatteryClips:Keystone54_18650_PTC" V 1300 3360 50  0001 C CNN
+F 3 "" V 1300 3360 50  0001 C CNN
+F 4 "Keystone Electronics" H 1300 3300 50  0001 C CNN "MFN"
+F 5 "	Keystone 54" H 1300 3300 50  0001 C CNN "MPN"
+F 6 "36-54-ND" H 1300 3300 50  0001 C CNN "Digikey"
+	1    1300 3300
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	850  3300 1100 3300
+Wire Wire Line
+	1400 3300 1650 3300
+$Comp
+L Jeremy:BQ21040 U3
+U 1 1 5DB9B819
+P 8900 5050
+F 0 "U3" H 8700 4550 50  0000 C CNN
+F 1 "BQ21040" H 8900 5250 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-6" H 8850 4500 50  0001 C CNN
+F 3 "" H 8750 5050 50  0001 C CNN
+F 4 "SOT-23-6" H 8900 5050 50  0001 C CNN "Package"
+	1    8900 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0105
+U 1 1 5DB9DCFA
+P 9650 5500
+F 0 "#PWR0105" H 9650 5250 50  0001 C CNN
+F 1 "GND" H 9655 5327 50  0000 C CNN
+F 2 "" H 9650 5500 50  0001 C CNN
+F 3 "" H 9650 5500 50  0001 C CNN
+	1    9650 5500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9350 5200 9450 5200
+$Comp
+L Device:C C?
+U 1 1 5DBF68A7
+P 8000 5250
+AR Path="/5BD64BD8/5DBF68A7" Ref="C?"  Part="1" 
+AR Path="/5DBF68A7" Ref="C9"  Part="1" 
+F 0 "C9" H 8025 5350 50  0000 L CNN
+F 1 "1uF" H 8025 5150 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8038 5100 50  0001 C CNN
+F 3 "" H 8000 5250 50  0001 C CNN
+F 4 "0603" H 100 -150 50  0001 C CNN "Package"
+	1    8000 5250
+	1    0    0    -1  
+$EndComp
+Text Label 7900 5050 2    50   ~ 0
+VUSB
+$Comp
+L power:GND #PWR?
+U 1 1 5DC24AB0
+P 8250 5550
+AR Path="/5BD64BD8/5DC24AB0" Ref="#PWR?"  Part="1" 
+AR Path="/5DC24AB0" Ref="#PWR0109"  Part="1" 
+F 0 "#PWR0109" H 8250 5300 50  0001 C CNN
+F 1 "GND" H 8250 5400 50  0000 C CNN
+F 2 "" H 8250 5550 50  0001 C CNN
+F 3 "" H 8250 5550 50  0001 C CNN
+	1    8250 5550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8000 5400 8000 5550
+$Comp
+L power:+BATT #PWR?
+U 1 1 5DC53AB6
+P 10100 5050
+AR Path="/5BD64BD8/5DC53AB6" Ref="#PWR?"  Part="1" 
+AR Path="/5DC53AB6" Ref="#PWR0110"  Part="1" 
+F 0 "#PWR0110" H 10100 4900 50  0001 C CNN
+F 1 "+BATT" H 10115 5223 50  0000 C CNN
+F 2 "" H 10100 5050 50  0001 C CNN
+F 3 "" H 10100 5050 50  0001 C CNN
+	1    10100 5050
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 5DD411B8
+P 8250 5300
+AR Path="/5BD64BD8/5DD411B8" Ref="R?"  Part="1" 
+AR Path="/5DD411B8" Ref="R6"  Part="1" 
+F 0 "R6" H 8300 5350 50  0000 L CNN
+F 1 "675" H 8300 5250 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 8250 5300 50  0001 C CNN
+F 3 "" H 8250 5300 50  0001 C CNN
+F 4 "0603" H -100 -200 50  0001 C CNN "Package"
+	1    8250 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7900 5050 8000 5050
+Wire Wire Line
+	8000 5100 8000 5050
+Connection ~ 8000 5050
+Wire Wire Line
+	8000 5050 8450 5050
+Wire Wire Line
+	8450 5200 8250 5200
+Wire Wire Line
+	8000 5550 8250 5550
+Wire Wire Line
+	8250 5400 8250 5550
+Connection ~ 8250 5550
+Wire Wire Line
+	8450 5350 8450 5550
+Wire Wire Line
+	8450 5550 8250 5550
+$Comp
+L Device:LED D?
+U 1 1 5DBBACD6
+P 9900 5850
+AR Path="/5BD64BD8/5DBBACD6" Ref="D?"  Part="1" 
+AR Path="/5DBBACD6" Ref="D6"  Part="1" 
+F 0 "D6" H 10000 5900 50  0000 C CNN
+F 1 "LED" H 9900 5750 50  0001 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric" H 9900 5850 50  0001 C CNN
+F 3 "" H 9900 5850 50  0001 C CNN
+F 4 "150060VS75000" H 9900 5850 50  0001 C CNN "MPN"
+F 5 "0603" H 800 1000 50  0001 C CNN "Package"
+	1    9900 5850
+	1    0    0    1   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5DBBDA3F
+P 9600 5850
+AR Path="/5BD64BD8/5DBBDA3F" Ref="R?"  Part="1" 
+AR Path="/5DBBDA3F" Ref="R11"  Part="1" 
+F 0 "R11" V 9680 5850 50  0000 C CNN
+F 1 "430" V 9600 5850 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 9530 5850 50  0001 C CNN
+F 3 "" H 9600 5850 50  0001 C CNN
+F 4 "ERJ-PA3F4300V" H 9600 5850 50  0001 C CNN "MPN"
+F 5 "0603" H 100 1000 50  0001 C CNN "Package"
+	1    9600 5850
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:R_Small R14
+U 1 1 5DB9C95C
+P 9450 5300
+F 0 "R14" H 9509 5346 50  0000 L CNN
+F 1 "10k" H 9509 5255 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 9450 5300 50  0001 C CNN
+F 3 "~" H 9450 5300 50  0001 C CNN
+F 4 "0603" H 9509 5209 50  0001 L CNN "Package"
+	1    9450 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9350 5050 9850 5050
+Connection ~ 9850 5050
+Wire Wire Line
+	9850 5150 9850 5050
+$Comp
+L Device:C C?
+U 1 1 5DBF7250
+P 9850 5300
+AR Path="/5BD64BD8/5DBF7250" Ref="C?"  Part="1" 
+AR Path="/5DBF7250" Ref="C11"  Part="1" 
+F 0 "C11" H 9875 5400 50  0000 L CNN
+F 1 "1uf" H 9875 5200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 9888 5150 50  0001 C CNN
+F 3 "" H 9850 5300 50  0001 C CNN
+F 4 "0603" H -250 -300 50  0001 C CNN "Package"
+	1    9850 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9450 5400 9450 5500
+Wire Wire Line
+	9450 5500 9650 5500
+Wire Wire Line
+	9650 5500 9850 5500
+Wire Wire Line
+	9850 5500 9850 5450
+Connection ~ 9650 5500
+Wire Wire Line
+	9350 5350 9350 5850
+Wire Wire Line
+	9350 5850 9450 5850
+Wire Wire Line
+	10050 5850 10050 5050
+Connection ~ 10050 5050
+Wire Wire Line
+	10050 5050 10100 5050
+Wire Wire Line
+	9850 5050 10050 5050
 $EndSCHEMATC
