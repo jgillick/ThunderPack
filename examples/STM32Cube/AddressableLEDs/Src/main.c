@@ -7,7 +7,7 @@
 void SystemClock_Config(void);
 
 /**
- * Wipe a color across the entire LED string.
+ * @brief Wipe a color across the entire LED string.
  */
 void colorWipe(uint8_t r, uint8_t g, uint8_t b) {
   size_t i;
@@ -23,14 +23,15 @@ void colorWipe(uint8_t r, uint8_t g, uint8_t b) {
   * @retval int
   */
 int main(void) {
+  // Initialize the chip
   HAL_Init();
   SystemClock_Config();
 
-  // Setup DMA interrupt for ws2812b lib
+  // Setup DMA interrupt for ws2812b
   HAL_NVIC_SetPriority(DMA1_Channel2_3_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel2_3_IRQn);
 
-  // Initialize ws2812b lib
+  // Initialize the ws2812b lib
   ws2812b_init();
 
   // Start making colors
@@ -49,6 +50,10 @@ int main(void) {
 void DMA1_Channel2_3_IRQHandler(void) {
   ws2812b_interrupt_handler();
 }
+
+/* ----------------------------------------------------------*/
+/* STM32 Chip System Setup ----------------------------------*/
+/* ----------------------------------------------------------*/
 
 /**
   * @brief  This function is executed in case of error occurrence.
