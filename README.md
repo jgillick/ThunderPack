@@ -8,7 +8,7 @@ Why? After stringing together countless portable LED controllers that consisted 
 
 * [Overview](https://github.com/jgillick/ThunderPack/wiki/)
 * [Getting started](https://github.com/jgillick/ThunderPack/wiki/Getting-Started)
-* [Pins & functions](/jgillick/ThunderPack/wiki/Pinout-Details)
+* [Pins & functions](https://github.com/jgillick/ThunderPack/wiki/Pinout-Details)
 * [History & build log](https://hackaday.io/project/161054-lit-fist)
 
 ## Features
@@ -32,4 +32,4 @@ _Breadboard friendly_
 
 <img src="./images/pinout.svg" alt="Pinout diagram" />
 
-[See the full list of pins and details.](/jgillick/ThunderPack/wiki/Pinout-Details)
+[See the full list of pins and details.](https://github.com/jgillick/ThunderPack/wiki/Pinout-Details)
