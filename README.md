@@ -6,7 +6,10 @@ A kick-ass ARM board with everything you need all in a compact package that fits
 
 Why? After stringing together countless portable LED controllers that consisted of wiring a flat lipo battery to a charge controller to a switch to an arduino nano, I wanted something better. I always found those versions to be janky, unpleasant and fragile -- not to mention concern that damaging the battery might make it explode! This board has everything I need with room to expand.
 
-More details: https://hackaday.io/project/161054-lit-fist
+* [Overview](https://github.com/jgillick/ThunderPack/wiki/)
+* [Getting started](https://github.com/jgillick/ThunderPack/wiki/Getting-Started)
+* [Pins & functions](/jgillick/ThunderPack/wiki/Pinout-Details)
+* [History & build log](https://hackaday.io/project/161054-lit-fist)
 
 ## Features
 
@@ -14,6 +17,7 @@ More details: https://hackaday.io/project/161054-lit-fist
 * Integrated high-capacity 18650 lithium battery
 * 4 high-current PWM outputs (2.3A per channel!) with an LED on each for debugging.
 * 12 GPIOs, USART, I2C, SPI, USB
+* 6k EEPROM
 * USB bootloader
 * Tactile on/off switch
 * Tactile user button with built-in debounce circuit
@@ -26,8 +30,6 @@ _Breadboard friendly_
 
 ## Board & Pinout
 
-Full list of pin functions can be found in table 17 (page 51) of the [datasheet](https://www.st.com/resource/en/datasheet/stm32l072kz.pdf).
-
 <img src="./images/pinout.svg" alt="Pinout diagram" />
 
-_([png version](./images/pinout.png))_
+[See the full list of pins and details.](/jgillick/ThunderPack/wiki/Pinout-Details)
