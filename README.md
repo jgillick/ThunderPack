@@ -2,7 +2,7 @@
 
 <img src="./images/rev-pArm.jpg" alt="ThunderPack Board" width="400" />
 
-A kick-ass ARM board with everything you need all in a compact package that fits in your pocket. Integrated battery, power management system, USB bootloader, 4 high-power PWM outputs, and 10 GPIOs.
+A kick-ass ARM board with everything you need all in a compact package that fits in your pocket. Integrated battery, power management system, USB bootloader, 4 high-power PWM outputs, and 13 GPIOs.
 
 Why? After stringing together countless portable LED controllers that consisted of wiring a flat lipo battery to a charge controller to a switch to an arduino nano, I wanted something better. I always found those versions to be janky, unpleasant and fragile -- not to mention concern that damaging the battery might make it explode! This board has everything I need with room to expand.
 
