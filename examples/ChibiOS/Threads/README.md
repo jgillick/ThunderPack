@@ -1,4 +1,4 @@
-# LED Programs
+# Chibios Threads
 
 This is a more advanced example which creates a series of lighting programs on LED 1 (PA0). You can use the user button to cycle between the programs. The last program used will be remembered in the EEPROM and will start again next time the device is powered on.
 
