@@ -2792,7 +2792,7 @@
   (gr_text Batt+ (at 120.5 97.275) (layer B.SilkS)
     (effects (font (size 0.65 0.65) (thickness 0.1)) (justify mirror))
   )
-  (gr_text PWM (at 115.65 93.525) (layer B.SilkS)
+  (gr_text LEDs (at 115.65 93.525) (layer B.SilkS)
     (effects (font (size 1 1) (thickness 0.2)) (justify mirror))
   )
   (gr_text Batt+ (at 120.55 103.9) (layer B.SilkS)
