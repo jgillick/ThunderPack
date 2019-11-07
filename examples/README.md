@@ -5,8 +5,8 @@ Thunder Pack can be programed with a variety of libraries, each at varying level
 I've included a series of simple examples using the following libraries/environments to get you started:
 
 * [Arduino](./Arduino) - A common starting place for hobbyists, artists and those new to programming hardware.
-* [ChibiOS](./ChibiOS) - A compact [real-time operating](https://en.wikipedia.org/wiki/Real-time_operating_system) system which includes threads & it's own hardware abstraction layer.
+* [ChibiOS](./ChibiOS) - A compact [real-time operating system](https://en.wikipedia.org/wiki/Real-time_operating_system) which includes threads & it's own hardware abstraction layer.
 * [LibOpenCM3](./libopencm3) - An open source and comprehensive hardware abstraction layer.
-* [STM32Cube](./STM32Cube) - Low level APIs and a very basic hardware abstraction layer provided by STM32.
+* [STM32Cube](./STM32Cube) - The default hardware abstraction layer provided by STMicroelectronics, with quite a few lower level APIs.
 
 Each directory has a README file which explains how to setup, compile and flash the software for that library.
