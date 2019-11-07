@@ -4,3 +4,6 @@
 [submodule "examples/ChibiOS/shared/ChibiOS"]
 	path = examples/ChibiOS/common/ChibiOS
 	url = https://github.com/ChibiOS/ChibiOS.git
+[submodule "docs"]
+	path = docs
+	url = https://github.com/jgillick/ThunderPack.wiki.git
