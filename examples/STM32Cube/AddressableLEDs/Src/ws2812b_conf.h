@@ -4,11 +4,6 @@
 /* LEDS -------------------------------------------------------------------*/
 
 /**
- * @brief Number of LEDs to control.
- */
-#define LED_COUNT 16
-
-/**
  * @brief Enable RGBW (RGB + White) LEDs
  *  - Set to 1 to use RGBW leds.
  *  - Set to 0 to use standard RGB WS2812B leds

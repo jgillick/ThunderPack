@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <math.h>
 #include "stm32l0xx_hal.h"
 #include "stm32l0xx_hal_dma.h"
@@ -35,9 +36,14 @@
 #define OUTPUT_RESET        2  // Reset after last color
 
 /**
+ * @brief The number of LEDs in the strip
+ */
+static uint8_t led_count = 1;
+
+/**
  * @brief Array of 3x (or 4x) number of leds (R, G, B[, W] colors)
  */
-static uint8_t leds_colors[BYTES_PER_LED * LED_COUNT];
+static uint8_t *led_colors;
 
 /**
  * @brief Array holding the next two LED colors, as an array of PWM values to represent each bit.
@@ -106,11 +112,24 @@ void        led_set_color_rgb_internal(size_t index, uint32_t rgbw);
 
 
 /**
- * Initialize the ws2823b library and peripherals.
+ * @brief  Initialize the ws2823b library and peripherals.
+ * @param  num_leds  The number of LEDs in the LED strip.
  */
-void ws2812b_init() {
+void ws2812b_init(size_t num_leds) {
+  // Reserve memory
+  led_count = num_leds;
+  led_colors = (uint8_t *)malloc(BYTES_PER_LED * led_count);
+
+  // Initialize Peripherals
   dma_init();
   timer_init();
+
+  // Set all LEDs to off
+#if USE_RGBW
+  led_set_color_all(0, 0, 0, 0);
+#else
+  led_set_color_all(0, 0, 0);
+#endif
 }
 
 
@@ -149,9 +168,9 @@ void led_set_color_all(uint8_t r, uint8_t g, uint8_t b
 #endif /* USE_RGBW */
 ) {
   size_t index;
-  for (index = 0; index < LED_COUNT; index++) {
+  for (index = 0; index < led_count; index++) {
 #if USE_RGBW
-    led_set_color(r, g, b, w);
+    led_set_color_internal(index, r, g, b, w);
 #else
     led_set_color_internal(index, r, g, b);
 #endif /* USE_RGBW */
@@ -180,7 +199,7 @@ void led_set_color_rgb(size_t index, uint32_t rgbw) {
  */
 void led_set_color_all_rgb(uint32_t rgbw) {
   size_t index;
-  for (index = 0; index < LED_COUNT; index++) {
+  for (index = 0; index < led_count; index++) {
     led_set_color_rgb_internal(index, rgbw);
   }
   should_update(0);
@@ -194,12 +213,12 @@ void led_set_color_internal(size_t index, uint8_t r, uint8_t g, uint8_t b
 , uint8_t w
 #endif /* USE_RGBW */
 ) {
-  if (index < LED_COUNT) {
-    leds_colors[index * BYTES_PER_LED + 0] = r;
-    leds_colors[index * BYTES_PER_LED + 1] = g;
-    leds_colors[index * BYTES_PER_LED + 2] = b;
+  if (index < led_count) {
+    led_colors[index * BYTES_PER_LED + 0] = r;
+    led_colors[index * BYTES_PER_LED + 1] = g;
+    led_colors[index * BYTES_PER_LED + 2] = b;
 #if USE_RGBW
-    leds_colors[index * BYTES_PER_LED + 3] = w;
+    led_colors[index * BYTES_PER_LED + 3] = w;
 #endif /* USE_RGBW */
   }
 }
@@ -208,16 +227,16 @@ void led_set_color_internal(size_t index, uint8_t r, uint8_t g, uint8_t b
  * @brief Internal version of led_set_color_rgb which does not automatically call should_update
  */
 void led_set_color_rgb_internal(size_t index, uint32_t rgbw) {
-  if (index < LED_COUNT) {
+  if (index < led_count) {
 #if USE_RGBW
-    leds_colors[index * BYTES_PER_LED + 0] = (rgbw >> 24) & 0xFF; // Red
-    leds_colors[index * BYTES_PER_LED + 1] = (rgbw >> 16) & 0xFF; // Green
-    leds_colors[index * BYTES_PER_LED + 2] = (rgbw >> 8) & 0xFF;  // Blue
-    leds_colors[index * BYTES_PER_LED + 3] = (rgbw >> 0) & 0xFF;  // White
+    led_colors[index * BYTES_PER_LED + 0] = (rgbw >> 24) & 0xFF; // Red
+    led_colors[index * BYTES_PER_LED + 1] = (rgbw >> 16) & 0xFF; // Green
+    led_colors[index * BYTES_PER_LED + 2] = (rgbw >> 8) & 0xFF;  // Blue
+    led_colors[index * BYTES_PER_LED + 3] = (rgbw >> 0) & 0xFF;  // White
 #else
-    leds_colors[index * BYTES_PER_LED + 0] = (rgbw >> 16) & 0xFF; // Red
-    leds_colors[index * BYTES_PER_LED + 1] = (rgbw >> 8) & 0xFF;  // Green
-    leds_colors[index * BYTES_PER_LED + 2] = (rgbw >> 0) & 0xFF;  // Blue
+    led_colors[index * BYTES_PER_LED + 0] = (rgbw >> 16) & 0xFF; // Red
+    led_colors[index * BYTES_PER_LED + 1] = (rgbw >> 8) & 0xFF;  // Green
+    led_colors[index * BYTES_PER_LED + 2] = (rgbw >> 0) & 0xFF;  // Blue
 #endif /* USE_RGBW */
   }
 }
@@ -326,7 +345,7 @@ void update_leds() {
   // Prefill buffer with LED data
   current_led = 0;
   led_fill_led_pwm_data(0, &pwm_led_data[0]);
-  if (LED_COUNT > 1) {
+  if (led_count > 1) {
     current_led++;
     led_fill_led_pwm_data(1, &pwm_led_data[BITS_PER_LED]);
   }
@@ -374,14 +393,14 @@ static void led_fill_led_pwm_data(size_t ledIdx, uint16_t* ptr) {
   size_t byteIdx = BYTES_PER_LED * ledIdx;
 
   // Color bytes for this LED
-  uint8_t red = leds_colors[byteIdx + 0];
-  uint8_t green = leds_colors[byteIdx + 1];
-  uint8_t blue = leds_colors[byteIdx + 2];
+  uint8_t red = led_colors[byteIdx + 0];
+  uint8_t green = led_colors[byteIdx + 1];
+  uint8_t blue = led_colors[byteIdx + 2];
 #if USE_RGBW
-  uint8_t white = leds_colors[byteIdx + 3];
+  uint8_t white = led_colors[byteIdx + 3];
 #endif
 
-  if (ledIdx < LED_COUNT) {
+  if (ledIdx < led_count) {
     // Cycle through 8 bits of data per color for this LED.
     // Convert each color value into a series of PWM duty cycle bits in G,R,B[,W] order
     // Each loop defines a single bit per color, going from the 8th position to the 1st
@@ -449,7 +468,7 @@ static void led_update_sequence(uint8_t tc) {
   current_led++;
 
   // Prepare LED data
-  if (current_led < LED_COUNT) {
+  if (current_led < led_count) {
     if (tc) {
       led_fill_led_pwm_data(current_led, &pwm_led_data[BITS_PER_LED]);
     } else {
@@ -458,7 +477,7 @@ static void led_update_sequence(uint8_t tc) {
 
   // If this is the last LED, zero out the next buffer
   // because it will take a couple cycles to stop it at the end.
-  } else if (current_led == LED_COUNT) {
+  } else if (current_led == led_count) {
     if (tc) {
       led_clear_led_pwm_data(&pwm_led_data[BITS_PER_LED]);
     } else {

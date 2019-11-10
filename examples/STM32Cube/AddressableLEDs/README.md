@@ -1,5 +1,5 @@
 # Addressable LEDs (WS2812B)
-Controls a string of addressable LEDs with the WS2812B, like [Neopixels](https://www.adafruit.com/category/168). This example controls 16 LEDs, which is configurable by the `LED_COUNT` value in `Src/ws2812b_conf`.
+Controls a string of addressable LEDs with the WS2812B, like [Neopixels](https://www.adafruit.com/category/168). This example controls 16 LEDs, which is configurable by the `LED_COUNT` value in `main.c`.
 
 ## Connections
 

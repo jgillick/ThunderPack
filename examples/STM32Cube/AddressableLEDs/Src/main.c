@@ -1,8 +1,16 @@
+/**
+ * Changes the LED strip from red to blue to green, by replacing each LED
+ * sequentially down the LED strip.
+ *
+ * Set LED_COUNT in ws2812b_conf.h to the number of LEDs which are in your strip.
+ */
 #include <stdio.h>
 #include "stm32l0xx_hal.h"
 
 #include "ws2812b_conf.h"
 #include "ws2812b.h"
+
+#define LED_COUNT 16
 
 void SystemClock_Config(void);
 
@@ -32,7 +40,7 @@ int main(void) {
   HAL_NVIC_EnableIRQ(DMA1_Channel2_3_IRQn);
 
   // Initialize the ws2812b lib
-  ws2812b_init();
+  ws2812b_init(LED_COUNT);
 
   // Start making colors
   while (1) {

@@ -40,9 +40,10 @@
 #define WS2812B_H
 
 /**
- * @brief Initialize the library
+ * @brief  Initialize the ws2823b library and peripherals.
+ * @param  num_leds  The number of LEDs in the LED strip.
  */
-void ws2812b_init(void);
+void ws2812b_init(size_t num_leds);
 
 /**
  * @brief This needs to be called from the correct DMA interrupt handler.
