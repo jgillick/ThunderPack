@@ -10,12 +10,10 @@
  * ==================
  * See the `main.c` file for a simple example.
  *
- *  - Define the number of LEDs you'll be controlling by setting the `LED_COUNT` value in
- *    the `ws2812b_conf.h` file.
  *  - In your main script, setup the `DMA1_Channel2_3_IRQn` interrupt handler (see below).
  *    If this is not setup, no data will be sent to the LEDs.
  *  - Call the `ws2812b_init` function.
- *  - Call any of the `led_set_*` functions defined in this file to set LED colors.
+ *  - Call any of the `ws2812b_led*` functions defined in this file to set LED colors.
  *
  * DMA Interrupt
  * =============
@@ -61,41 +59,41 @@ void ws2812b_interrupt_handler(void);
  * @param  [w]    White color value (if USE_RGBW is set to 1)
  */
 #if USE_RGBW
-void led_set_color(size_t index, uint8_t r, uint8_t g, uint8_t b, uint8_t w);
+void ws2812b_led(size_t index, uint8_t r, uint8_t g, uint8_t b, uint8_t w);
 #else
-void led_set_color(size_t index, uint8_t r, uint8_t g, uint8_t b);
+void ws2812b_led(size_t index, uint8_t r, uint8_t g, uint8_t b);
 #endif
 
 
 /**
- * @brief  Same as `led_set_color`, but sets this color for ALL LEDs.
+ * @brief  Same as `ws2812b_led`, but sets this color for ALL LEDs.
  * @param  r      Red color value
  * @param  g      Green color value
  * @param  b      Blue color value
  * @param  [w]    White color value (if USE_RGBW is set to 1)
  */
 #if USE_RGBW
-void led_set_color_all(uint8_t r, uint8_t g, uint8_t b, uint8_t w);
+void ws2812b_led_all(uint8_t r, uint8_t g, uint8_t b, uint8_t w);
 #else
-void led_set_color_all(uint8_t r, uint8_t g, uint8_t b);
+void ws2812b_led_all(uint8_t r, uint8_t g, uint8_t b);
 #endif
 
 /**
  * @brief Set the RGB color of 1 LED.
  *
  * To set LED 2 to Red=255, Green=0, Blue=255:
- *   led_set_color_rgb(2, 0xFF00FF)
+ *   ws2812b_led_rgb(2, 0xFF00FF)
  *
  * @param  index  LED index in array, starting from `0`
  * @param  rgbw   Color value (0x00000000 - 0xRRGGBB[WW])
  */
-void led_set_color_rgb(size_t index, uint32_t rgb);
+void ws2812b_led_rgb(size_t index, uint32_t rgb);
 
 
 /**
- * @brief  Same as `led_set_color_rgb`, but sets this color for ALL LEDs.
+ * @brief  Same as `ws2812b_led_rgb`, but sets this color for ALL LEDs.
  * @param  rgbw   Color value (0x00000000 - 0xRRGGBB[WW])
  */
-void led_set_color_all_rgb(uint32_t rgbw);
+void ws2812b_led_all_rgb(uint32_t rgbw);
 
 #endif

@@ -2,7 +2,7 @@
  * Changes the LED strip from red to blue to green, by replacing each LED
  * sequentially down the LED strip.
  *
- * Set LED_COUNT in ws2812b_conf.h to the number of LEDs which are in your strip.
+ * Set LED_COUNT to the number of LEDs which are in your strip.
  */
 #include <stdio.h>
 #include "stm32l0xx_hal.h"
@@ -20,7 +20,7 @@ void SystemClock_Config(void);
 void colorWipe(uint8_t r, uint8_t g, uint8_t b) {
   size_t i;
   for (i = 0; i < LED_COUNT; i++) {
-    led_set_color(i, r, g, b);
+    ws2812b_led(i, r, g, b);
     HAL_Delay(50);
   }
 }

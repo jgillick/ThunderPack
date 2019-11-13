@@ -44,7 +44,7 @@
 #define STM32_HSI16_DIVIDER_ENABLED         FALSE
 #define STM32_LSI_ENABLED                   FALSE
 #define STM32_HSE_ENABLED                   FALSE
-#define STM32_LSE_ENABLED                   TRUE
+#define STM32_LSE_ENABLED                   FALSE
 #define STM32_ADC_CLOCK_ENABLED             TRUE
 #define STM32_USB_CLOCK_ENABLED             TRUE
 #define STM32_MSIRANGE                      STM32_MSIRANGE_2M
@@ -57,7 +57,7 @@
 #define STM32_PPRE2                         STM32_PPRE2_DIV1
 #define STM32_MCOSEL                        STM32_MCOSEL_NOCLOCK
 #define STM32_MCOPRE                        STM32_MCOPRE_DIV1
-#define STM32_RTCSEL                        STM32_RTCSEL_LSE
+#define STM32_RTCSEL                        STM32_RTCSEL_NOCLOCK
 #define STM32_RTCPRE                        STM32_RTCPRE_DIV2
 #define STM32_USART1SEL                     STM32_USART1SEL_APB
 #define STM32_USART2SEL                     STM32_USART2SEL_APB
@@ -157,7 +157,7 @@
 #define STM32_PWM_USE_ADVANCED              FALSE
 #define STM32_PWM_USE_TIM2                  TRUE
 #define STM32_PWM_TIM2_IRQ_PRIORITY         3
-#define STM32_PWM_USE_TIM3                  FALSE
+#define STM32_PWM_USE_TIM3                  TRUE
 #define STM32_PWM_TIM3_IRQ_PRIORITY         3
 #define STM32_PWM_USE_TIM21                 FALSE
 #define STM32_PWM_TIM21_IRQ_PRIORITY        3

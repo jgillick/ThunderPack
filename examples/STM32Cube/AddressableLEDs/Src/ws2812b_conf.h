@@ -62,7 +62,7 @@
 #define DMA_CHANNEL DMA1_Channel3
 
 /**
- * @brief The DMA request (or stream) to use.
+ * @brief The DMA request to use.
  */
 #define DMA_REQUEST DMA_REQUEST_10
 

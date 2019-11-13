@@ -91,7 +91,7 @@ TIM_HandleTypeDef htim;
  */
 DMA_HandleTypeDef hdma_tim;
 
-void        start_output(uint32_t SrcAddress, uint32_t DataLength);
+void        start_output(uint32_t dataLen);
 void        timer_init(void);
 void        dma_init(void);
 void        stop_output(void);
@@ -104,11 +104,11 @@ static void dma_transfer_complete_handler(DMA_HandleTypeDef *hdma);
 
 static void led_start_reset_pulse();
 #if USE_RGBW
-void        led_set_color_internal(size_t index, uint8_t r, uint8_t g, uint8_t b, uint8_t w);
+void        ws2812b_led_internal(size_t index, uint8_t r, uint8_t g, uint8_t b, uint8_t w);
 #else
-void        led_set_color_internal(size_t index, uint8_t r, uint8_t g, uint8_t b);
+void        ws2812b_led_internal(size_t index, uint8_t r, uint8_t g, uint8_t b);
 #endif
-void        led_set_color_rgb_internal(size_t index, uint32_t rgbw);
+void        ws2812b_led_rgb_internal(size_t index, uint32_t rgbw);
 
 
 /**
@@ -126,9 +126,9 @@ void ws2812b_init(size_t num_leds) {
 
   // Set all LEDs to off
 #if USE_RGBW
-  led_set_color_all(0, 0, 0, 0);
+  ws2812b_led_all(0, 0, 0, 0);
 #else
-  led_set_color_all(0, 0, 0);
+  ws2812b_led_all(0, 0, 0);
 #endif
 }
 
@@ -142,13 +142,13 @@ void ws2812b_init(size_t num_leds) {
  * @param  [w]    White color value
  * @return Non
  */
-void led_set_color(size_t index, uint8_t r, uint8_t g, uint8_t b
+void ws2812b_led(size_t index, uint8_t r, uint8_t g, uint8_t b
 #if USE_RGBW
 , uint8_t w) {
-  led_set_color_internal(index, r, g, b, w);
+  ws2812b_led_internal(index, r, g, b, w);
 #else
 ) {
-  led_set_color_internal(index, r, g, b);
+  ws2812b_led_internal(index, r, g, b);
 #endif /* USE_RGBW */
 
   should_update(index);
@@ -162,7 +162,7 @@ void led_set_color(size_t index, uint8_t r, uint8_t g, uint8_t b
  * @param  [w]    White color value
  * @return None
  */
-void led_set_color_all(uint8_t r, uint8_t g, uint8_t b
+void ws2812b_led_all(uint8_t r, uint8_t g, uint8_t b
 #if USE_RGBW
 , uint8_t w
 #endif /* USE_RGBW */
@@ -170,9 +170,9 @@ void led_set_color_all(uint8_t r, uint8_t g, uint8_t b
   size_t index;
   for (index = 0; index < led_count; index++) {
 #if USE_RGBW
-    led_set_color_internal(index, r, g, b, w);
+    ws2812b_led_internal(index, r, g, b, w);
 #else
-    led_set_color_internal(index, r, g, b);
+    ws2812b_led_internal(index, r, g, b);
 #endif /* USE_RGBW */
   }
   should_update(0);
@@ -187,28 +187,28 @@ void led_set_color_all(uint8_t r, uint8_t g, uint8_t b
  * @param  index  LED index in array, starting from `0`
  * @param  rgbw   Color value
  */
-void led_set_color_rgb(size_t index, uint32_t rgbw) {
-  led_set_color_rgb_internal(index, rgbw);
+void ws2812b_led_rgb(size_t index, uint32_t rgbw) {
+  ws2812b_led_rgb_internal(index, rgbw);
   should_update(index);
 }
 
 /**
  * @brief Set the same color on all LEDs with a single 16 or 32-bit value to represent RGB[W]
- * @see   led_set_color_rgb()
+ * @see   ws2812b_led_rgb()
  * @param  rgbw   Color value
  */
-void led_set_color_all_rgb(uint32_t rgbw) {
+void ws2812b_led_all_rgb(uint32_t rgbw) {
   size_t index;
   for (index = 0; index < led_count; index++) {
-    led_set_color_rgb_internal(index, rgbw);
+    ws2812b_led_rgb_internal(index, rgbw);
   }
   should_update(0);
 }
 
 /**
- * @brief Internal version of led_set_color which does not automatically call should_update
+ * @brief Internal version of ws2812b_led which does not automatically call should_update
  */
-void led_set_color_internal(size_t index, uint8_t r, uint8_t g, uint8_t b
+void ws2812b_led_internal(size_t index, uint8_t r, uint8_t g, uint8_t b
 #if USE_RGBW
 , uint8_t w
 #endif /* USE_RGBW */
@@ -224,9 +224,9 @@ void led_set_color_internal(size_t index, uint8_t r, uint8_t g, uint8_t b
 }
 
 /**
- * @brief Internal version of led_set_color_rgb which does not automatically call should_update
+ * @brief Internal version of ws2812b_led_rgb which does not automatically call should_update
  */
-void led_set_color_rgb_internal(size_t index, uint32_t rgbw) {
+void ws2812b_led_rgb_internal(size_t index, uint32_t rgbw) {
   if (index < led_count) {
 #if USE_RGBW
     led_colors[index * BYTES_PER_LED + 0] = (rgbw >> 24) & 0xFF; // Red
@@ -244,9 +244,9 @@ void led_set_color_rgb_internal(size_t index, uint32_t rgbw) {
 /**
  * @brief Setup DMA/TIM to send LED data.
  */
-void start_output(uint32_t SrcAddress, uint32_t DataLength) {
+void start_output(uint32_t dataLen) {
   __HAL_TIM_ENABLE(&htim);
-  HAL_DMA_Start_IT(&hdma_tim, SrcAddress, (uint32_t)&htim.Instance->CCR1, DataLength);
+  HAL_DMA_Start_IT(&hdma_tim, (uint32_t)pwm_led_data, (uint32_t)&htim.Instance->CCR1, dataLen);
 }
 
 /**
@@ -353,7 +353,7 @@ void update_leds() {
   // Start output
   output_state = OUTPUT_DATA;
   needs_update = 0;
-  start_output((uint32_t)pwm_led_data, PWM_BUFFER_SIZE);
+  start_output(PWM_BUFFER_SIZE);
 }
 
 /**
@@ -378,7 +378,7 @@ static void led_start_reset_pulse() {
   reset_counter = 0;
   output_state = OUTPUT_RESET;
   pwm_led_data[0] = 0;
-  start_output((uint32_t)pwm_led_data, 1);
+  start_output(1);
 }
 
 /**
