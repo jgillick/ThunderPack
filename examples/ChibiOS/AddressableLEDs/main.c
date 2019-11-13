@@ -8,7 +8,6 @@
 #include "ch.h"
 #include "hal.h"
 
-#include "ws2812b_conf.h"
 #include "ws2812b.h"
 
 #define LED_COUNT 16
