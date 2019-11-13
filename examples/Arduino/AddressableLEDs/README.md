@@ -9,9 +9,6 @@ From the LED strip, connect:
 * Power -> `Vin` or `Batt+`
 * Ground -> `GND`
 
-## Compiling/Flashing
-See the instructions [here](../README.md)
-
 ## WS2812B API Library
 Read about how to use the provided WS2812B APIs in the [ws2812b.h](./ws2812b.h) file.
 
