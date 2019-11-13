@@ -25,7 +25,7 @@ endif
 
 # Linker extra options here.
 ifeq ($(USE_LDOPT),)
-  USE_LDOPT =
+  USE_LDOPT = -lm
 endif
 
 # Enable this if you want link time optimizations (LTO)
@@ -142,7 +142,8 @@ LDSCRIPT= $(STARTUPLD)/STM32L073xZ.ld
 
 # C sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
-CSRC += $(BOARD_DIR)/board.c \
+CSRC += $(CHIBIOS)/os/various/syscalls.c \
+        $(BOARD_DIR)/board.c \
         $(ALLCSRC)
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
@@ -181,7 +182,7 @@ UDEFS ?=
 UADEFS ?=
 
 # List all user directories here
-UINCDIR = 
+UINCDIR =
 
 # List the user directory to look for the libraries here
 ULIBDIR =
