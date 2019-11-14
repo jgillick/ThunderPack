@@ -30,7 +30,8 @@
 # C++ hasn't been actually tested with this..... sorry bout that. ;)
 # Second expansion/secondary not set, add this if you need them.
 
-BUILD_DIR ?= bin
+PROJECT ?= project
+BUILD_DIR ?= build
 OPT ?= -Os
 CSTD ?= -std=c99
 

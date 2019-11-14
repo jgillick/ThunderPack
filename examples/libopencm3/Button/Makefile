@@ -1,9 +1,8 @@
-CFILES = main.c 
+CFILES = main.c
 PROJECT = button
 BUILD_DIR = build
 
-# DEVICE=STM32L072KZTx
-DEVICE=STM32L072CBT6
+DEVICE=STM32L072KZTx
 LIB_TARGET = stm32/l0
 
 # Path to the libopencm3 source

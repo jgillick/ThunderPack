@@ -1,9 +1,6 @@
-CFILES = main.c 
-PROJECT = blink
-BUILD_DIR = build
+CFILES = main.c
 
-# DEVICE=STM32L072KZTx
-DEVICE=STM32L072CBT6
+DEVICE=STM32L072KZTx
 LIB_TARGET = stm32/l0
 
 # Path to the libopencm3 source
