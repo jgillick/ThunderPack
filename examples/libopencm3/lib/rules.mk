@@ -30,7 +30,7 @@
 # C++ hasn't been actually tested with this..... sorry bout that. ;)
 # Second expansion/secondary not set, add this if you need them.
 
-PROJECT ?= project
+PROJECT ?= program
 BUILD_DIR ?= build
 OPT ?= -Os
 CSTD ?= -std=c99
@@ -63,7 +63,7 @@ INCLUDES += $(patsubst %,-I%, . $(OPENCM3_INC) )
 
 OBJS += $(CFILES:%.c=$(BUILD_DIR)/%.o)
 OBJS += $(AFILES:%.S=$(BUILD_DIR)/%.o)
-GENERATED_BINS = $(PROJECT).elf $(PROJECT).bin $(PROJECT).map $(PROJECT).list $(PROJECT).lss
+GENERATED_BINS = $(BUILD_DIR)/$(PROJECT).elf $(BUILD_DIR)/$(PROJECT).bin $(PROJECT).map $(PROJECT).list $(PROJECT).lss
 
 TGT_CPPFLAGS += -MD
 TGT_CPPFLAGS += -Wall -Wundef $(INCLUDES)
@@ -113,7 +113,7 @@ LDLIBS += -Wl,--start-group -lc -lgcc -lnosys -Wl,--end-group
 %: s.%
 %: SCCS/s.%
 
-all: lib-check $(PROJECT).elf $(PROJECT).bin
+all: lib-check $(BUILD_DIR)/$(PROJECT).elf $(BUILD_DIR)/$(PROJECT).bin
 flash: $(PROJECT).flash
 
 # error if not using linker script generator
@@ -143,23 +143,23 @@ $(BUILD_DIR)/%.o: %.S
 	@mkdir -p $(dir $@)
 	$(Q)$(CC) $(TGT_ASFLAGS) $(ASFLAGS) $(TGT_CPPFLAGS) $(CPPFLAGS) -o $@ -c $<
 
-$(PROJECT).elf: $(OBJS) $(LDSCRIPT) $(LIBDEPS)
+$(BUILD_DIR)/$(PROJECT).elf: $(OBJS) $(LDSCRIPT) $(LIBDEPS)
 	@printf "  LD\t$@\n"
 	$(Q)$(LD) $(TGT_LDFLAGS) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $@
 
-%.bin: %.elf
+$(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf
 	@printf "  OBJCOPY\t$@\n"
 	$(Q)$(OBJCOPY) -O binary  $< $@
 
-%.lss: %.elf
+%.lss: $(BUILD_DIR)/%.elf
 	$(OBJDUMP) -h -S $< > $@
 
-%.list: %.elf
+%.list: $(BUILD_DIR)/%.elf
 	$(OBJDUMP) -S $< > $@
 
-%.flash: %.elf
+%.flash: $(BUILD_DIR)/%.bin
 	@printf "  FLASH\t$<\n"
-	$(DFU_UTIL) -d $(DFU_UTIL) -a 0 -s $(DFU_ADDR) -D $(PROJECT).bin $(DFU_FLAGS)
+	$(DFU_UTIL) -d $(DFU_UTIL) -a 0 -s $(DFU_ADDR) -D $(BUILD_DIR)/$(PROJECT).bin $(DFU_FLAGS)
 
 # Verify the lib has been initialized
 lib-check:
