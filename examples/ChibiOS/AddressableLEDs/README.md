@@ -20,4 +20,4 @@ The API & implementation is based on [this tutorial](https://github.com/MaJerle/
 ## Configuration
 You can configure the output pin, timer and protocol by adjusting values in the [ws2812b_conf.h](./ws2812b_conf.h) file.
 
-This example was built & tested on a STM32L0xxx chip, however, it should be relatively easy to adjust it for any other STM32 chip.
+This example was built & tested on a STM32L072 chip, however, it should be relatively easy to adjust it for any other STM32 chip.
