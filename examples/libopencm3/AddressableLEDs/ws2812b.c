@@ -34,9 +34,11 @@
 /**
  * Output state values
  */
-#define OUTPUT_IDLE         0  // Nothing is being output
-#define OUTPUT_DATA         1  // LED data is being sent
-#define OUTPUT_RESET        2  // Reset after last color
+typedef enum output_states {
+  IDLE,
+  DATA,
+  RESET,
+} output_states_t;
 
 /**
  * @brief The number of LEDs in the strip
@@ -56,7 +58,7 @@ static uint16_t pwm_led_data[PWM_BUFFER_SIZE];
 /**
  * @brief The current state of the output.
  */
-static volatile uint8_t output_state = OUTPUT_IDLE;
+static volatile output_states_t output_state = IDLE;
 
 /**
  * @brief The LEDs need another update, after the current update has completed.
@@ -238,12 +240,11 @@ void ws2812b_led_rgb_internal(size_t index, uint32_t rgbw) {
  */
 void start_output() {
   uint16_t dataLen = 1;
-  if (output_state == OUTPUT_DATA) {
+  if (output_state == DATA) {
     dataLen = PWM_BUFFER_SIZE;
   }
+
   dma_set_number_of_data(DMA, DMA_CHANNEL, dataLen);
-  dma_enable_half_transfer_interrupt(DMA, DMA_CHANNEL);
-  dma_enable_transfer_complete_interrupt(DMA, DMA_CHANNEL);
   dma_enable_channel(DMA, DMA_CHANNEL);
 }
 
@@ -251,13 +252,11 @@ void start_output() {
  * @brief  Stop the reset data DMA & Timer output.
  */
 void stop_output() {
-  dma_disable_half_transfer_interrupt(DMA, DMA_CHANNEL);
-  dma_disable_transfer_complete_interrupt(DMA, DMA_CHANNEL);
   dma_disable_channel(DMA, DMA_CHANNEL);
+  timer_set_oc_value(TIMER, TIMER_CHANNEL, 0);
 #ifdef DMA_IRQ
   nvic_clear_pending_irq(DMA_IRQ);
 #endif
-  timer_set_oc_value(TIMER, TIMER_CHANNEL, 0);
 }
 
 /**
@@ -275,22 +274,18 @@ void timer_init() {
   // Timer
   rcc_periph_clock_enable(TIMER_RCC);
 
-  // TODO: Do we need this?
-  rcc_periph_reset_pulse(RST_TIM3);
-
   timer_set_prescaler(TIMER, 0);
   timer_set_period(TIMER, pwm_period);
   timer_set_mode(TIMER, TIM_CR1_CKD_CK_INT, TIM_CR1_CMS_EDGE, TIM_CR1_DIR_UP);
   timer_continuous_mode(TIMER);
-
-  // timer_enable_oc_preload(TIMER, TIMER_CHANNEL);
   timer_enable_preload(TIMER);
 
   // PWM output compare
   timer_set_oc_mode(TIMER, TIMER_CHANNEL, TIM_OCM_PWM1);
+  timer_enable_oc_preload(TIMER, TIMER_CHANNEL);
   timer_set_oc_value(TIMER, TIMER_CHANNEL, 0);
   timer_set_oc_polarity_high(TIMER, TIMER_CHANNEL);
-  timer_set_oc_fast_mode(TIMER, TIMER_CHANNEL);
+  timer_set_oc_slow_mode(TIMER, TIMER_CHANNEL);
 
   // Events & output
   timer_enable_irq(TIMER, TIM_DIER_UDE); // Enable the update request DMA event
@@ -331,13 +326,16 @@ void dma_init() {
 
   dma_set_peripheral_address(DMA, DMA_CHANNEL, (uint32_t)&TIMER_CCR);
   dma_set_memory_address(DMA, DMA_CHANNEL, (uint32_t)&pwm_led_data);
+
+  dma_enable_half_transfer_interrupt(DMA, DMA_CHANNEL);
+  dma_enable_transfer_complete_interrupt(DMA, DMA_CHANNEL);
 }
 
 /**
  * @brief  Update the color of all the LEDs in the strip
  */
 void update_leds() {
-  if (output_state != OUTPUT_IDLE) {
+  if (output_state != IDLE) {
     return;
   }
 
@@ -350,7 +348,7 @@ void update_leds() {
   }
 
   // Start output
-  output_state = OUTPUT_DATA;
+  output_state = DATA;
   needs_update = 0;
   start_output();
 }
@@ -363,7 +361,7 @@ void update_leds() {
  * If an update is not happening, this kicks off a new update.
  */
 void should_update(size_t led) {
-  if (output_state == OUTPUT_IDLE) {
+  if (output_state == IDLE) {
     update_leds();
   } else if (led <= current_led) {
     needs_update = 1;
@@ -375,7 +373,7 @@ void should_update(size_t led) {
  */
 static void led_start_reset_pulse() {
   reset_counter = 0;
-  output_state = OUTPUT_RESET;
+  output_state = RESET;
   pwm_led_data[0] = 0;
   start_output();
 }
@@ -442,19 +440,19 @@ void led_clear_led_pwm_data(uint16_t* ptr) {
 static void led_update_sequence(uint8_t tc) {
   tc = !!tc; // Force value as 1 or 0
 
-  if (output_state == OUTPUT_IDLE) {
+  if (output_state == IDLE) {
     return;
   }
 
   // Count the reset pulses
-  if (output_state == OUTPUT_RESET) {
+  if (output_state == RESET) {
     reset_counter++;
 
     if (reset_counter >= RESET_PULSES) {
       stop_output();
 
       current_led = 0;
-      output_state = OUTPUT_IDLE;
+      output_state = IDLE;
 
       // Start a new update cycle
       if (needs_update) {
@@ -482,7 +480,6 @@ static void led_update_sequence(uint8_t tc) {
     } else {
       led_clear_led_pwm_data(&pwm_led_data[0]);
     }
-
   // All done
   } else {
     stop_output();
