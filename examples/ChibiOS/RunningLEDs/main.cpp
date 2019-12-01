@@ -6,6 +6,14 @@
 #include "hal.h"
 
 #define SPEED 150
+#define LED_COUNT 4
+
+int leds[] = {
+  LINE_LED_1, // LED 1
+  LINE_LED_2, // LED 2
+  LINE_LED_3, // LED 3
+  LINE_LED_4, // LED 4
+};
 
 /*
  * Application entry point.
@@ -16,30 +24,22 @@ int main(void) {
   chSysInit();
 
   // Set LEDs to digital output
-  palSetLineMode(LINE_LED_1, PAL_MODE_OUTPUT_PUSHPULL);
-  palSetLineMode(LINE_LED_2, PAL_MODE_OUTPUT_PUSHPULL);
-  palSetLineMode(LINE_LED_3, PAL_MODE_OUTPUT_PUSHPULL);
-  palSetLineMode(LINE_LED_4, PAL_MODE_OUTPUT_PUSHPULL);
+  uint8_t i;
+  for (i = 0; i < LED_COUNT; i++) {
+    palSetLineMode(leds[i], PAL_MODE_OUTPUT_PUSHPULL);
+  }
 
+  // Run LEDs
+  uint8_t led_idx = 0;
   while (1) {
-    // Turn LEDs on
-    palSetLine(LINE_LED_1);
-    chThdSleepMilliseconds(SPEED);
-    palSetLine(LINE_LED_2);
-    chThdSleepMilliseconds(SPEED);
-    palSetLine(LINE_LED_3);
-    chThdSleepMilliseconds(SPEED);
-    palSetLine(LINE_LED_4);
+    // Toggle the current LED
+    palToggleLine(leds[led_idx]);
     chThdSleepMilliseconds(SPEED);
 
-    // Turn LEDs off
-    palClearLine(LINE_LED_1);
-    chThdSleepMilliseconds(SPEED);
-    palClearLine(LINE_LED_2);
-    chThdSleepMilliseconds(SPEED);
-    palClearLine(LINE_LED_3);
-    chThdSleepMilliseconds(SPEED);
-    palClearLine(LINE_LED_4);
-    chThdSleepMilliseconds(SPEED);
+    // Increment LED
+    led_idx++;
+    if (led_idx >= LED_COUNT) {
+      led_idx = 0;
+    }
   }
 }
