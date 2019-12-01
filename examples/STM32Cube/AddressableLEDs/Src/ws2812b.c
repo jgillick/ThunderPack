@@ -31,9 +31,11 @@
 /**
  * Output state values
  */
-#define OUTPUT_IDLE         0  // Nothing is being output
-#define OUTPUT_DATA         1  // LED data is being sent
-#define OUTPUT_RESET        2  // Reset after last color
+typedef enum output_states {
+  OUTPUT_IDLE,
+  OUTPUT_DATA,
+  OUTPUT_RESET,
+} output_states_t;
 
 /**
  * @brief The number of LEDs in the strip
@@ -53,7 +55,7 @@ static uint16_t pwm_led_data[PWM_BUFFER_SIZE];
 /**
  * @brief The current state of the output.
  */
-static volatile uint8_t output_state = OUTPUT_IDLE;
+static volatile output_states_t output_state = OUTPUT_IDLE;
 
 /**
  * @brief The LEDs need another update, after the current update has completed.
