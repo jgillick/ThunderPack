@@ -34,7 +34,7 @@
   )
 
   (setup
-    (last_trace_width 0.31)
+    (last_trace_width 0.762)
     (user_trace_width 0.254)
     (user_trace_width 0.31)
     (user_trace_width 0.762)
@@ -2380,7 +2380,7 @@
   (gr_text BATT- (at 69.45 107.025) (layer F.SilkS) (tstamp 5E0B666B)
     (effects (font (size 1 1) (thickness 0.2)))
   )
-  (gr_text "rev 1" (at 137.3 96.5) (layer B.SilkS) (tstamp 5D7AD4CE)
+  (gr_text "rev 1a2" (at 137.3 96.5) (layer B.SilkS) (tstamp 5D7AD4CE)
     (effects (font (size 0.8 0.8) (thickness 0.1)) (justify left mirror))
   )
   (gr_text "GND USB+ 3.3v Vin" (at 98.675 107.45) (layer F.SilkS) (tstamp 5E0B6668)
@@ -2845,7 +2845,7 @@
   (segment (start 113.2 94.875) (end 113.05 94.725) (width 0.254) (layer F.Cu) (net 40))
   (segment (start 114.42 94.875) (end 113.2 94.875) (width 0.254) (layer F.Cu) (net 40))
 
-  (zone (net 2) (net_name GND) (layer F.Cu) (tstamp 5E237243) (hatch edge 0.508)
+  (zone (net 2) (net_name GND) (layer F.Cu) (tstamp 5E24257B) (hatch edge 0.508)
     (connect_pads yes (clearance 0.254))
     (min_thickness 0.1524)
     (fill yes (arc_segments 16) (thermal_gap 0.508) (thermal_bridge_width 0.508))
@@ -3537,7 +3537,7 @@
       )
     )
   )
-  (zone (net 3) (net_name +3V3) (layer B.Cu) (tstamp 5E237240) (hatch edge 0.508)
+  (zone (net 3) (net_name +3V3) (layer B.Cu) (tstamp 5E242578) (hatch edge 0.508)
     (connect_pads yes (clearance 0.254))
     (min_thickness 0.1524)
     (fill yes (arc_segments 16) (thermal_gap 0.508) (thermal_bridge_width 0.508))
