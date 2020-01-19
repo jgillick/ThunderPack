@@ -598,7 +598,7 @@
     )
   )
 
-  (module Symbol:OSHW-Symbol_6.7x6mm_SilkScreen (layer B.Cu) (tedit 5E0CE208) (tstamp 5E0C9D21)
+  (module Symbol:OSHW-Symbol_6.7x6mm_SilkScreen locked (layer B.Cu) (tedit 5E0CE208) (tstamp 5E0C9D21)
     (at 123.51 99.725 180)
     (descr "Open Source Hardware Symbol")
     (tags "Logo Symbol OSHW")

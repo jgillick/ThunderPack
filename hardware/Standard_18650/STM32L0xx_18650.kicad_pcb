@@ -2468,7 +2468,7 @@
   (gr_text SDA (at 82.25 107.425) (layer B.SilkS) (tstamp 5DADDA91)
     (effects (font (size 0.65 0.6) (thickness 0.1)) (justify mirror))
   )
-  (gr_text SCLK (at 82.2 93.6) (layer B.SilkS) (tstamp 5DADD652)
+  (gr_text SCK (at 82.2 93.6) (layer B.SilkS) (tstamp 5DADD652)
     (effects (font (size 0.65 0.6) (thickness 0.1)) (justify mirror))
   )
   (gr_text MISO (at 84.8 93.6) (layer B.SilkS) (tstamp 5DADD651)
