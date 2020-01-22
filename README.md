@@ -1,6 +1,6 @@
 # Thunder Pack
 
-<img src="./images/rev-pArm.jpg" alt="ThunderPack Board" width="400" />
+<img src="https://cdn.hackaday.io/images/5175201571795557825.JPG" alt="ThunderPack Board" width="500" />
 
 A kick-ass ARM board with everything you need all in a compact package that fits in your pocket. Integrated battery, power management system, USB bootloader, 4 high-power PWM outputs, and 13 GPIOs.
 
