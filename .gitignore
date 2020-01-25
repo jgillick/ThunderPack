@@ -2,6 +2,7 @@
 *.kicad_pcb-bak
 *.sch-bak
 *.bak
+fp-info-cache
 
 # C/CPP Code
 build/
