@@ -1,4 +1,4 @@
-update=Tuesday, October 22, 2019 at 07:53:34 PM
+update=Tuesday, January 28, 2020 at 06:41:03 PM
 version=1
 last_client=kicad
 [general]
@@ -244,7 +244,7 @@ Clearance=0.1524
 TrackWidth=0.1524
 ViaDiameter=0.508
 ViaDrill=0.254
-uViaDiameter=0.4572
+uViaDiameter=0.508
 uViaDrill=0.254
 dPairWidth=0.30988
 dPairGap=0.1524

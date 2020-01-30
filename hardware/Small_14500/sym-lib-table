@@ -1,3 +1,2 @@
 (sym_lib_table
-  (lib (name STM32L0xx_18650-rescue)(type Legacy)(uri ${KIPRJMOD}/STM32L0xx_18650-rescue.lib)(options "")(descr ""))
 )
