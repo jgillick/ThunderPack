@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 73)
+    (drawings 74)
     (tracks 389)
     (zones 0)
     (modules 51)
@@ -62,7 +62,7 @@
     (pad_drill 1)
     (pad_to_mask_clearance 0.0508)
     (aux_axis_origin 0 0)
-    (grid_origin 105.2 95.275)
+    (grid_origin 57.95 108.305)
     (visible_elements FFFFFF7F)
     (pcbplotparams
       (layerselection 0x010fc_ffffffff)
@@ -2323,6 +2323,7 @@
     )
   )
 
+  (target plus (at 57.95 108.305) (size 5) (width 0.15) (layer Edge.Cuts))
   (gr_text Tiny (at 113.42 94.675) (layer B.SilkS) (tstamp 5E23DD70)
     (effects (font (size 1.8 1.8) (thickness 0.15)) (justify mirror))
   )
