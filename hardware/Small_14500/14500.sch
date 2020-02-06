@@ -690,64 +690,40 @@ F 5 "BLM18TG601TN1D" H 5450 1100 50  0001 C CNN "MPN"
 $EndComp
 Text Label 3050 1950 2    50   ~ 0
 RESET
-Text Label 1000 5450 0    50   ~ 0
+Text Label 1000 5650 0    50   ~ 0
 PB5
-Text Label 1000 5350 0    50   ~ 0
+Text Label 1000 5550 0    50   ~ 0
 PB6
-Text Label 1000 5850 0    50   ~ 0
+Text Label 1000 6050 0    50   ~ 0
 PA9
-Text Label 1000 5750 0    50   ~ 0
+Text Label 1000 5950 0    50   ~ 0
 PA10
 Wire Wire Line
-	2750 5450 2550 5450
+	1200 5050 1000 5050
 Wire Wire Line
-	2750 5350 2750 5450
+	1200 4950 1200 5050
 $Comp
 L power:+3.3V #PWR0130
 U 1 1 5C2D9A3C
-P 2750 5350
-F 0 "#PWR0130" H 2750 5200 50  0001 C CNN
-F 1 "+3.3V" H 2765 5523 50  0000 C CNN
-F 2 "" H 2750 5350 50  0001 C CNN
-F 3 "" H 2750 5350 50  0001 C CNN
-	1    2750 5350
+P 1200 4950
+F 0 "#PWR0130" H 1200 4800 50  0001 C CNN
+F 1 "+3.3V" H 1215 5123 50  0000 C CNN
+F 2 "" H 1200 4950 50  0001 C CNN
+F 3 "" H 1200 4950 50  0001 C CNN
+	1    1200 4950
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:GND #PWR0129
-U 1 1 5C2D8F0C
-P 2550 5650
-F 0 "#PWR0129" H 2550 5400 50  0001 C CNN
-F 1 "GND" H 2555 5477 50  0000 C CNN
-F 2 "" H 2550 5650 50  0001 C CNN
-F 3 "" H 2550 5650 50  0001 C CNN
-	1    2550 5650
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector_Generic:Conn_01x04 J?
-U 1 1 5C2B93C1
-P 2350 5550
-AR Path="/5BD64BD8/5C2B93C1" Ref="J?"  Part="1" 
-AR Path="/5C2B93C1" Ref="J5"  Part="1" 
-F 0 "J5" H 2429 5542 50  0000 L CNN
-F 1 "Power" H 2429 5451 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 2350 5550 50  0001 C CNN
-F 3 "~" H 2350 5550 50  0001 C CNN
-	1    2350 5550
-	-1   0    0    1   
-$EndComp
-Text Label 1000 5250 0    50   ~ 0
+Text Label 1000 5450 0    50   ~ 0
 PB7
-Text Label 1750 5700 0    50   ~ 0
+Text Label 2000 5650 0    50   ~ 0
 PA8
-Text Label 1750 5600 0    50   ~ 0
+Text Label 2000 5550 0    50   ~ 0
 PA7
-Text Label 1750 5500 0    50   ~ 0
+Text Label 2000 5450 0    50   ~ 0
 PA6
-Text Label 1750 5400 0    50   ~ 0
+Text Label 2000 5350 0    50   ~ 0
 PA5
-Text Label 1750 5300 0    50   ~ 0
+Text Label 2000 5250 0    50   ~ 0
 PA4
 Wire Notes Line
 	2350 6500 2350 7700
@@ -875,7 +851,7 @@ F 3 "" H 1550 7500 50  0001 C CNN
 	1    1550 7500
 	1    0    0    -1  
 $EndComp
-Text Label 2550 5550 0    50   ~ 0
+Text Label 1000 5150 0    50   ~ 0
 VUSB
 $Comp
 L Device:D_Schottky_Small D?
@@ -951,34 +927,34 @@ Text Label 3050 2150 2    50   ~ 0
 BUTTON
 Wire Notes Line
 	10600 4600 7500 4600
-Text Label 1000 5650 0    50   ~ 0
+Text Label 1000 5850 0    50   ~ 0
 PA13
-Text Label 1000 5550 0    50   ~ 0
+Text Label 1000 5750 0    50   ~ 0
 PA14
-Text Label 1000 5150 0    50   ~ 0
+Text Label 1000 5350 0    50   ~ 0
 RESET
 $Comp
 L Connector_Generic:Conn_01x05 J?
 U 1 1 5C29837D
-P 1550 5500
+P 1800 5450
 AR Path="/5BD64BD8/5C29837D" Ref="J?"  Part="1" 
 AR Path="/5C29837D" Ref="J3"  Part="1" 
-F 0 "J3" H 1629 5492 50  0000 L CNN
-F 1 "GPIO" H 1629 5401 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 1550 5500 50  0001 C CNN
-F 3 "~" H 1550 5500 50  0001 C CNN
-	1    1550 5500
+F 0 "J3" H 1879 5442 50  0000 L CNN
+F 1 "GPIO" H 1879 5351 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 1800 5450 50  0001 C CNN
+F 3 "~" H 1800 5450 50  0001 C CNN
+	1    1800 5450
 	-1   0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x08 J?
+L Connector_Generic:Conn_01x12 J?
 U 1 1 5C3E2B10
 P 800 5550
 AR Path="/5BD64BD8/5C3E2B10" Ref="J?"  Part="1" 
 AR Path="/5C3E2B10" Ref="J7"  Part="1" 
 F 0 "J7" H 879 5542 50  0000 L CNN
 F 1 "GPIO" H 879 5451 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" H 800 5550 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x12_P2.54mm_Vertical" H 800 5550 50  0001 C CNN
 F 3 "~" H 800 5550 50  0001 C CNN
 	1    800  5550
 	-1   0    0    1   
@@ -1274,7 +1250,7 @@ F 4 "0603" H -400 -200 50  0001 C CNN "Package"
 	1    9700 5400
 	1    0    0    -1  
 $EndComp
-Text Label 2550 5350 0    50   ~ 0
+Text Label 1000 4950 0    50   ~ 0
 VIN
 $Comp
 L Device:Battery_Cell J?
@@ -1632,4 +1608,19 @@ Wire Wire Line
 Wire Wire Line
 	5050 1950 5050 1450
 Connection ~ 5050 1450
+$Comp
+L power:GND #PWR?
+U 1 1 5E3CF092
+P 1350 5350
+F 0 "#PWR?" H 1350 5100 50  0001 C CNN
+F 1 "GND" H 1355 5177 50  0000 C CNN
+F 2 "" H 1350 5350 50  0001 C CNN
+F 3 "" H 1350 5350 50  0001 C CNN
+	1    1350 5350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1350 5350 1350 5250
+Wire Wire Line
+	1350 5250 1000 5250
 $EndSCHEMATC
