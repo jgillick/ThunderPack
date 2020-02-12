@@ -18,8 +18,8 @@
 ## along with this library.  If not, see <http://www.gnu.org/licenses/>.
 ##
 
-LIB_TARGET = stm32/l0
-OPENCM3_DIR ?= $(realpath ./lib/libopencm3)
+LIB_TARGET = stm32/f4
+OPENCM3_DIR ?= $(realpath ./common/libopencm3)
 
 PREFIX		?= arm-none-eabi
 
@@ -40,7 +40,7 @@ ifeq (,$(wildcard $(OPENCM3_DIR)))
 	$(info * git submodule update)
 	$(info * make)
 	$(error )
-else 
+else
 	$(Q)$(MAKE) -C $(OPENCM3_DIR) lib TARGETS="$(LIB_TARGET)"
 endif
 

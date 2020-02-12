@@ -35,6 +35,9 @@ BUILD_DIR ?= build
 OPT ?= -Os
 CSTD ?= -std=c99
 
+# Put linker script in build directory
+LDSCRIPT = $(BUILD_DIR)/generated.$(DEVICE).ld
+
 # Be silent per default, but 'make V=1' will show all compiler calls.
 # If you're insane, V=99 will print out all sorts of things.
 V?=0
@@ -49,6 +52,7 @@ CC	= $(PREFIX)gcc
 LD	= $(PREFIX)gcc
 OBJCOPY	= $(PREFIX)objcopy
 OBJDUMP	= $(PREFIX)objdump
+SZ = $(PREFIX)size
 
 # DFU Util values
 DFU_UTIL ?= dfu-util
@@ -113,7 +117,7 @@ LDLIBS += -Wl,--start-group -lc -lgcc -lnosys -Wl,--end-group
 %: s.%
 %: SCCS/s.%
 
-all: lib-check $(BUILD_DIR)/$(PROJECT).elf $(BUILD_DIR)/$(PROJECT).bin
+all: lib-check $(BUILD_DIR)/$(PROJECT).elf $(BUILD_DIR)/$(PROJECT).bin size
 flash: $(PROJECT).flash
 
 # error if not using linker script generator
@@ -150,6 +154,9 @@ $(BUILD_DIR)/$(PROJECT).elf: $(OBJS) $(LDSCRIPT) $(LIBDEPS)
 $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf
 	@printf "  OBJCOPY\t$@\n"
 	$(Q)$(OBJCOPY) -O binary  $< $@
+
+size: $(BUILD_DIR)/$(PROJECT).elf
+	$(SZ) $(BUILD_DIR)/$(PROJECT).elf
 
 %.lss: $(BUILD_DIR)/%.elf
 	$(OBJDUMP) -h -S $< > $@
