@@ -13,7 +13,7 @@ CHIBIOS = ../common/ChibiOS
 # Directory with board.[ch] files
 BOARD_DIR = ../common/board
 
-# Conf directory. 
+# Conf directory.
 # (should contain halconf.h, mcuconf.h, chconf.h & stm32l0xx_hal_conf)
 CONFDIR = ../common/conf
 

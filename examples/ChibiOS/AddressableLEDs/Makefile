@@ -20,7 +20,7 @@ BOARD_DIR = ../common/board
 CUBEMX_DRIVERS = ../common/drivers
 
 # Conf directory.
-#(should contain halconf.h, mcuconf.h, chconf.h & stm32l0xx_hal_conf)
+# should contain halconf.h, mcuconf.h, chconf.h
 CONFDIR = ../common/conf
 
 ##############################################################################

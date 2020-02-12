@@ -9,10 +9,10 @@
 #define LED_COUNT 4
 
 int leds[] = {
-  LINE_LED_1, // LED 1
-  LINE_LED_2, // LED 2
-  LINE_LED_3, // LED 3
-  LINE_LED_4, // LED 4
+  LINE_LED1, // LED 1
+  LINE_LED2, // LED 2
+  LINE_LED3, // LED 3
+  LINE_LED4, // LED 4
 };
 
 /*

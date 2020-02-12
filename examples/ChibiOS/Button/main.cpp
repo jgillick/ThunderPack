@@ -11,18 +11,18 @@ int main(void) {
   chSysInit();
 
   // Set LED mode to digital output
-  palSetLineMode(LINE_LED_1, PAL_MODE_OUTPUT_PUSHPULL);
+  palSetLineMode(LINE_LED1, PAL_MODE_OUTPUT_PUSHPULL);
 
   // Main loop
   while (1) {
     // Turn LED on when button is pressed
-    unsigned int btnVal = palReadLine(LINE_USER_BTN);
+    unsigned int btnVal = palReadLine(LINE_BUTTON);
     if (btnVal) {
-      palSetLine(LINE_LED_1);
+      palSetLine(LINE_LED1);
     } else {
-      palClearLine(LINE_LED_1);
+      palClearLine(LINE_LED1);
     }
-    
+
     chThdSleepMilliseconds(10);
   }
 }
