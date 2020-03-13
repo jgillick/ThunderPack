@@ -95,12 +95,18 @@
  * @brief The duty cycle multiplier for a binary 1.
  * i.e. .75 = 75% duty
  */
+// WS2812
+// #define BINARY_1_DUTY_MULTIPLIER 0.56
+// WS2812B
 #define BINARY_1_DUTY_MULTIPLIER 0.66
 
 /**
  * @brief The duty cycle multiplier for a binary 0.
  * i.e. .75 = 75% duty
  */
+// WS2812
+// #define BINARY_0_DUTY_MULTIPLIER 0.28
+// WS2812B
 #define BINARY_0_DUTY_MULTIPLIER 0.32
 
 #endif
