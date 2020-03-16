@@ -2,12 +2,12 @@
 /**
   ******************************************************************************
   * @file           : usbd_desc.c
-  * @version        : v2.0_Cube
+  * @version        : v1.0_Cube
   * @brief          : Header for usbd_conf.c file.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license

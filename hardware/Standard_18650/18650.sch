@@ -6,7 +6,7 @@ encoding utf-8
 Sheet 1 1
 Title "Thunder Pack"
 Date ""
-Rev "1"
+Rev "1.1a2"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -68,7 +68,6 @@ Wire Wire Line
 Wire Wire Line
 	2800 7350 2750 7350
 Connection ~ 2750 7350
-NoConn ~ 3100 7050
 Text Label 1700 1450 0    50   ~ 0
 VIN
 Wire Wire Line
@@ -1841,4 +1840,5 @@ Wire Wire Line
 Wire Wire Line
 	2650 5650 2650 5750
 Connection ~ 2650 5750
+NoConn ~ 3100 7050
 $EndSCHEMATC

@@ -10,7 +10,7 @@
 #include "ws2812b_conf.h"
 #include "ws2812b.h"
 
-#define LED_COUNT 16
+#define LED_COUNT 20
 
 void SystemClock_Config(void);
 

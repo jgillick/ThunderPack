@@ -49,6 +49,7 @@ C_SOURCES =  \
 Src/main.c \
 Src/stm32f4xx_it.c \
 Src/stm32f4xx_hal_msp.c \
+$(SHARED_DIR)/thunderpack.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c \
@@ -120,6 +121,7 @@ AS_INCLUDES =
 # C includes
 C_INCLUDES =  \
 -IInc \
+-I$(SHARED_DIR) \
 -I$(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Inc \
 -I$(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy \
 -I$(SHARED_DIR)/Drivers/CMSIS/Device/ST/STM32F4xx/Include \

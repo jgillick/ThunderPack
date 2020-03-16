@@ -47,16 +47,9 @@ SHARED_DIR = ../shared
 # C sources
 C_SOURCES =  \
 Src/main.c \
-Src/usb_device.c \
-Src/usbd_conf.c \
-Src/usbd_desc.c \
-Src/usbd_cdc_if.c \
 Src/stm32f4xx_it.c \
 Src/stm32f4xx_hal_msp.c \
 $(SHARED_DIR)/thunderpack.c \
-$(SHARED_DIR)/Drivers/STM32L0xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c \
-$(SHARED_DIR)/Drivers/STM32L0xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c \
-$(SHARED_DIR)/Drivers/STM32L0xx_HAL_Driver/Src/stm32f4xx_ll_usb.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c \
@@ -72,11 +65,8 @@ $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c \
-Src/system_stm32f4xx.c \
-$(SHARED_DIR)/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c \
-$(SHARED_DIR)/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c \
-$(SHARED_DIR)/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c \
-$(SHARED_DIR)/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
+$(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c \
+Src/system_stm32f4xx.c
 
 # ASM sources
 ASM_SOURCES = $(SHARED_DIR)/startup_stm32f412cx.s
@@ -135,8 +125,6 @@ C_INCLUDES =  \
 -I$(SHARED_DIR) \
 -I$(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Inc \
 -I$(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy \
--I$(SHARED_DIR)/Middlewares/ST/STM32_USB_Device_Library/Core/Inc \
--I$(SHARED_DIR)/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc \
 -I$(SHARED_DIR)/Drivers/CMSIS/Device/ST/STM32F4xx/Include \
 -I$(SHARED_DIR)/Drivers/CMSIS/Include \
 -I$(SHARED_DIR)/Drivers/CMSIS/Include
