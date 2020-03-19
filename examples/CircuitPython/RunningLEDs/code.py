@@ -29,5 +29,5 @@ while True:
     
     # Increment
     i += 1
-    i = i % len(leds)
+    i = i % len(leds) # wrap around back to 0 when we get to the end
     
