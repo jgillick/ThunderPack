@@ -50,6 +50,7 @@ Src/main.c \
 Src/stm32f4xx_it.c \
 Src/stm32f4xx_hal_msp.c \
 $(SHARED_DIR)/thunderpack.c \
+$(SHARED_DIR)/system_stm32f4xx.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c \
@@ -65,10 +66,9 @@ $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c \
 $(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c \
-Src/system_stm32f4xx.c
 
 # ASM sources
-ASM_SOURCES = $(SHARED_DIR)/startup_stm32f412cx.s
+ASM_SOURCES = $(SHARED_DIR)/startup_stm32f411xe.s
 
 
 #######################################
@@ -113,7 +113,7 @@ AS_DEFS =
 # C defines
 C_DEFS =  \
 -DUSE_HAL_DRIVER \
--DSTM32F412Cx \
+-DSTM32F411xE \
 
 # AS includes
 AS_INCLUDES =
@@ -146,7 +146,7 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 # LDFLAGS
 #######################################
 # link script
-LDSCRIPT = $(SHARED_DIR)/STM32F412CGUx_FLASH.ld
+LDSCRIPT = $(SHARED_DIR)/STM32F411CEUx_FLASH.ld
 
 # libraries
 LIBS = -lc -lm -lnosys

@@ -1,18 +1,18 @@
-#include "main.h"
+#include "stm32f4xx_hal.h"
 #include "thunderpack.h"
 
 #define SPEED_SLOW 800
 #define SPEED_FAST 200
 
-static void MX_GPIO_Init(void);
+static void gpio_init(void);
 
 int main(void) {
   // Init the system
   HAL_Init();
-  init_system_clock();
+  thunderpack_clock_init();
 
   // Setup GPIO
-  MX_GPIO_Init();
+  gpio_init();
 
   int blinkSpeed = SPEED_SLOW;
   while (1) {
@@ -29,9 +29,9 @@ int main(void) {
 }
 
 /**
-  * GPIO Initialization Function
+  * Setup GPIO pins
   */
-static void MX_GPIO_Init(void) {
+static void gpio_init(void) {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   // GPIO Ports Clock Enable
@@ -54,10 +54,4 @@ static void MX_GPIO_Init(void) {
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-}
-
-/**
-  * This function is executed in case of error occurrence.
-  */
-void Error_Handler(void) {
 }

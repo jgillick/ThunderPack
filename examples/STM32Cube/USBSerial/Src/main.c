@@ -6,23 +6,21 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "stm32f4xx_hal.h"
 
 #include "main.h"
-#include "usb_device.h"
 #include "usbd_cdc_if.h"
+#include "usb_device.h"
 #include "thunderpack.h"
 
-void SystemClock_Config(void);
-void init_usb_clock(void);
-static void MX_GPIO_Init(void);
+static void gpio_init(void);
 
 int main(void) {
-  // Init the system
   HAL_Init();
-  SystemClock_Config();
+  thunderpack_clock_init();
 
   // Setup GPIO & Serial/USB
-  MX_GPIO_Init();
+  gpio_init();
   MX_USB_DEVICE_Init();
   HAL_Delay(1000);
 
@@ -40,37 +38,16 @@ int main(void) {
   }
 }
 
-void SystemClock_Config(void) {
-  init_system_clock();
-  init_usb_clock();
-}
-
 /**
-  * System Clock Configuration
+  * Setup GPIO pins
   */
-void init_usb_clock(void) {
-  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
-
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_CLK48;
-  PeriphClkInitStruct.PLLI2S.PLLI2SN = 72;
-  PeriphClkInitStruct.PLLI2S.PLLI2SM = 12;
-  PeriphClkInitStruct.PLLI2S.PLLI2SR = 2;
-  PeriphClkInitStruct.PLLI2S.PLLI2SQ = 3;
-  PeriphClkInitStruct.Clk48ClockSelection = RCC_CLK48CLKSOURCE_PLLI2SQ;
-  PeriphClkInitStruct.PLLI2SSelection = RCC_PLLI2SCLKSOURCE_PLLSRC;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK) {
-    Error_Handler();
-  }
-}
-
-/**
-  * GPIO Initialization Function
-  */
-static void MX_GPIO_Init(void) {
+static void gpio_init(void) {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
+  __HAL_RCC_GPIOA_CLK_ENABLE(); // usb
+  __HAL_RCC_GPIOB_CLK_ENABLE(); // button
+
   // Button - PB4
-  __HAL_RCC_GPIOB_CLK_ENABLE();
   GPIO_InitStruct.Pin = GPIO_PIN_4;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -78,7 +55,8 @@ static void MX_GPIO_Init(void) {
 }
 
 /**
-  * This function is executed in case of error occurrence.
+  * This function is executed in case of errors
+  * @retval None
   */
 void Error_Handler(void) {
 }

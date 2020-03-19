@@ -1,4 +1,4 @@
-#include "main.h"
+#include "stm32f4xx_hal.h"
 #include "thunderpack.h"
 
 #define MAX_PWM   0xFFF
@@ -7,15 +7,17 @@
 
 TIM_HandleTypeDef htim2;
 
-static void MX_TIM2_Init(void);
+static void timer_init(void);
+static void gpio_init(void);
 
 int main(void) {
   // Init the system
   HAL_Init();
-  init_system_clock();
+  thunderpack_clock_init();
 
   // Setup/start PWM
-  MX_TIM2_Init();
+  timer_init();
+  gpio_init();
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
 
   int8_t direction = 1;
@@ -36,35 +38,48 @@ int main(void) {
 }
 
 /**
-  * TIM2 Initialization Function
+  * Setup PWM timer
   */
-static void MX_TIM2_Init(void) {
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+static void timer_init(void) {
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
 
+  __HAL_RCC_TIM2_CLK_ENABLE();
+
+  // Timer
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 0;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 4095;
+  htim2.Init.Period = MAX_PWM;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
-  HAL_TIM_Base_Init(&htim2);
-
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig);
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   HAL_TIM_PWM_Init(&htim2);
 
+  // Sync
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig);
 
+  // PWM
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 4095;
+  sConfigOC.Pulse = 0;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_ENABLE;
   HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1);
-
-  HAL_TIM_MspPostInit(&htim2);
 }
 
+/**
+ * Setup GPIO pins
+ */
+static void gpio_init(void) {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+  
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Alternate = GPIO_AF1_TIM2;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+}
