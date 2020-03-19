@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <math.h>
-#include "stm32l0xx_hal.h"
-#include "stm32l0xx_hal_dma.h"
+#include "stm32f4xx_hal.h"
+#include "stm32f4xx_hal_dma.h"
 #include "ws2812b.h"
 
 /**
@@ -319,8 +319,14 @@ void timer_init() {
  */
 void dma_init() {
   __HAL_RCC_DMA1_CLK_ENABLE();
+
+#ifdef DMA_STREAM
+  hdma_tim.Instance = DMA_STREAM;
+  hdma_tim.Init.Channel = DMA_CHANNEL;
+#else
   hdma_tim.Instance = DMA_CHANNEL;
   hdma_tim.Init.Request = DMA_REQUEST;
+#endif 
   hdma_tim.Init.Direction = DMA_MEMORY_TO_PERIPH;
   hdma_tim.Init.PeriphInc = DMA_PINC_DISABLE;
   hdma_tim.Init.MemInc = DMA_MINC_ENABLE;
@@ -328,6 +334,10 @@ void dma_init() {
   hdma_tim.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
   hdma_tim.Init.Mode = DMA_CIRCULAR;
   hdma_tim.Init.Priority = DMA_PRIORITY_VERY_HIGH;
+
+#ifdef DMA_FIFOMODE_DISABLE
+  hdma_tim.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+#endif
 
   hdma_tim.XferCpltCallback = dma_transfer_complete_handler;
   hdma_tim.XferHalfCpltCallback = dma_half_transfer_handler;

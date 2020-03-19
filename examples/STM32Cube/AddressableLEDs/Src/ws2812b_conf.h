@@ -59,22 +59,23 @@
 /**
  * @brief The DMA channel to use.
  */
-#define DMA_CHANNEL DMA1_Channel3
+#define DMA_CHANNEL DMA_CHANNEL_5
 
 /**
- * @brief The DMA request to use.
+ * @brief The DMA stream to use. (if the DMA uses "streams")
  */
-#define DMA_REQUEST DMA_REQUEST_10
+#define DMA_STREAM DMA1_Stream4
+
+/**
+ * @brief The DMA request to use. (if the chip uses "requests")
+ */
+// #define DMA_REQUEST DMA_REQUEST_10
 
 /**
  * @brief DMA Handle used for linking DMA to the correct capture compare index.
  */
 #define DMA_HANDLE_INDEX TIM_DMA_ID_CC1
 
-/**
- * @brief The DMA interrupt base name to use
- */
-#define DMA_INTERRUPT_BASE DMA1_Channel2_3_IRQ
 
 /* LED Protocol -----------------------------------------------------------*/
 
