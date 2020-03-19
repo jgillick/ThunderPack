@@ -26,6 +26,6 @@ You can see comprehensive instructions with screenshots [here](https://learn.ada
 ### Using CircuitPython
 If everything worked right, when you restart your board it will mount to your computer as a disk drive called "CIRCUITPY". This can take up to 30 seconds on the first boot.
 
-To try an example, simply add the `code.py` file to the mounted drive and in few seconds the board will update to run the example.
+To try an example, simply add the `code.py` (and the `lib` directoy, if present) file to the mounted drive and in few seconds the board will update to run the example.
 
 Learn more at [CircuitPython](https://circuitpython.org/)
