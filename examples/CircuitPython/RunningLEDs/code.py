@@ -9,7 +9,7 @@ leds = [
     digitalio.DigitalInOut(LED3),
     digitalio.DigitalInOut(LED4),
 ]
-btn = digitalio.DigitalInOut(PB04)
+btn = digitalio.DigitalInOut(BUTTON)
 btn.direction = digitalio.Direction.INPUT
 
 # Set LEDs to output
