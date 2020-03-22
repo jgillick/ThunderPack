@@ -9,6 +9,7 @@ build/
 .dep/
 *.elf
 *.bin
+!circuitpy-thunderpack.bin
 generated.STM32*
 
 # IDEs
