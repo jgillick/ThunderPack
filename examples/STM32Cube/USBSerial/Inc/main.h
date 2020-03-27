@@ -19,6 +19,8 @@
 #ifndef __MAIN_H
 #define __MAIN_H
 
+#include <stdint.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif

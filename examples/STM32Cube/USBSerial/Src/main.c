@@ -26,13 +26,16 @@ int main(void) {
 
   uint8_t buf[] = "0\r\n";
   uint8_t btnState = 0;
+  uint8_t lastBtnState = 0;
   while (1) {
-    // Get button state
+    // Print button state
     btnState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
-
-    // Convert to character and output to serial console
-    buf[0] = btnState + '0';
-    CDC_Transmit_FS(buf, 3);
+    if (btnState != lastBtnState) {
+      // Convert to character and output to serial console
+      buf[0] = btnState + '0';
+      CDC_Transmit_FS(buf, 3);
+    }
+    lastBtnState = btnState;
 
     HAL_Delay(200);
   }
@@ -52,6 +55,14 @@ static void gpio_init(void) {
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  // LED 1: PA0
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3, GPIO_PIN_RESET);
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
 
 /**
