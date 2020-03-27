@@ -44,6 +44,12 @@
 void ws2812b_init(size_t num_leds);
 
 /**
+ * @brief Send the color data to all LEDs.
+ * Calling this is usually not necessary if AUTO_UPDATE is set to 1 in the conf header.
+ */
+void ws2812_update(void);
+
+/**
  * @brief This needs to be called from the correct DMA interrupt handler.
  * By default, your code will need to define the DMA1_Channel2_3_IRQHandler
  * interrupt handler and call this function inside of it.
@@ -88,7 +94,6 @@ void ws2812b_led_all(uint8_t r, uint8_t g, uint8_t b);
  * @param  rgbw   Color value (0x00000000 - 0xRRGGBB[WW])
  */
 void ws2812b_led_rgb(size_t index, uint32_t rgb);
-
 
 /**
  * @brief  Same as `ws2812b_led_rgb`, but sets this color for ALL LEDs.

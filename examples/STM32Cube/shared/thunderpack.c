@@ -8,6 +8,8 @@ void thunderpack_clock_init() {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
+  __HAL_RCC_SYSCFG_CLK_ENABLE();
+
   // Configure the main internal regulator output voltage 
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);

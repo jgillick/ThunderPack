@@ -228,7 +228,7 @@ endif
 # Flash to the device using dfu-util
 flash: all
 	@echo Flashing via DFU
-	$(DFU_UTIL) -d $(DFU_UTIL) -a 0 -s $(DFU_ADDR) -D $(BUILDDIR)/$(PROJECT).bin $(DFU_FLAGS)
+	$(DFU_UTIL) -d $(DFU_DEVICE) -a 0 -s $(DFU_ADDR) -D $(BUILDDIR)/$(PROJECT).bin $(DFU_FLAGS)
 
 #
 # Custom rules

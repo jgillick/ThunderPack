@@ -124,7 +124,6 @@ C_INCLUDES =  \
 -I$(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Inc \
 -I$(SHARED_DIR)/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy \
 -I$(SHARED_DIR)/Drivers/CMSIS/Device/ST/STM32F4xx/Include \
--I$(SHARED_DIR)/Drivers/CMSIS/Include \
 -I$(SHARED_DIR)/Drivers/CMSIS/Include
 
 
@@ -189,7 +188,7 @@ $(BUILD_DIR):
 #######################################
 flash: $(BUILD_DIR)/$(TARGET).bin
 	@echo Flashing via DFU
-	$(DFU_UTIL) -d $(DFU_UTIL) -a 0 -s $(DFU_ADDR) -D $(BUILD_DIR)/$(TARGET).bin $(DFU_FLAGS)
+	$(DFU_UTIL) -d $(DFU_DEVICE) -a 0 -s $(DFU_ADDR) -D $(BUILD_DIR)/$(TARGET).bin $(DFU_FLAGS)
 
 #######################################
 # clean up

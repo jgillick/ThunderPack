@@ -139,7 +139,6 @@ C_INCLUDES =  \
 -I$(SHARED_DIR)/Middlewares/ST/STM32_USB_Device_Library/Core/Inc \
 -I$(SHARED_DIR)/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc \
 -I$(SHARED_DIR)/Drivers/CMSIS/Device/ST/STM32F4xx/Include \
--I$(SHARED_DIR)/Drivers/CMSIS/Include \
 -I$(SHARED_DIR)/Drivers/CMSIS/Include
 
 

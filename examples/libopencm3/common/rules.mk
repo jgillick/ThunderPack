@@ -166,7 +166,7 @@ size: $(BUILD_DIR)/$(PROJECT).elf
 
 %.flash: $(BUILD_DIR)/%.bin
 	@printf "  FLASH\t$<\n"
-	$(DFU_UTIL) -d $(DFU_UTIL) -a 0 -s $(DFU_ADDR) -D $(BUILD_DIR)/$(PROJECT).bin $(DFU_FLAGS)
+	$(DFU_UTIL) -d $(DFU_DEVICE) -a 0 -s $(DFU_ADDR) -D $(BUILD_DIR)/$(PROJECT).bin $(DFU_FLAGS)
 
 # Verify the lib has been initialized
 lib-check:

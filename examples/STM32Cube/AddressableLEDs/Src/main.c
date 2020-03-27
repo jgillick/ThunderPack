@@ -24,7 +24,6 @@ void colorWipe(uint8_t r, uint8_t g, uint8_t b) {
   }
 }
 
-
 /**
   * @brief  The application entry point.
   * @retval int
@@ -34,10 +33,11 @@ int main(void) {
   thunderpack_clock_init();
 
   // Setup DMA interrupt for ws2812b
-  HAL_NVIC_SetPriority(DMA1_Stream4_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Stream4_IRQn);
+  HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
 
   // Initialize the ws2812b lib
+  __HAL_RCC_GPIOA_CLK_ENABLE();
   ws2812b_init(LED_COUNT);
 
   // Start making colors
@@ -53,7 +53,7 @@ int main(void) {
 /**
  * @brief DMA1 global interrupt
  */
-void DMA1_Stream4_IRQHandler(void) {
+void DMA1_Stream5_IRQHandler(void) {
   ws2812b_interrupt_handler();
 }
 
