@@ -194,7 +194,7 @@ $(BUILD_DIR):
 #######################################
 flash: $(BUILD_DIR)/$(TARGET).bin
 	@echo Flashing via DFU
-	$(DFU_UTIL) -d $(DFU_UTIL) -a 0 -s $(DFU_ADDR) -D $(BUILD_DIR)/$(TARGET).bin $(DFU_FLAGS)
+	$(DFU_UTIL) -d $(DFU_DEVICE) -a 0 -s $(DFU_ADDR) -D $(BUILD_DIR)/$(TARGET).bin $(DFU_FLAGS)
 
 #######################################
 # clean up
