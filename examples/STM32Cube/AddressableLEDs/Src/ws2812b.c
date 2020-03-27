@@ -308,15 +308,6 @@ void gpio_init() {
   GPIO_PWMStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   GPIO_PWMStruct.Alternate = DATA_PIN_AF;
   HAL_GPIO_Init(DATA_PORT, &GPIO_PWMStruct);
-
-  // GPIO_InitTypeDef GPIO_InitStruct = {0};
-  // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_8, GPIO_PIN_RESET);
-  // GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_8;
-  // GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  // GPIO_InitStruct.Pull = GPIO_NOPULL;
-  // GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  // HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-  // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_8, GPIO_PIN_SET);
 }
 
 /**
@@ -462,7 +453,6 @@ static void led_start_reset_pulse() {
  * @param[out] ptr    Output array with at least BITS_PER_LED-words of memory
  */
 static void led_fill_led_pwm_data(size_t ledIdx, uint16_t* ptr) {
-  // HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
   int8_t i;
   size_t byteIdx = BYTES_PER_LED * ledIdx;
 
@@ -572,7 +562,6 @@ static void led_update_sequence(uint8_t tc) {
  * The DMA data half transfer complete interrupt handler
  */
 static void dma_half_transfer_handler(TIM_HandleTypeDef *htim) {
-  // HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_6);
   led_update_sequence(0);
 }
 
@@ -580,7 +569,6 @@ static void dma_half_transfer_handler(TIM_HandleTypeDef *htim) {
  * The DMA data transfer complete interrupt handler
  */
 static void dma_transfer_complete_handler(TIM_HandleTypeDef *htim) {
-  // HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_8);
   led_update_sequence(1);
 }
 

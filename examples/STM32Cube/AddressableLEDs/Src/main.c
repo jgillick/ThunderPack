@@ -37,7 +37,6 @@ int main(void) {
   HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
 
   // Initialize the ws2812b lib
-  __HAL_RCC_GPIOA_CLK_ENABLE();
   ws2812b_init(LED_COUNT);
 
   // Start making colors
