@@ -34,7 +34,7 @@
  * Board identifier.
  */
 #define BOARD_THUNDERPACK
-#define BOARD_NAME                  "ThunderPack-STM32F412Cx"
+#define BOARD_NAME                  "ThunderPack-STM32F411CE"
 
 /*
  * Board oscillators-related settings.
@@ -45,10 +45,10 @@
 #endif
 
 #if !defined(STM32_HSECLK)
-#define STM32_HSECLK                8000000U
+#define STM32_HSECLK                24000000U
 #endif
 
-#define STM32_HSE_BYPASS
+// #define STM32_HSE_BYPASS
 
 /*
  * Board voltages.
@@ -59,7 +59,7 @@
 /*
  * MCU type as defined in the ST header.
  */
-#define STM32F412Cx
+#define STM32F411xE
 
 /*
  * IO pins assignments.
@@ -194,10 +194,10 @@
 /*
  * GPIOA setup:
  *
- * PA0  - TIM2_CH1          (alternate 2).
- * PA1  - TIM2_CH2          (alternate 2).
- * PA2  - TIM2_CH3          (alternate 2).
- * PA3  - TIM2_CH4          (alternate 2).
+ * PA0  - TIM2_CH1          (alternate 1).
+ * PA1  - TIM2_CH2          (alternate 1).
+ * PA2  - TIM2_CH3          (alternate 1).
+ * PA3  - TIM2_CH4          (alternate 1).
  * PA4  - SPI3_NSS          (input pullup).
  * PA5  - SPI1_SCK          (input pullup).
  * PA6  - SPI1_MISO         (input pullup).
@@ -291,10 +291,10 @@
                                      PIN_ODR_HIGH(GPIOA_PIN13) |         \
                                      PIN_ODR_HIGH(GPIOA_PIN14) |         \
                                      PIN_ODR_HIGH(GPIOA_PIN15))
-#define VAL_GPIOA_AFRL              (PIN_AFIO_AF(GPIOA_LED1, 2U) |       \
-                                     PIN_AFIO_AF(GPIOA_LED2, 2U) |       \
-                                     PIN_AFIO_AF(GPIOA_LED3, 2U) |       \
-                                     PIN_AFIO_AF(GPIOA_LED4, 2U) |       \
+#define VAL_GPIOA_AFRL              (PIN_AFIO_AF(GPIOA_LED1, 1U) |       \
+                                     PIN_AFIO_AF(GPIOA_LED2, 1U) |       \
+                                     PIN_AFIO_AF(GPIOA_LED3, 1U) |       \
+                                     PIN_AFIO_AF(GPIOA_LED4, 1U) |       \
                                      PIN_AFIO_AF(GPIOA_PIN4, 0U) |       \
                                      PIN_AFIO_AF(GPIOA_PIN5, 0U) |       \
                                      PIN_AFIO_AF(GPIOA_PIN6, 0U) |       \

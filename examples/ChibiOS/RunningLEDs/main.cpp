@@ -9,10 +9,10 @@
 #define LED_COUNT 4
 
 int leds[] = {
-  LINE_LED1, // LED 1
-  LINE_LED2, // LED 2
-  LINE_LED3, // LED 3
-  LINE_LED4, // LED 4
+  LINE_LED1,
+  LINE_LED2,
+  LINE_LED3,
+  LINE_LED4,
 };
 
 /*
@@ -27,19 +27,22 @@ int main(void) {
   uint8_t i;
   for (i = 0; i < LED_COUNT; i++) {
     palSetLineMode(leds[i], PAL_MODE_OUTPUT_PUSHPULL);
+    palClearLine(LINE_LED1);
   }
 
   // Run LEDs
   uint8_t led_idx = 0;
+  uint8_t led_state = PAL_HIGH;
   while (1) {
-    // Toggle the current LED
-    palToggleLine(leds[led_idx]);
-    chThdSleepMilliseconds(SPEED);
+    palWriteLine(leds[led_idx], led_state);
 
     // Increment LED
     led_idx++;
     if (led_idx >= LED_COUNT) {
       led_idx = 0;
+      led_state = !led_state;
     }
+
+    chThdSleepMilliseconds(SPEED);
   }
 }
