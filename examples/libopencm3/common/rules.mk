@@ -29,6 +29,7 @@
 # No support for magically finding the library.
 # C++ hasn't been actually tested with this..... sorry bout that. ;)
 # Second expansion/secondary not set, add this if you need them.
+include $(OPENCM3_DIR)/mk/genlink-config.mk
 
 PROJECT ?= program
 BUILD_DIR ?= build
@@ -63,6 +64,7 @@ DFU_FLAGS = # Other flags to send to the DFU_UTIL
 OPENCM3_INC = $(OPENCM3_DIR)/include
 
 # Inclusion of library header files
+INCLUDES += -I${COMMON_DIR}
 INCLUDES += $(patsubst %,-I%, . $(OPENCM3_INC) )
 
 OBJS += $(CFILES:%.c=$(BUILD_DIR)/%.o)
@@ -186,3 +188,5 @@ clean:
 
 .PHONY: all clean flash
 -include $(OBJS:.o=.d)
+
+include $(OPENCM3_DIR)/mk/genlink-rules.mk

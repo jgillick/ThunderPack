@@ -5,6 +5,7 @@
 
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
+#include "thunderpack.h"
 
 #define LED_COUNT 4
 
@@ -16,16 +17,16 @@ int led_pins[] = {
 };
 
 static void gpio_setup(void);
-static void pause(int duration);
 
 int main(void) {
+  thunderpack_clock_init();
   gpio_setup();
 
   uint8_t led_idx = 0;
   while (1) {
     // Toggle the current LED
     gpio_toggle(GPIOA, led_pins[led_idx]);
-    pause(40000);
+    delay(150);
 
     // Increment LED
     led_idx++;
@@ -44,13 +45,5 @@ static void gpio_setup(void) {
   uint8_t i;
   for (i = 0; i < LED_COUNT; i++) {
     gpio_mode_setup(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, led_pins[i]);
-  }
-}
-
-// Pause execution for an amount of time
-static void pause(int duration) {
-  int i;
-  for (i = 0; i < duration; i++) {
-    __asm__("nop");
   }
 }

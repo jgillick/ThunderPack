@@ -1,11 +1,11 @@
-CFILES = main.c
+CFILES = main.c \
+        ../common/thunderpack.c
 
 # Device
 LIB_TARGET = stm32/f4
-DEVICE = STM32F412CGUx
+DEVICE = STM32F411CE
 
 # Makefiles
-OPENCM3_DIR = ../common/libopencm3
-include $(OPENCM3_DIR)/mk/genlink-config.mk
+COMMON_DIR = ../common
+OPENCM3_DIR = ${COMMON_DIR}/libopencm3
 include ../common/rules.mk
-include $(OPENCM3_DIR)/mk/genlink-rules.mk
