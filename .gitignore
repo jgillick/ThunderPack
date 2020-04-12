@@ -7,6 +7,8 @@ fp-info-cache
 # C/CPP Code
 build/
 .dep/
+*.o
+*.d
 *.elf
 *.bin
 !circuitpy-thunderpack.bin
@@ -17,3 +19,4 @@ generated.STM32*
 
 # OS files
 .DS_Store
+*.numbers

@@ -29,15 +29,19 @@
 # No support for magically finding the library.
 # C++ hasn't been actually tested with this..... sorry bout that. ;)
 # Second expansion/secondary not set, add this if you need them.
-include $(OPENCM3_DIR)/mk/genlink-config.mk
+
+# Generate linker file and flags
+ifneq ($(DEVICE),)
+	include $(OPENCM3_DIR)/mk/genlink-config.mk
+	# Put linker file in build directory
+	LDSCRIPT = $(BUILD_DIR)/generated.$(DEVICE).ld
+endif
 
 PROJECT ?= program
 BUILD_DIR ?= build
 OPT ?= -Os
 CSTD ?= -std=c99
 
-# Put linker script in build directory
-LDSCRIPT ?= $(BUILD_DIR)/generated.$(DEVICE).ld
 
 # Be silent per default, but 'make V=1' will show all compiler calls.
 # If you're insane, V=99 will print out all sorts of things.
