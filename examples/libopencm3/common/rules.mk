@@ -37,7 +37,7 @@ OPT ?= -Os
 CSTD ?= -std=c99
 
 # Put linker script in build directory
-LDSCRIPT = $(BUILD_DIR)/generated.$(DEVICE).ld
+LDSCRIPT ?= $(BUILD_DIR)/generated.$(DEVICE).ld
 
 # Be silent per default, but 'make V=1' will show all compiler calls.
 # If you're insane, V=99 will print out all sorts of things.

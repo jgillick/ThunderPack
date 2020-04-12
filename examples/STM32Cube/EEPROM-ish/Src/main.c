@@ -14,8 +14,8 @@
 // Number of LEDs
 #define LED_NUM           4
 
-// Define sector 0 for non-volatile memory
-// This needs to be reflected in the linker file too (STM32F411CEUx_FLASH.ld)
+// Define sector 1 for non-volatile memory
+// This needs to be reflected in the linker file too (STM32F411CEUx_FLASH_NVM.ld)
 #define MEM_FLASH_SECTOR  1          // Flash sector to use for non-volatile memory
 #define MEM_START_ADDR    0x8004000  // Memory address where non-volatile memory starts.
 #define MEM_SIZE          512        // bytes reserved for memory, this can be up to 16k
@@ -99,7 +99,6 @@ bool memory_write(uint32_t address, uint8_t value) {
 
   // Erase flash sector
   HAL_FLASH_Unlock();
-   HAL_FLASH_Unlock();
   __HAL_FLASH_CLEAR_FLAG(FLASH_FLAG_EOP | FLASH_FLAG_OPERR | FLASH_FLAG_WRPERR | FLASH_FLAG_PGAERR | FLASH_FLAG_PGSERR );
   FLASH_Erase_Sector(MEM_FLASH_SECTOR, VOLTAGE_RANGE_3);
   
