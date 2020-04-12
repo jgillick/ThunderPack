@@ -371,7 +371,6 @@ void dma_init() {
 #endif
 
   HAL_DMA_Init(&hdma_tim);
-  // LL_DMA_DisableDoubleBufferMode()
   
   uint32_t dmaIdCC;
   switch (TIMER_CHANNEL) {

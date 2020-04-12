@@ -5,7 +5,7 @@ Controls a string of addressable WS2812B LEDs, like [Neopixels](https://www.adaf
 
 From the LED strip, connect:
 
-* Data -> `PA6`
+* Data -> `PA7`
 * Power -> `Vin` or `Batt+`
 * Ground -> `GND`
 
