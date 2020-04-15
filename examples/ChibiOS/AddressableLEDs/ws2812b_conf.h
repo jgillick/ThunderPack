@@ -23,7 +23,7 @@
  * @brief The GPIO pin to output the data on.
  * This needs to be the same pin that maps to the PWM output defined with the timer.
  */
-#define DATA_PIN 6
+#define DATA_PIN 7
 
 /**
  * @brief The alternate function number to assign to this pin to tie it to the timer output.
@@ -33,14 +33,14 @@
 /* Timer ------------------------------------------------------------------*/
 
 /**
- * @brief The ChibiOS PWM timer driver (i.e. PWMD3 for TIM3)
+ * @brief The ChibiOS PWM timer driver (i.e. PWMD2 for TIM2)
  */
 #define PWM_DRIVER PWMD3
 
 /**
- * @brief The timer channel number, range: 0 - 3.
+ * @brief The timer channel number, range: 1 - 4.
  */
-#define TIMER_CHANNEL 0
+#define TIMER_CHANNEL 2
 
 /* DMA --------------------------------------------------------------------*/
 
@@ -51,15 +51,18 @@
 
 /**
  * @brief The DMA channel to use.
- * (or stream for STM32Fxxx and chips which use DMA "streams")
  */
-#define DMA_CHANNEL 3
+#define DMA_CHANNEL  5
 
 /**
- * @brief The DMA request to use.
- * (or channel for STM32Fxxx and chips which DMA "streams")
+ * @brief The DMA stream to use. (if the DMA uses "streams")
  */
-#define DMA_REQUEST 10
+#define DMA_STREAM_NUM  5
+
+/**
+ * @brief The DMA request to use. (if the chip uses "requests")
+ */
+// #define DMA_REQUEST 10
 
 /* LED Protocol -----------------------------------------------------------*/
 

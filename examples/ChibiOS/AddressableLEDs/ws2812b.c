@@ -13,15 +13,6 @@
 #endif /* !USE_RGBW */
 
 /**
- * @brief  Concatenate the symbols s1 and s2, expanding both of them
- * @param[in] s1:  The first symbol to concatenate
- * @param[in] s2:  The second symbol to concatenate
- * @return  A single symbol containing s1 expanded followed by s2 expanded
- */
-#define CONCAT_SYMBOLS(s1, s2)  s1##s2
-#define CONCAT_EXPANDED_SYMBOLS(s1, s2)  CONCAT_SYMBOLS(s1, s2)
-
-/**
  * @brief The number of bits used per LED (8 bits per byte)
  */
 #define BITS_PER_LED  (BYTES_PER_LED * 8)
@@ -35,6 +26,9 @@
  * Number of bits in the PWM buffer used by the DMA controller
  */
 #define PWM_BUFFER_SIZE  (2 * BITS_PER_LED)
+
+// Chibios channels are zero indexed
+#define TIM_CHANNEL_INTERNAL TIMER_CHANNEL - 1
 
 /**
  * Output state values
@@ -261,9 +255,13 @@ void start_output() {
   }
   dmaStreamSetTransactionSize(dma_stream, dataLen);
 
-  // The CCR register gets cleared out by dmaStreamDisable,
+  // The CR register gets cleared out by dmaStreamDisable,
   // but not set back correctly by dmaStreamEnable
+#ifdef DMA_STREAM_NUM
+  dma_stream->stream->CR |= STM32_DMA_CR_TCIE | STM32_DMA_CR_HTIE;
+#else
   dma_stream->channel->CCR |= STM32_DMA_CR_TCIE | STM32_DMA_CR_HTIE;
+#endif
 
   // Enable output
   dmaStreamEnable(dma_stream);
@@ -287,14 +285,20 @@ void timer_init() {
     .channels   = {
       [0 ... 3] = { .mode = PWM_OUTPUT_DISABLED, .callback = NULL },
     },
+    // .cr2        = TIM_CR2_CCDS,
+    // .dier       = 0 //TIM_DIER_UDE // TIM_DIER_CC2DE,
     .cr2        = 0,
-    .dier       = TIM_DIER_UDE,
+    .dier       = TIM_DIER_CC2DE,
   };
-  pwmcfg.channels[TIMER_CHANNEL].mode = PWM_OUTPUT_ACTIVE_HIGH;
+  pwmcfg.channels[TIM_CHANNEL_INTERNAL].mode = PWM_OUTPUT_ACTIVE_HIGH;
+
+  palSetPadMode(GPIOA, 4, PAL_MODE_OUTPUT_PUSHPULL);
+  palSetPadMode(GPIOA, 5, PAL_MODE_OUTPUT_PUSHPULL);
+  palSetPadMode(GPIOA, 6, PAL_MODE_OUTPUT_PUSHPULL);
 
   pwmStart(&PWM_DRIVER, &pwmcfg);
   palSetPadMode(DATA_PORT, DATA_PIN, PAL_MODE_ALTERNATE(DATA_PIN_AF_NUM));
-  pwmEnableChannel(&PWM_DRIVER, TIMER_CHANNEL, 0);
+  pwmEnableChannel(&PWM_DRIVER, TIM_CHANNEL_INTERNAL, 0);
 
   // Save the binary 1 & 0 PWM values so we don't need to calculate them at runtime
   binary_1 = ceil(pwmcfg.period * BINARY_1_DUTY_MULTIPLIER);
@@ -305,16 +309,21 @@ void timer_init() {
  * @brief Setup the DMA to Timer
  */
 void dma_init() {
-  dma_stream = dmaStreamAlloc(
-    STM32_DMA_STREAM_ID(DMA_NUM, DMA_CHANNEL),
-    0,
-    (stm32_dmaisr_t)dma_interrupt_handler,
-    &PWM_DRIVER
-  );
-  dmaStreamSetPeripheral(dma_stream, &(PWM_DRIVER.tim->CCR[TIMER_CHANNEL]));
+#ifdef DMA_STREAM_NUM
+  uint32_t stream_id = STM32_DMA_STREAM_ID(DMA_NUM, DMA_STREAM_NUM);
+#else
+  uint32_t stream_id = STM32_DMA_STREAM_ID(DMA_NUM, DMA_CHANNEL);
+#endif 
+
+  dma_stream = dmaStreamAlloc(stream_id, 0, (stm32_dmaisr_t)dma_interrupt_handler, &PWM_DRIVER);
+  dmaStreamSetPeripheral(dma_stream, &(PWM_DRIVER.tim->CCR[TIM_CHANNEL_INTERNAL]));
   dmaStreamSetMemory0(dma_stream, pwm_led_data);
   dmaStreamSetMode(dma_stream,
+#ifdef DMA_REQUEST
     STM32_DMA_CR_CHSEL(DMA_REQUEST)
+#else 
+    STM32_DMA_CR_CHSEL(DMA_CHANNEL)
+#endif
     | STM32_DMA_CR_DIR_M2P     // Memory to peripheral
     | STM32_DMA_CR_PSIZE_HWORD // Peripheral data: half-word
     | STM32_DMA_CR_MSIZE_HWORD // Memory data: half-word
@@ -369,6 +378,7 @@ void should_update(size_t led) {
 static void led_start_reset_pulse() {
   reset_counter = 0;
   output_state = OUTPUT_RESET;
+  palTogglePad(GPIOA, 4);
   pwm_led_data[0] = 0;
   start_output();
 }
@@ -444,6 +454,7 @@ static void led_update_sequence(uint8_t tc) {
     reset_counter++;
 
     if (reset_counter >= RESET_PULSES) {
+      palTogglePad(GPIOA, 4);
       stop_output();
 
       current_led = 0;
@@ -493,6 +504,7 @@ static void dma_interrupt_handler(PWMDriver *pwm, uint32_t flags) {
   if (pwm == &PWM_DRIVER) {
     // Transfer complete
     if (flags & STM32_DMA_ISR_TCIF) {
+      palTogglePad(GPIOA, 5);
       led_update_sequence(1);
     // Half transfer complete
     } else if (flags & STM32_DMA_ISR_HTIF) {

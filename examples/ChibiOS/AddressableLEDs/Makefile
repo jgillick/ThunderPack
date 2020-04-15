@@ -1,6 +1,9 @@
 # Source files to compile
-CSRC = ws2812b.c \
-       main.c
+CSRC = main.c \
+       ws2812b.c
+
+# Linking math library required by ws2812
+USE_LDOPT = -lm
 
 ###############################################################################
 # Define the environment
