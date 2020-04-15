@@ -98,7 +98,7 @@ TIM_HandleTypeDef htim;
  */
 DMA_HandleTypeDef hdma_tim;
 
-void        start_output(uint32_t dataLen);
+void        start_output(output_states_t output_type, uint32_t dataLen);
 void        gpio_init(void);
 void        timer_init(void);
 void        dma_init(void);
@@ -109,7 +109,7 @@ static void led_update_sequence(uint8_t tc);
 static void dma_half_transfer_handler(TIM_HandleTypeDef *htim);
 static void dma_transfer_complete_handler(TIM_HandleTypeDef *htim);
 
-static void led_start_reset_pulse();
+static void led_start_reset_pulse(void);
 #if USE_RGBW
 void        ws2812b_led_internal(size_t index, uint8_t r, uint8_t g, uint8_t b, uint8_t w);
 #else
@@ -252,8 +252,9 @@ void ws2812b_led_rgb_internal(size_t index, uint32_t rgbw) {
 /**
  * @brief Setup DMA/TIM to send LED data.
  */
-void start_output(uint32_t dataLen) {
+void start_output(output_states_t output_type, uint32_t dataLen) {
   stop_output();
+  output_state = output_type;
   HAL_TIM_PWM_Start_DMA(&htim, TIMER_CHANNEL, (uint32_t *)pwm_led_data, dataLen);
 }
 
@@ -261,6 +262,7 @@ void start_output(uint32_t dataLen) {
  * @brief  Stop the reset data DMA & Timer output.
  */
 void stop_output() {
+  output_state = OUTPUT_IDLE;
   HAL_TIM_PWM_Stop_DMA(&htim, TIMER_CHANNEL);
 
   // Required, in case we are starting output before we return from the callback
@@ -308,6 +310,13 @@ void gpio_init() {
   GPIO_PWMStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   GPIO_PWMStruct.Alternate = DATA_PIN_AF;
   HAL_GPIO_Init(DATA_PORT, &GPIO_PWMStruct);
+
+  GPIO_PWMStruct.Pin = GPIO_PIN_6|GPIO_PIN_5|GPIO_PIN_4;
+  GPIO_PWMStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_PWMStruct.Pull = GPIO_NOPULL;
+  GPIO_PWMStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_PWMStruct.Alternate = DATA_PIN_AF;
+  HAL_GPIO_Init(GPIOA, &GPIO_PWMStruct);
 }
 
 /**
@@ -347,7 +356,7 @@ void timer_init() {
  */
 void dma_init() {
   if (DMA == DMA1) {
-    __HAL_RCC_DMA1_CLK_ENABLE();  
+    __HAL_RCC_DMA1_CLK_ENABLE();
   } else if (DMA == DMA2) {
     __HAL_RCC_DMA2_CLK_ENABLE();
   }
@@ -358,7 +367,7 @@ void dma_init() {
 #else
   hdma_tim.Instance = DMA_CHANNEL;
   hdma_tim.Init.Request = DMA_REQUEST;
-#endif 
+#endif
   hdma_tim.Init.Direction = DMA_MEMORY_TO_PERIPH;
   hdma_tim.Init.PeriphInc = DMA_PINC_DISABLE;
   hdma_tim.Init.MemInc = DMA_MINC_ENABLE;
@@ -371,7 +380,7 @@ void dma_init() {
 #endif
 
   HAL_DMA_Init(&hdma_tim);
-  
+
   uint32_t dmaIdCC;
   switch (TIMER_CHANNEL) {
     case TIM_CHANNEL_1:
@@ -412,9 +421,8 @@ void ws2812_update() {
   }
 
   // Start output
-  output_state = OUTPUT_DATA;
   needs_update = 0;
-  start_output(PWM_BUFFER_SIZE);
+  start_output(OUTPUT_DATA, PWM_BUFFER_SIZE);
 }
 
 /**
@@ -437,11 +445,10 @@ void should_update(size_t led) {
 /**
  * @brief  Start reset pulse sequence
  */
-static void led_start_reset_pulse() {
+static void led_start_reset_pulse(void) {
   reset_counter = 0;
-  output_state = OUTPUT_RESET;
   pwm_led_data[0] = 0;
-  start_output(1);
+  start_output(OUTPUT_RESET, 1);
 }
 
 /**
@@ -561,6 +568,7 @@ static void led_update_sequence(uint8_t tc) {
  * The DMA data half transfer complete interrupt handler
  */
 static void dma_half_transfer_handler(TIM_HandleTypeDef *htim) {
+  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
   led_update_sequence(0);
 }
 
@@ -568,6 +576,7 @@ static void dma_half_transfer_handler(TIM_HandleTypeDef *htim) {
  * The DMA data transfer complete interrupt handler
  */
 static void dma_transfer_complete_handler(TIM_HandleTypeDef *htim) {
+  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_4);
   led_update_sequence(1);
 }
 
@@ -575,5 +584,6 @@ static void dma_transfer_complete_handler(TIM_HandleTypeDef *htim) {
  * @brief Handles the DMA interrupts
  */
 void ws2812b_interrupt_handler(void) {
+  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_6);
   HAL_DMA_IRQHandler(&hdma_tim);
 }

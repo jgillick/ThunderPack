@@ -12,7 +12,7 @@ CMSIS =  ../../STM32Cube/shared/Drivers/CMSIS/Device/ST/STM32L4xx
 UDEFS = -DSTM32F411xE -DUSE_HAL_DRIVER
 
 CSRC += $(STM32F4_HAL)/Src/stm32f4xx_hal.c \
-		$(STM32F4_HAL)/Src/stm32f4xx_hal_flash.c \
+        $(STM32F4_HAL)/Src/stm32f4xx_hal_flash.c \
         $(STM32F4_HAL)/Src/stm32f4xx_hal_flash_ex.c
 
 ALLINC += $(STM32F4_HAL)/Inc \

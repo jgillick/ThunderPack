@@ -1,12 +1,13 @@
 /**
- * Lights up the next LED in sequence each time you press the button.
+ * A simple example to demonstrate storing a value in non-volatile memory.
+ * This program will light up the next LED in sequence each time you press the button.
  * When you turn the board off and on again, the last LED will be remembered and be
  * the starting LED in the sequence.
  */
 #include <EEPROM.h>
 
 // Save the LED index to the first byte address in the EEPROM
-#define MEMORY_LED_IDX 0
+#define LED_SAVE_ADDRESS  0
 
 // Number of LEDs
 #define LED_COUNT 4
@@ -23,7 +24,7 @@ void setup() {
   }
 
   // Read LED index from EEPROM
-  ledIndex = EEPROM.read(MEMORY_LED_IDX);
+  EEPROM.get(LED_SAVE_ADDRESS, ledIndex);
   if (ledIndex > LED_COUNT) {
     ledIndex = 0;
   }
@@ -44,7 +45,7 @@ void loop() {
     lightLED(ledIndex);
 
     // Save LED index to EEPROM
-    EEPROM.write(MEMORY_LED_IDX, ledIndex);
+    EEPROM.update(LED_SAVE_ADDRESS, ledIndex);
   }
 
   lastButtonState = buttonState;

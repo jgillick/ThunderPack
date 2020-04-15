@@ -49,5 +49,5 @@ make flash
 This command is a wrapper for the `dfu-util` command. The full command would be:
 
 ```bash
-dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D Blink.bin
+dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D build/program.bin
 ```
