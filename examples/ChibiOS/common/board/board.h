@@ -36,6 +36,11 @@
 #define BOARD_THUNDERPACK
 #define BOARD_NAME                  "ThunderPack-STM32F411CE"
 
+/**
+ * No vbus line
+ */
+#define BOARD_OTG_NOVBUSSENS
+
 /*
  * Board oscillators-related settings.
  * NOTE: LSE not fitted.

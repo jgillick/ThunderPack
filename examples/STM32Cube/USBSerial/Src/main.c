@@ -1,7 +1,9 @@
 /*
-  A simple program which demonstrates outputting serial data over USB.
-  In this case it simply outputs the state (0/1) of the button, repeatedly,
-  to the serial console.
+  Demonstrates writing to and reading from the USB serial interface (USB CDC).
+  Connect Thunderpack to your computer and then connect a serial console to it.
+  Then:
+    + Press the thunderpack user button and you should see the console output the button value.
+    + Type a number 1 - 4 into the console and you should see that LED toggle either on or off.
 */
 
 #include <stdio.h>

@@ -27,7 +27,7 @@ int main(void) {
   uint8_t i;
   for (i = 0; i < LED_COUNT; i++) {
     palSetLineMode(leds[i], PAL_MODE_OUTPUT_PUSHPULL);
-    palClearLine(LINE_LED1);
+    palClearLine(leds[i]);
   }
 
   // Run LEDs
