@@ -59,7 +59,9 @@
 /*
  * MCU type as defined in the ST header.
  */
+#ifndef STM32F411xE
 #define STM32F411xE
+#endif
 
 /*
  * IO pins assignments.

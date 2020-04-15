@@ -3,7 +3,7 @@
  * When you turn the board off and on again, the last LED will be remembered and be
  * the starting LED in the sequence.
  */
-#include <string.h> 
+#include <string.h>
 #include <stdbool.h>
 #include "stm32f4xx_hal.h"
 #include "thunderpack.h"
@@ -39,7 +39,7 @@ int main(void) {
 
   // Setup GPIO
   gpio_init();
-  
+
   // Read the LED index from memory and light it up
   uint8_t ledIndex = memory_read(LED_SAVE_ADDRESS);
   light_led(ledIndex);
@@ -53,7 +53,7 @@ int main(void) {
     // Update the LED index when the button changes state
     if (buttonState && !lastButtonState) {
       ledIndex++;
-      if (ledIndex > 3) {
+      if (ledIndex >= LED_NUM) {
         ledIndex = 0;
       }
 
@@ -65,7 +65,7 @@ int main(void) {
     }
 
     lastButtonState = buttonState;
-    HAL_Delay(10); 
+    HAL_Delay(10);
   }
 }
 
@@ -74,7 +74,7 @@ int main(void) {
  */
 void light_led(uint8_t index) {
   for (uint8_t i = 0; i < LED_NUM; i++) {
-    HAL_GPIO_WritePin(GPIOA, led_pins[i], GPIO_PIN_RESET);  
+    HAL_GPIO_WritePin(GPIOA, led_pins[i], GPIO_PIN_RESET);
   }
   HAL_GPIO_WritePin(GPIOA, led_pins[index], GPIO_PIN_SET);
 }
@@ -101,7 +101,7 @@ bool memory_write(uint32_t address, uint8_t value) {
   HAL_FLASH_Unlock();
   __HAL_FLASH_CLEAR_FLAG(FLASH_FLAG_EOP | FLASH_FLAG_OPERR | FLASH_FLAG_WRPERR | FLASH_FLAG_PGAERR | FLASH_FLAG_PGSERR );
   FLASH_Erase_Sector(MEM_FLASH_SECTOR, VOLTAGE_RANGE_3);
-  
+
   // Write buffer to sector
   uint32_t i;
   uint32_t addr = (uint32_t)MEM_START_ADDR;
@@ -111,7 +111,7 @@ bool memory_write(uint32_t address, uint8_t value) {
       return false;
     }
   }
-  
+
   // Finish up
   HAL_FLASH_Lock();
   return true;
