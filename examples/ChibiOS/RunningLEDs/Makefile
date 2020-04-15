@@ -1,7 +1,7 @@
 # Source files to compile
 CPPSRC = main.cpp
 
-#
+###############################################################################
 # Define the environment
 #
 
@@ -15,10 +15,10 @@ BOARD_DIR = ../common/board
 # (should contain "CMSIS" & "STM32L0xx_HAL_Driver" directories)
 CUBEMX_DRIVERS = ../common/drivers
 
-# Conf directory. 
-#(should contain halconf.h, mcuconf.h, chconf.h & stm32l0xx_hal_conf)
+# Conf directory.
+# should contain halconf.h, mcuconf.h, chconf.h
 CONFDIR = ../common/conf
 
-######
+##############################################################################
 
 include ../common/Makefile

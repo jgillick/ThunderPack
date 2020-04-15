@@ -1,7 +1,7 @@
 # Source files to compile
 CPPSRC = main.cpp
 
-#
+###############################################################################
 # Define the environment
 #
 
@@ -19,6 +19,6 @@ CUBEMX_DRIVERS = ../common/drivers
 # should contain halconf.h, mcuconf.h, chconf.h
 CONFDIR = ../common/conf
 
-######
+##############################################################################
 
 include ../common/Makefile
