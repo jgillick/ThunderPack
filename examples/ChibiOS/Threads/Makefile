@@ -3,6 +3,9 @@ CPPSRC = LEDController.cpp \
          ProgramController.cpp \
          main.cpp
 
+# Reserve some flash memory to act as EEPROM with a custom linker script
+LDSCRIPT = ./STM32F411CEUx_FLASH_NVM.ld
+
 ###############################################################################
 # Define the environment
 #
@@ -17,23 +20,21 @@ BOARD_DIR = ../common/board
 # (should contain halconf.h, mcuconf.h, chconf.h & stm32l0xx_hal_conf)
 CONFDIR = ../common/conf
 
-##############################################################################
-
 ###############################################################################
-# Include STM32 HAL drivers for EEPROM
-#
-STM32L0_HAL = ../../STM32Cube/shared/Drivers/STM32L0xx_HAL_Driver
-CMSIS = ../../STM32Cube/shared/Drivers/CMSIS/Device/ST/STM32L0xx
-UDEFS = -DSTM32L073xx -DUSE_HAL_DRIVER -DPORT_IGNORE_GCC_VERSION_CHECK
+# STM32 Libraries
+STM32F4_HAL = ../../STM32Cube/shared/Drivers/STM32F4xx_HAL_Driver
+CMSIS =  ../../STM32Cube/shared/Drivers/CMSIS/Device/ST/STM32L4xx
 
-# Required for readint/writing to internal EEPROM
-ALLCSRC +=  $(STM32L0_HAL)/Src/stm32l0xx_hal.c \
-            $(STM32L0_HAL)/Src/stm32l0xx_hal_flash.c \
-            $(STM32L0_HAL)/Src/stm32l0xx_hal_flash_ex.c
+UDEFS = -DSTM32F411xE -DUSE_HAL_DRIVER
 
-ALLINC += $(STM32L0_HAL)/Inc \
+CSRC += $(STM32F4_HAL)/Src/stm32f4xx_hal.c \
+		$(STM32F4_HAL)/Src/stm32f4xx_hal_flash.c \
+        $(STM32F4_HAL)/Src/stm32f4xx_hal_flash_ex.c
+
+ALLINC += $(STM32F4_HAL)/Inc \
           $(CMSIS)/Include \
-          $(CMSIS)/Device/ST/STM32L0xx/Include/
+          $(CMSIS)/Device/ST/STM32F4xx/Include/
+
 
 ##############################################################################
 
