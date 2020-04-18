@@ -2,8 +2,6 @@
 #ifndef PROGRAM_CONTROLLER_H
 #define PROGRAM_CONTROLLER_H
 
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-
 class ProgramController {
 public:
   uint8_t currentProgram = 0;

@@ -1,13 +1,16 @@
 # CircuitPython / MicroPython
 [CircuitPython](https://circuitpython.org/) enables Python code to run on the Thunderpack and is one of the easiest ways to get started with Microcontrollers. But first, you'll need to load the CircuitPython framework onto the board.
 
-The CircuitPython binary for Thunderpack is included in this directory as `circuitpy-thunderpack.bin`. Follow the setup instructions to learn how to get this binary running on Thunderpack.
+You can download the CircuitPython runtime binary for Thunderpack from here:
+https://circuitpython.org/board/thunderpack/
+
+Then use the following setup instructions to learn how to get this binary running on Thunderpack.
 
 ## Initial Setup
 First make sure you have either [dfu-util](http://dfu-util.sourceforge.net/) or [STM32CubeProg](https://www.st.com/en/development-tools/stm32cubeprog.html) installed on your computer.
 
 ### Enter DFU bootloader mode
-Put the board into bootloader (DFU) mode by pressing the user button while turning the board on. 
+Put the board into bootloader (DFU) mode by pressing the user button while turning the board on.
 
 ### Updating the board
 
