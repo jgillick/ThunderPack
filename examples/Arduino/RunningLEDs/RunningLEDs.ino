@@ -10,10 +10,9 @@ uint8_t ledIdx = 0;
 uint8_t mode = HIGH;
 
 void setup() {
-  pinMode(LED_1, OUTPUT);
-  pinMode(LED_2, OUTPUT);
-  pinMode(LED_3, OUTPUT);
-  pinMode(LED_4, OUTPUT);
+  for (int i = 0; i < LED_COUNT; i++) {
+    pinMode(leds[i], OUTPUT);
+  }
 }
 
 void loop() {

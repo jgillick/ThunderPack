@@ -5,7 +5,7 @@
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -O2 -ggdb -fomit-frame-pointer -falign-functions=16
+  USE_OPT = -O0 -ggdb -fomit-frame-pointer -falign-functions=16 -Wno-unused-parameter
 endif
 
 # C specific options here (added to USE_OPT).
@@ -15,20 +15,20 @@ endif
 
 # C++ specific options here (added to USE_OPT).
 ifeq ($(USE_CPPOPT),)
-  USE_CPPOPT = -std=gnu++11 -fno-exceptions -fno-rtti
+  USE_CPPOPT = -fno-rtti
 endif
 
-# Enable this if you want the linker to remove unused code and data
+# Enable this if you want the linker to remove unused code and data.
 ifeq ($(USE_LINK_GC),)
   USE_LINK_GC = yes
 endif
 
 # Linker extra options here.
 ifeq ($(USE_LDOPT),)
-  USE_LDOPT = -lm
+  USE_LDOPT =
 endif
 
-# Enable this if you want link time optimizations (LTO)
+# Enable this if you want link time optimizations (LTO).
 ifeq ($(USE_LTO),)
   USE_LTO = yes
 endif
@@ -48,7 +48,6 @@ endif
 ifeq ($(CONFDIR),)
   CONFDIR = ./conf
 endif
-
 #
 # Build global options
 ##############################################################################
@@ -82,7 +81,7 @@ DFU_FLAGS =
 # Stack size to be allocated to the Cortex-M process stack. This stack is
 # the stack used by the main() thread.
 ifeq ($(USE_PROCESS_STACKSIZE),)
-  USE_PROCESS_STACKSIZE = 0x200
+  USE_PROCESS_STACKSIZE = 0x400
 endif
 
 # Stack size to the allocated to the Cortex-M main/exceptions stack. This
@@ -113,9 +112,10 @@ endif
 PROJECT = program
 
 # Target settings.
-MCU  = cortex-m0
+MCU  = cortex-m4
 
 # Imported source files and paths.
+CHIBIOS  ?= ../../..
 CONFDIR  ?= ./cfg
 BUILDDIR ?= ./build
 DEPDIR   ?= ./.dep
@@ -123,14 +123,14 @@ DEPDIR   ?= ./.dep
 # Licensing files.
 include $(CHIBIOS)/os/license/license.mk
 # Startup files.
-include $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC/mk/startup_stm32l0xx.mk
+include $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC/mk/startup_stm32f4xx.mk
 # HAL-OSAL files (optional).
 include $(CHIBIOS)/os/hal/hal.mk
-include $(CHIBIOS)/os/hal/ports/STM32/STM32L0xx/platform.mk
+include $(CHIBIOS)/os/hal/ports/STM32/STM32F4xx/platform.mk
 include $(CHIBIOS)/os/hal/osal/rt/osal.mk
 # RTOS files (optional).
 include $(CHIBIOS)/os/rt/rt.mk
-include $(CHIBIOS)/os/common/ports/ARMCMx/compilers/GCC/mk/port_v6m.mk
+include $(CHIBIOS)/os/common/ports/ARMCMx/compilers/GCC/mk/port_v7m.mk
 # Auto-build files in ./source recursively.
 include $(CHIBIOS)/tools/mk/autobuild.mk
 # Other files (optional).
@@ -138,13 +138,14 @@ include $(CHIBIOS)/os/various/cpp_wrappers/chcpp.mk
 include $(CHIBIOS)/os/hal/lib/streams/streams.mk
 
 # Define linker script file here
-LDSCRIPT= $(STARTUPLD)/STM32L073xZ.ld
+LDSCRIPT ?= $(STARTUPLD)/STM32F411xE.ld
 
 # C sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
-CSRC += $(CHIBIOS)/os/various/syscalls.c \
-        $(BOARD_DIR)/board.c \
-        $(ALLCSRC)
+CSRC += $(BOARD_DIR)/board.c \
+        $(CHIBIOS)/os/various/syscalls.c \
+        $(ALLCSRC) \
+        $(TESTSRC)
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -159,7 +160,8 @@ ASMXSRC = $(ALLXASMSRC)
 # Inclusion directories.
 INCDIR += $(BOARD_DIR) \
           $(CONFDIR) \
-          $(ALLINC)
+          $(ALLINC) \
+          $(TESTINC)
 
 # Define C warning options here.
 CWARN = -Wall -Wextra -Wundef -Wstrict-prototypes
@@ -168,7 +170,7 @@ CWARN = -Wall -Wextra -Wundef -Wstrict-prototypes
 CPPWARN = -Wall -Wextra -Wundef
 
 #
-# Project, sources and paths
+# Project, target, sources and paths
 ##############################################################################
 
 ##############################################################################
@@ -225,7 +227,7 @@ endif
 # Flash to the device using dfu-util
 flash: all
 	@echo Flashing via DFU
-	$(DFU_UTIL) -d $(DFU_UTIL) -a 0 -s $(DFU_ADDR) -D $(BUILDDIR)/$(PROJECT).bin $(DFU_FLAGS)
+	$(DFU_UTIL) -d $(DFU_DEVICE) -a 0 -s $(DFU_ADDR) -D $(BUILDDIR)/$(PROJECT).bin $(DFU_FLAGS)
 
 #
 # Custom rules

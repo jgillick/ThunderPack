@@ -2,12 +2,12 @@
 /**
   ******************************************************************************
   * @file           : usbd_cdc_if.c
-  * @version        : v2.0_Cube
+  * @version        : v1.0_Cube
   * @brief          : Usb device for Virtual Com Port.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -20,6 +20,7 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
+#include "main.h"
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN INCLUDE */
@@ -65,8 +66,8 @@
 /* USER CODE BEGIN PRIVATE_DEFINES */
 /* Define size for the receive and transmit buffer over CDC */
 /* It's up to user to redefine and/or remove those define */
-#define APP_RX_DATA_SIZE  1000
-#define APP_TX_DATA_SIZE  1000
+#define APP_RX_DATA_SIZE  2048
+#define APP_TX_DATA_SIZE  2048
 /* USER CODE END PRIVATE_DEFINES */
 
 /**
@@ -260,13 +261,32 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
   * @param  Len: Number of data received (in bytes)
   * @retval Result of the operation: USBD_OK if all operations are OK else USBD_FAIL
   */
-static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
-{
-  /* USER CODE BEGIN 6 */
-  USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
+static int8_t CDC_Receive_FS(uint8_t* buf, uint32_t *len) {
+  if (*len > 0) {  
+    // Toggle LEDs
+    switch (buf[0]) {
+      case '1':
+        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
+        CDC_Transmit_FS((uint8_t *)"Toggle LED 1\r\n", 14);
+        break;
+      case '2':
+        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
+        CDC_Transmit_FS((uint8_t *)"Toggle LED 2\r\n", 14);
+        break;
+      case '3':
+        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_2);
+        CDC_Transmit_FS((uint8_t *)"Toggle LED 3\r\n", 14);
+        break;
+      case '4':
+        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_3);
+        CDC_Transmit_FS((uint8_t *)"Toggle LED 4\r\n", 14);
+        break;
+    }
+  }
+
+  USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
   return (USBD_OK);
-  /* USER CODE END 6 */
 }
 
 /**

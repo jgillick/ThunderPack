@@ -4,21 +4,23 @@
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/timer.h>
+#include "thunderpack.h"
 
 #define MAX_PWM   0xFFF
-#define PWM_INC   9
+#define PWM_INC   45
+#define PWM_SPEED 10
 
 // Setup GPIO pins
-static void gpioa_setup(void) {
-    // LED1 (PA0) as an alternate function (TIM2_CH1)
-    rcc_periph_clock_enable(RCC_GPIOA);
-    gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO0);
-    gpio_set_af(GPIOA, GPIO_AF2, GPIO0);
+static void gpio_setup(void) {
+  // LED1 (PA0) as an alternate function (TIM2_CH1)
+  rcc_periph_clock_enable(RCC_GPIOA);
+  gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO0);
+  gpio_set_af(GPIOA, GPIO_AF1, GPIO0);
 }
 
 // Setup the timer for PWM
 static void timer_setup(void) {
-  // Enable Timer2 and reeset to defaults
+  // Enable Timer2 and reset to defaults
   rcc_periph_clock_enable(RCC_TIM2);
   rcc_periph_reset_pulse(RST_TIM2);
 
@@ -55,7 +57,8 @@ static void timer_setup(void) {
 }
 
 int main(void) {
-  gpioa_setup();
+  thunderpack_clock_init();
+  gpio_setup();
   timer_setup();
 
   int i;
@@ -72,7 +75,7 @@ int main(void) {
     }
 
     // A brief pause
-    for (i = 0; i < 500; i++) __asm__("nop");
+    delay(PWM_SPEED);
   }
 
   return 0;

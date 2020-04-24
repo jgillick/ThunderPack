@@ -10,8 +10,10 @@
  * ==================
  * See the `main.c` file for a simple example.
  *
- *  - In your main script, setup the `DMA1_Channel2_3_IRQn` interrupt handler (see below).
+ *  - In your main script, setup the required DMA interrupt handler (see below).
  *    If this is not setup, no data will be sent to the LEDs.
+ *  - Define USE_HAL_TIM_REGISTER_CALLBACKS to 1 in your hal config:
+ *    `#define  USE_HAL_TIM_REGISTER_CALLBACKS 1U`
  *  - Call the `ws2812b_init` function.
  *  - Call any of the `ws2812b_led*` functions defined in this file to set LED colors.
  *
@@ -21,14 +23,15 @@
  * interrupt functions can be used for multiple DMA channels, it will not be defined by this
  * library.
  *
- * Instead, you'll setup the interrupt in your code with the following few lines:
+ * Instead, you'll setup the interrupt in your code with the following few lines (in this example
+ * for DMA1, Stream5):
  *
  * Init:
- *      HAL_NVIC_SetPriority(DMA1_Channel2_3_IRQn, 0, 0);
- *      HAL_NVIC_EnableIRQ(DMA1_Channel2_3_IRQn);
+ *      HAL_NVIC_SetPriority(DMA1_Stream5_IRQHandler, 0, 0);
+ *      HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQHandler);
  *
  * Function definition:
- *      void DMA1_Channel2_3_IRQHandler(void) {
+ *      void DMA1_Stream5_IRQHandler(void) {
  *        ws2812b_interrupt_handler();
  *      }
  */
@@ -42,6 +45,12 @@
  * @param  num_leds  The number of LEDs in the LED strip.
  */
 void ws2812b_init(size_t num_leds);
+
+/**
+ * @brief Send the color data to all LEDs.
+ * Calling this is usually not necessary if AUTO_UPDATE is set to 1 in the conf header.
+ */
+void ws2812_update(void);
 
 /**
  * @brief This needs to be called from the correct DMA interrupt handler.
@@ -88,7 +97,6 @@ void ws2812b_led_all(uint8_t r, uint8_t g, uint8_t b);
  * @param  rgbw   Color value (0x00000000 - 0xRRGGBB[WW])
  */
 void ws2812b_led_rgb(size_t index, uint32_t rgb);
-
 
 /**
  * @brief  Same as `ws2812b_led_rgb`, but sets this color for ALL LEDs.

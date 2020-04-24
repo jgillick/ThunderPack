@@ -3,11 +3,13 @@
   is pressed, the LED blinks faster.
 */
 
-#include <libopencm3/stm32/rcc.h>
+#include <stdint.h>
 #include <libopencm3/stm32/gpio.h>
+#include <libopencm3/stm32/rcc.h>
+#include "thunderpack.h"
 
-#define LONG_PAUSE  100000
-#define SHORT_PAUSE 50000
+#define SPEED_SLOW 800
+#define SPEED_FAST 200
 
 static void gpio_setup(void) {
   // set LED1 (PA0) to output
@@ -19,26 +21,19 @@ static void gpio_setup(void) {
   gpio_mode_setup(GPIOB, GPIO_MODE_INPUT, GPIO_PUPD_NONE, GPIO4);
 }
 
-// Pause execution for an amount of time
-static void pause(int duration) {
-  int i;
-  for (i = 0; i < duration; i++) {
-    __asm__("nop");
-  }
-}
-
 int main(void) {
+  thunderpack_clock_init();
   gpio_setup();
 
   int i;
   while (1) {
     gpio_toggle(GPIOA, GPIO0);
 
-    /* Upon button press, blink more slowly. */
+    // Upon button press, blink more slowly.
     if (gpio_get(GPIOB, GPIO4)) {
-      pause(SHORT_PAUSE);
+      delay(SPEED_SLOW);
     } else {
-      pause(LONG_PAUSE);
+      delay(SPEED_FAST);
     }
   }
 

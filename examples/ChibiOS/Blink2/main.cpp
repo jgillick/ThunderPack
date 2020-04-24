@@ -15,11 +15,11 @@
 static virtual_timer_t blinkTimer;
 
 /**
- * Toggle the LED value. 
+ * Toggle the LED value.
  * This is invoked by the virtual timer.
  */
 static void toggleLED(void *arg) {
-  palToggleLine(LINE_LED_1);
+  palToggleLine(LINE_LED1);
 }
 
 /*
@@ -32,14 +32,14 @@ int main(void) {
   chVTObjectInit(&blinkTimer);
 
   // Set LED mode to digital output
-  palSetLineMode(LINE_LED_1, PAL_MODE_OUTPUT_PUSHPULL);
+  palSetLineMode(LINE_LED1, PAL_MODE_OUTPUT_PUSHPULL);
 
   // Main loop
   int blinkSpeed = SPEED_SLOW;
   while (1) {
 
     // Blink faster while the button has been pressed
-    unsigned int btnVal = palReadLine(LINE_USER_BTN);
+    unsigned int btnVal = palReadLine(LINE_BUTTON);
     if (btnVal) {
       blinkSpeed = SPEED_FAST;
     } else {
@@ -50,7 +50,7 @@ int main(void) {
     if (!chVTIsArmed(&blinkTimer)) {
       chVTSet(&blinkTimer, TIME_MS2I(blinkSpeed), toggleLED, NULL);
     }
-    
+
     chThdSleepMilliseconds(10);
   }
 }

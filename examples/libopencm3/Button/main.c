@@ -4,6 +4,7 @@
 
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
+#include "thunderpack.h"
 
 static void gpio_setup(void) {
 	// set LED1 (PA0) to output
@@ -16,6 +17,7 @@ static void gpio_setup(void) {
 }
 
 int main(void) {
+	thunderpack_clock_init();
 	gpio_setup();
 
 	while (1) {

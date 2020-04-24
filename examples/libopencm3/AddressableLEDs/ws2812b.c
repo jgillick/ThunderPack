@@ -244,16 +244,26 @@ void start_output() {
     dataLen = PWM_BUFFER_SIZE;
   }
 
+#ifdef DMA_STREAM_NUM
+  dma_set_number_of_data(DMA, DMA_STREAM_NUM, dataLen);
+  dma_enable_stream(DMA, DMA_STREAM_NUM);
+#else
   dma_set_number_of_data(DMA, DMA_CHANNEL, dataLen);
   dma_enable_channel(DMA, DMA_CHANNEL);
+#endif
 }
 
 /**
  * @brief  Stop the reset data DMA & Timer output.
  */
 void stop_output() {
+#ifdef DMA_STREAM_NUM
+  dma_disable_stream(DMA, DMA_STREAM_NUM);
+#else
   dma_disable_channel(DMA, DMA_CHANNEL);
+#endif
   timer_set_oc_value(TIMER, TIMER_CHANNEL, 0);
+
 #ifdef DMA_IRQ
   nvic_clear_pending_irq(DMA_IRQ);
 #endif
@@ -263,8 +273,7 @@ void stop_output() {
  * @brief Setup the timer to output 800kHz
  */
 void timer_init() {
-  uint32_t full_speed = rcc_ahb_frequency;
-  uint32_t pwm_period = (full_speed / SIGNAL_HZ) - 1;
+  uint32_t pwm_period = (rcc_ahb_frequency / SIGNAL_HZ) - 1;
 
   // GPIO
   rcc_periph_clock_enable(DATA_PORT_RCC);
@@ -288,7 +297,7 @@ void timer_init() {
   timer_set_oc_slow_mode(TIMER, TIMER_CHANNEL);
 
   // Events & output
-  timer_enable_irq(TIMER, TIM_DIER_UDE); // Enable the update request DMA event
+  timer_enable_irq(TIMER, TIM_DIER_CC2DE); // Enable the Capture/Compare DMA request event
   timer_enable_oc_output(TIMER, TIMER_CHANNEL); // Enable capture/compare output
 
   // Enable
@@ -304,16 +313,38 @@ void timer_init() {
  * @brief Setup the DMA to Timer
  */
 void dma_init() {
-  rcc_periph_clock_enable(RCC_DMA);
+  if (DMA == DMA1) {
+    rcc_periph_clock_enable(RCC_DMA1);
+  } else if (DMA == DMA2) {
+    rcc_periph_clock_enable(RCC_DMA2);
+  }
 
+  // Enable Interrupt
 #ifdef DMA_IRQ
-  // Interrupt
   nvic_clear_pending_irq(DMA_IRQ);
   nvic_set_priority(DMA_IRQ, 0);
   nvic_enable_irq(DMA_IRQ);
 #endif
 
-  // DMA Settings
+#ifdef DMA_STREAM_NUM
+  dma_stream_reset(DMA, DMA_STREAM_NUM);
+  dma_set_dma_flow_control(DMA, DMA_STREAM_NUM);
+  dma_set_transfer_mode(DMA, DMA_STREAM_NUM, DMA_SxCR_DIR_MEM_TO_PERIPHERAL);
+  dma_disable_peripheral_increment_mode(DMA, DMA_STREAM_NUM);
+  dma_enable_memory_increment_mode(DMA, DMA_STREAM_NUM);
+  dma_set_memory_size(DMA, DMA_STREAM_NUM, DMA_SxCR_MSIZE_16BIT);
+  dma_set_peripheral_size(DMA, DMA_STREAM_NUM, DMA_SxCR_PSIZE_16BIT);
+  dma_enable_circular_mode(DMA, DMA_STREAM_NUM);
+  dma_set_priority (DMA, DMA_STREAM_NUM, DMA_SxCR_PL_VERY_HIGH);
+  dma_channel_select(DMA, DMA_STREAM_NUM, DMA_CHANNEL);
+
+  dma_set_peripheral_address(DMA, DMA_STREAM_NUM, (uint32_t)&TIMER_CCR);
+  dma_set_memory_address(DMA, DMA_STREAM_NUM, (uint32_t)&pwm_led_data);
+
+  dma_enable_half_transfer_interrupt(DMA, DMA_STREAM_NUM);
+  dma_enable_transfer_complete_interrupt(DMA, DMA_STREAM_NUM);
+
+#else // DMA_REQUEST
   dma_channel_reset(DMA, DMA_CHANNEL);
   dma_set_channel_request(DMA, DMA_CHANNEL, DMA_REQUEST);
   dma_set_read_from_memory(DMA, DMA_CHANNEL);
@@ -329,6 +360,7 @@ void dma_init() {
 
   dma_enable_half_transfer_interrupt(DMA, DMA_CHANNEL);
   dma_enable_transfer_complete_interrupt(DMA, DMA_CHANNEL);
+#endif
 }
 
 /**
@@ -494,6 +526,17 @@ static void led_update_sequence(uint8_t tc) {
  * @brief Handles the DMA interrupts
  */
 void ws2812b_interrupt_handler() {
+#ifdef DMA_STREAM_NUM
+  // Transfer complete
+  if (dma_get_interrupt_flag(DMA, DMA_STREAM_NUM, DMA_TCIF) != 0) {
+    dma_clear_interrupt_flags(DMA, DMA_STREAM_NUM, DMA_TCIF);
+    led_update_sequence(1);
+  // Half transfer complete
+  } else if (dma_get_interrupt_flag(DMA, DMA_STREAM_NUM, DMA_HTIF) != 0) {
+    dma_clear_interrupt_flags(DMA, DMA_STREAM_NUM, DMA_HTIF);
+    led_update_sequence(0);
+  }
+#else
   // Transfer complete
   if (dma_get_interrupt_flag(DMA, DMA_CHANNEL, DMA_TCIF) != 0) {
     dma_clear_interrupt_flags(DMA, DMA_CHANNEL, DMA_TCIF);
@@ -503,6 +546,7 @@ void ws2812b_interrupt_handler() {
     dma_clear_interrupt_flags(DMA, DMA_CHANNEL, DMA_HTIF);
     led_update_sequence(0);
   }
+#endif
 }
 
 #ifdef DMA_ISR_FUNC

@@ -1,101 +1,75 @@
 /*
-  A simple program which demonstrates outputting serial data over USB. 
-  In this case it simply outputs the state (0/1) of the button, repeatedly,
-  to the serial console. 
+  Demonstrates writing to and reading from the USB serial interface (USB CDC).
+  Connect Thunderpack to your computer and then connect a serial console to it.
+  Then:
+    + Press the thunderpack user button and you should see the console output the button value.
+    + Type a number 1 - 4 into the console and you should see that LED toggle either on or off.
 */
 
 #include <stdio.h>
 #include <string.h>
+#include "stm32f4xx_hal.h"
 
 #include "main.h"
-#include "usb_device.h"
 #include "usbd_cdc_if.h"
+#include "usb_device.h"
+#include "thunderpack.h"
 
-void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
+static void gpio_init(void);
 
 int main(void) {
-  // Init the system
   HAL_Init();
-  SystemClock_Config();
+  thunderpack_clock_init();
 
   // Setup GPIO & Serial/USB
-  MX_GPIO_Init();
+  gpio_init();
   MX_USB_DEVICE_Init();
   HAL_Delay(1000);
-  
+
   uint8_t buf[] = "0\r\n";
   uint8_t btnState = 0;
+  uint8_t lastBtnState = 0;
   while (1) {
-    // Get button state
+    // Print button state
     btnState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
+    if (btnState != lastBtnState) {
+      // Convert to character and output to serial console
+      buf[0] = btnState + '0';
+      CDC_Transmit_FS(buf, 3);
+    }
+    lastBtnState = btnState;
 
-    // Convert to character and output to serial console
-    buf[0] = btnState + '0';
-    CDC_Transmit_FS(buf, 3);
-    
-    HAL_Delay(200); 
+    HAL_Delay(200);
   }
 }
 
 /**
-  * System Clock Configuration
+  * Setup GPIO pins
   */
-void SystemClock_Config(void) {
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
-
-  // Configure the main internal regulator output voltage 
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
-
-  // Initializes the CPU, AHB and APB busses clocks 
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_HSI48;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLLMUL_4;
-  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLLDIV_2;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
-    Error_Handler();
-  }
-
-  // Initializes the CPU, AHB and APB busses clocks 
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK) {
-    Error_Handler();
-  }
-
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB;
-  PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_HSI48;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
-    Error_Handler();
-  }
-}
-
-/**
-  * GPIO Initialization Function
-  */
-static void MX_GPIO_Init(void) {
+static void gpio_init(void) {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
+  __HAL_RCC_GPIOA_CLK_ENABLE(); // usb
+  __HAL_RCC_GPIOB_CLK_ENABLE(); // button
+
   // Button - PB4
-  __HAL_RCC_GPIOB_CLK_ENABLE();
   GPIO_InitStruct.Pin = GPIO_PIN_4;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  // LED 1: PA0
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3, GPIO_PIN_RESET);
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
 
 /**
-  * This function is executed in case of error occurrence.
+  * This function is executed in case of errors
+  * @retval None
   */
 void Error_Handler(void) {
 }

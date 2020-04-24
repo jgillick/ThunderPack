@@ -10,7 +10,13 @@
  */
 #define USE_RGBW 0
 
-/* Data output ------------------------------------------------------------*/
+/**
+ * @brief Automatically update the LEDs when you call one of the methods which sets a color.
+ * Otherwise, you'll need to call
+ */
+#define AUTO_UPDATE 1
+
+/* Data Pin config --------------------------------------------------------*/
 
 /**
  * @brief The GPIO port to output the data to.
@@ -22,7 +28,7 @@
  * @brief The GPIO pin to output the data on.
  * This needs to be the same pin that maps to the PWM output defined with the timer.
  */
-#define DATA_PIN GPIO_PIN_6
+#define DATA_PIN GPIO_PIN_7
 
 /**
  * @brief The alternate function to assign to this pin to tie it to the timer output.
@@ -39,7 +45,7 @@
 /**
  * @brief The timer channel
  */
-#define TIMER_CHANNEL TIM_CHANNEL_1
+#define TIMER_CHANNEL TIM_CHANNEL_2
 
 /**
  * @brief The bit used to enable the clock for this timer.
@@ -59,22 +65,18 @@
 /**
  * @brief The DMA channel to use.
  */
-#define DMA_CHANNEL DMA1_Channel3
+#define DMA_CHANNEL DMA_CHANNEL_5
 
 /**
- * @brief The DMA request to use.
+ * @brief The DMA stream to use. (if the DMA uses "streams")
  */
-#define DMA_REQUEST DMA_REQUEST_10
+#define DMA_STREAM DMA1_Stream5
 
 /**
- * @brief DMA Handle used for linking DMA to the correct capture compare index.
+ * @brief The DMA request to use. (if the chip uses "requests")
  */
-#define DMA_HANDLE_INDEX TIM_DMA_ID_CC1
+// #define DMA_REQUEST DMA_REQUEST_10
 
-/**
- * @brief The DMA interrupt base name to use
- */
-#define DMA_INTERRUPT_BASE DMA1_Channel2_3_IRQ
 
 /* LED Protocol -----------------------------------------------------------*/
 

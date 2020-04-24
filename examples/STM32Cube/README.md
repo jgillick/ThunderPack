@@ -1,6 +1,6 @@
 # STM32Cube
 
-Examples written using [STM32Cube](https://www.st.com/content/st_com/en/products/embedded-software/mcu-mpu-embedded-software/stm32-embedded-software/stm32cube-mcu-mpu-packages/stm32cubel0.html#overview), which are the official hardware extraction layer (HAL) and libraries from ST. 
+Examples written using [STM32Cube](https://www.st.com/content/st_com/en/products/embedded-software/mcu-mpu-embedded-software/stm32-embedded-software/stm32cube-mcu-mpu-packages/stm32cubef4.html#overview), which are the official hardware extraction layer (HAL) and libraries from ST.
 
 The base configurations (clock, gpio, etc) are generated using the [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html) code generator.
 
@@ -33,5 +33,5 @@ make flash
 This command is a wrapper for the `dfu-util` command. The full command would be:
 
 ```bash
-dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D build/Blink.bin
+dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D build/program.bin
 ```

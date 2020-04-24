@@ -1,39 +1,43 @@
 /**
- * Lights up the next LED in sequence each time you press the button.
+ * A simple example to demonstrate storing a value in non-volatile memory.
+ * This program will light up the next LED in sequence each time you press the button.
  * When you turn the board off and on again, the last LED will be remembered and be
  * the starting LED in the sequence.
  */
 #include <EEPROM.h>
 
 // Save the LED index to the first byte address in the EEPROM
-#define LED_INDEX_ADDR 0
+#define LED_SAVE_ADDRESS  0
 
-// Maximum index for the LED value
-#define LED_MAX 3
+// Number of LEDs
+#define LED_COUNT 4
 
+int leds[] = {LED_1, LED_2, LED_3, LED_4};
 uint8_t ledIndex = 0;
-uint8_t buttonState = LOW;
+uint8_t buttonState;
 uint8_t lastButtonState = LOW;
 
 void setup() {
   pinMode(USER_BTN, INPUT);
-  pinMode(LED_1, OUTPUT);
-  pinMode(LED_2, OUTPUT);
-  pinMode(LED_3, OUTPUT);
-  pinMode(LED_4, OUTPUT);
+  for (int i = 0; i < LED_COUNT; i++) {
+    pinMode(leds[i], OUTPUT);
+  }
 
   // Read LED index from EEPROM
-  ledIndex = EEPROM.read(LED_INDEX_ADDR);
+  EEPROM.get(LED_SAVE_ADDRESS, ledIndex);
+  if (ledIndex > LED_COUNT) {
+    ledIndex = 0;
+  }
   lightLED(ledIndex);
 }
 
 void loop() {
   buttonState = digitalRead(USER_BTN);
 
-  // Update the LED index when the button WAS pressed, but is no longer.
-  if (!buttonState && lastButtonState) {
+  // Update the LED index when the button state changes
+  if (buttonState && !lastButtonState) {
     ledIndex++;
-    if (ledIndex > LED_MAX) {
+    if (ledIndex >= LED_COUNT) {
       ledIndex = 0;
     }
 
@@ -41,34 +45,22 @@ void loop() {
     lightLED(ledIndex);
 
     // Save LED index to EEPROM
-    EEPROM.write(LED_INDEX_ADDR, ledIndex);
+    EEPROM.update(LED_SAVE_ADDRESS, ledIndex);
   }
 
   lastButtonState = buttonState;
+  delay(10);
 }
 
 /**
  * Light up the LED by index
  */
 void lightLED(uint8_t index) {
-  // Reset LEDs
-  digitalWrite(LED_1, LOW);
-  digitalWrite(LED_2, LOW);
-  digitalWrite(LED_3, LOW);
-  digitalWrite(LED_4, LOW);
-
-  // Light the selected LED
-  switch(index) {
-    case 3:
-      digitalWrite(LED_4, HIGH);
-      break;
-    case 2:
-      digitalWrite(LED_3, HIGH);
-      break;
-    case 1:
-      digitalWrite(LED_2, HIGH);
-      break;
-    default:
-      digitalWrite(LED_1, HIGH);
+  for (int i = 0; i < LED_COUNT; i++) {
+    if (i == index) {
+      digitalWrite(leds[i], HIGH);
+    } else {
+      digitalWrite(leds[i], LOW);
+    }
   }
 }

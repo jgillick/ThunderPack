@@ -1,13 +1,11 @@
-CFILES = main.c
-PROJECT = button
-BUILD_DIR = build
+CFILES = main.c \
+        ../common/thunderpack.c
 
-DEVICE=STM32L072KZTx
-LIB_TARGET = stm32/l0
+# Device
+LIB_TARGET = stm32/f4
+DEVICE = STM32F411CE
 
-# Path to the libopencm3 source
-OPENCM3_DIR = ../lib/libopencm3
-
-include $(OPENCM3_DIR)/mk/genlink-config.mk
-include ../lib/rules.mk
-include $(OPENCM3_DIR)/mk/genlink-rules.mk
+# Makefiles
+COMMON_DIR = ../common
+OPENCM3_DIR = ${COMMON_DIR}/libopencm3
+include ../common/rules.mk

@@ -14,15 +14,15 @@ int main(void) {
   chSysInit();
 
   // Set LED mode to digital output
-  palSetLineMode(LINE_LED_1, PAL_MODE_OUTPUT_PUSHPULL);
+  palSetLineMode(LINE_LED1, PAL_MODE_OUTPUT_PUSHPULL);
 
   // Main loop
   int blinkSpeed = SPEED_SLOW;
   while (1) {
-    palToggleLine(LINE_LED_1);
+    palToggleLine(LINE_LED1);
 
     // Blink faster while the button has been pressed
-    unsigned int btnVal = palReadLine(LINE_USER_BTN);
+    unsigned int btnVal = palReadLine(LINE_BUTTON);
     if (btnVal) {
       blinkSpeed = SPEED_FAST;
     } else {

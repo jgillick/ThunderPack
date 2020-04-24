@@ -1,0 +1,52 @@
+### Module positions - created on Tuesday, February 04, 2020 at 09:10:43 AM ###
+### Printed by Pcbnew version kicad (5.1.5-0-10_14)
+## Unit = mm, Angle = deg.
+## Side : All
+# Ref     Val                Package                                               PosX       PosY       Rot  Side
+C1        100nF              C_0603_1608Metric                                 111.5950  -106.1250  180.0000  top
+C2        1uf                C_0603_1608Metric                                  91.5750   -98.8500    0.0000  top
+C3        100nf              C_0603_1608Metric                                  91.5750   -97.3250    0.0000  top
+C4        100nf              C_0603_1608Metric                                  79.1000   -97.6500    0.0000  top
+C5        100nf              C_0603_1608Metric                                  91.5750  -101.9000  180.0000  top
+C6        1uf                C_0603_1608Metric                                  69.3750   -93.8250  270.0000  top
+C7        4.7uF              C_0603_1608Metric                                  79.0500  -103.3750  180.0000  top
+C8        4.7uF              C_0603_1608Metric                                  79.1000   -96.1750  180.0000  top
+C9        4.7uF              C_0603_1608Metric                                 110.0500   -93.4500  180.0000  top
+C10       100nf              C_0603_1608Metric                                  76.1250   -97.6500  180.0000  top
+C11       4.7uF              C_0603_1608Metric                                 117.2750   -93.0400    0.0000  top
+C12       2.2uF              C_0603_1608Metric                                  74.3250   -93.8250  270.0000  top
+C13       1uf                C_0603_1608Metric                                  62.3250  -106.8000  180.0000  top
+C14       100nf              C_0603_1608Metric                                  91.5500  -103.4250  180.0000  top
+D1        20V2A              D_SOD-323_HandSoldering                            61.8000  -105.1000    0.0000  top
+D2        20V2A              D_SOD-323_HandSoldering                           117.8000   -94.7650  180.0000  top
+D3        LED                LED_0603_1608Metric_Castellated                   128.3000   -93.0000  180.0000  top
+D4        LED                LED_0603_1608Metric                               105.0300   -93.5300  180.0000  top
+D5        LED                LED_0603_1608Metric                               101.9850   -93.5300  180.0000  top
+D6        LED                LED_0603_1608Metric                                62.4000   -94.9500    0.0000  top
+D7        LED                LED_0603_1608Metric                                98.9750   -93.5300    0.0000  top
+D8        LED                LED_0603_1608Metric                                95.9200   -93.5300    0.0000  top
+J4        USB_B_Micro        USB_Micro-B_Amphenol_10103594-0001LF_Horizontal    61.0000  -100.0000  270.0000  top
+L1        Bead               L_0603_1608Metric                                  91.5750  -100.3750    0.0000  top
+Q1        BSS806N            SOT-23                                            106.8450  -101.1300   90.0000  top
+Q2        BSS806N            SOT-23                                            103.2950  -101.1350   90.0000  top
+Q3        BSS806N            SOT-23                                             99.7450  -101.1350   90.0000  top
+Q4        BSS806N            SOT-23                                             96.2200  -101.1350   90.0000  top
+R1        270                R_0603_1608Metric                                 124.9500   -93.0250  180.0000  top
+R2        20K                R_0603_1608Metric                                 117.6950  -106.1250    0.0000  top
+R3        330                R_0603_1608Metric                                 114.6450  -106.1250  180.0000  top
+R4        20k                R_0603_1608Metric                                 106.8200  -103.6100    0.0000  top
+R5        20k                R_0603_1608Metric                                 103.2950  -103.6100    0.0000  top
+R6        675                R_0603_1608Metric                                 110.0500   -94.9750  180.0000  top
+R7        270                R_0603_1608Metric                                 106.6700   -98.6600  180.0000  top
+R8        270                R_0603_1608Metric                                 103.0700   -98.6600  180.0000  top
+R9        20k                R_0603_1608Metric                                  99.6450  -103.6100    0.0000  top
+R10       270                R_0603_1608Metric                                  99.4700   -98.6600    0.0000  top
+R11       330                R_0603_1608Metric                                  62.4000   -93.4750    0.0000  top
+R12       270                R_0603_1608Metric                                  95.9950   -98.6600    0.0000  top
+R13       20k                R_0603_1608Metric                                  96.0950  -103.6100    0.0000  top
+SW1       Mode               SW_SPST_FSMSM                                     136.5300  -100.0000  270.0000  top
+U1        STM32F412CGUx      QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm                85.1875  -100.0000  180.0000  top
+U2        AP2210N-3.3TRG1    SOT-23                                             71.8250   -94.0000  180.0000  top
+U3        MCP73831T-2ACI_OT  SOT-753                                           113.6700   -93.9050   90.0000  top
+U4        ESD7002WTT1G       SOT-323_SC-70                                      76.8500  -101.0000  180.0000  top
+## End

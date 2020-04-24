@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <math.h>
-#include "stm32l0xx_hal.h"
-#include "stm32l0xx_hal_dma.h"
+#include "stm32f4xx_hal.h"
+#include "stm32f4xx_hal_dma.h"
 #include "ws2812b.h"
 
 /**
@@ -19,14 +19,19 @@
 #define BITS_PER_LED  (BYTES_PER_LED * 8)
 
 /**
+ * @brief Number of LEDs to put in the buffer.
+ */
+#define LEDS_IN_BUFFER 2
+
+/**
+ * @brief Number of bits in the PWM buffer used by the DMA controller.
+ */
+#define PWM_BUFFER_SIZE  (LEDS_IN_BUFFER * BITS_PER_LED)
+
+/**
  * @brief Return if a bit value is set.
  */
 #define IS_BIT_SET(VAL, BIT_IDX)  (VAL & (1 << BIT_IDX))
-
-/**
- * Number of bits in the PWM buffer used by the DMA controller
- */
-#define PWM_BUFFER_SIZE  (2 * BITS_PER_LED)
 
 /**
  * Output state values
@@ -48,7 +53,7 @@ static uint8_t led_count = 1;
 static uint8_t *led_colors;
 
 /**
- * @brief Array holding the next two LED colors, as an array of PWM values to represent each bit.
+ * @brief Buffer holding the next two LED colors, as an array of PWM values to represent each bit.
  */
 static uint16_t pwm_led_data[PWM_BUFFER_SIZE];
 
@@ -93,18 +98,18 @@ TIM_HandleTypeDef htim;
  */
 DMA_HandleTypeDef hdma_tim;
 
-void        start_output(uint32_t dataLen);
+void        start_output(output_states_t output_type, uint32_t dataLen);
+void        gpio_init(void);
 void        timer_init(void);
 void        dma_init(void);
 void        stop_output(void);
-void        update_leds();
 void        should_update(size_t led);
 static void led_fill_led_pwm_data(size_t ledIdx, uint16_t* ptr);
 static void led_update_sequence(uint8_t tc);
-static void dma_half_transfer_handler(DMA_HandleTypeDef *hdma);
-static void dma_transfer_complete_handler(DMA_HandleTypeDef *hdma);
+static void dma_half_transfer_handler(TIM_HandleTypeDef *htim);
+static void dma_transfer_complete_handler(TIM_HandleTypeDef *htim);
 
-static void led_start_reset_pulse();
+static void led_start_reset_pulse(void);
 #if USE_RGBW
 void        ws2812b_led_internal(size_t index, uint8_t r, uint8_t g, uint8_t b, uint8_t w);
 #else
@@ -123,8 +128,9 @@ void ws2812b_init(size_t num_leds) {
   led_colors = (uint8_t *)malloc(BYTES_PER_LED * led_count);
 
   // Initialize Peripherals
-  dma_init();
+  gpio_init();
   timer_init();
+  dma_init();
 
   // Set all LEDs to off
 #if USE_RGBW
@@ -246,16 +252,71 @@ void ws2812b_led_rgb_internal(size_t index, uint32_t rgbw) {
 /**
  * @brief Setup DMA/TIM to send LED data.
  */
-void start_output(uint32_t dataLen) {
-  __HAL_TIM_ENABLE(&htim);
-  HAL_DMA_Start_IT(&hdma_tim, (uint32_t)pwm_led_data, (uint32_t)&htim.Instance->CCR1, dataLen);
+void start_output(output_states_t output_type, uint32_t dataLen) {
+  stop_output();
+  output_state = output_type;
+  HAL_TIM_PWM_Start_DMA(&htim, TIMER_CHANNEL, (uint32_t *)pwm_led_data, dataLen);
 }
 
 /**
  * @brief  Stop the reset data DMA & Timer output.
  */
 void stop_output() {
-  HAL_DMA_Abort_IT(&hdma_tim);
+  output_state = OUTPUT_IDLE;
+  HAL_TIM_PWM_Stop_DMA(&htim, TIMER_CHANNEL);
+
+  // Required, in case we are starting output before we return from the callback
+  __HAL_UNLOCK(&hdma_tim);
+  hdma_tim.State = HAL_DMA_STATE_READY;
+}
+
+/**
+ * @brief Setup the GPIO
+ */
+void gpio_init() {
+  GPIO_InitTypeDef GPIO_PWMStruct = {0};
+
+  if (DATA_PORT == GPIOA) __HAL_RCC_GPIOA_CLK_ENABLE();
+  else if (DATA_PORT == GPIOB) __HAL_RCC_GPIOB_CLK_ENABLE();
+  else if (DATA_PORT == GPIOC) __HAL_RCC_GPIOC_CLK_ENABLE();
+#ifdef GPIOD
+  else if (DATA_PORT == GPIOD) __HAL_RCC_GPIOD_CLK_ENABLE();
+#endif
+#ifdef GPIOE
+  else if (DATA_PORT == GPIOE) __HAL_RCC_GPIOE_CLK_ENABLE();
+#endif
+#ifdef GPIOF
+  else if (DATA_PORT == GPIOF) __HAL_RCC_GPIOF_CLK_ENABLE();
+#endif
+#ifdef GPIOG
+  else if (DATA_PORT == GPIOG) __HAL_RCC_GPIOG_CLK_ENABLE();
+#endif
+#ifdef GPIOH
+  else if (DATA_PORT == GPIOH) __HAL_RCC_GPIOH_CLK_ENABLE();
+#endif
+#ifdef GPIOI
+  else if (DATA_PORT == GPIOI) __HAL_RCC_GPIOI_CLK_ENABLE();
+#endif
+#ifdef GPIOJ
+  else if (DATA_PORT == GPIOJ) __HAL_RCC_GPIOJ_CLK_ENABLE();
+#endif
+#ifdef GPIOK
+  else if (DATA_PORT == GPIOK) __HAL_RCC_GPIOk_CLK_ENABLE();
+#endif
+
+  GPIO_PWMStruct.Pin = DATA_PIN;
+  GPIO_PWMStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_PWMStruct.Pull = GPIO_NOPULL;
+  GPIO_PWMStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_PWMStruct.Alternate = DATA_PIN_AF;
+  HAL_GPIO_Init(DATA_PORT, &GPIO_PWMStruct);
+
+  GPIO_PWMStruct.Pin = GPIO_PIN_6|GPIO_PIN_5|GPIO_PIN_4;
+  GPIO_PWMStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_PWMStruct.Pull = GPIO_NOPULL;
+  GPIO_PWMStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_PWMStruct.Alternate = DATA_PIN_AF;
+  HAL_GPIO_Init(GPIOA, &GPIO_PWMStruct);
 }
 
 /**
@@ -264,26 +325,15 @@ void stop_output() {
 void timer_init() {
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
-  GPIO_InitTypeDef GPIO_PWMStruct = {0};
 
-  // GPIO Setup
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  GPIO_PWMStruct.Pin = DATA_PIN;
-  GPIO_PWMStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_PWMStruct.Pull = GPIO_NOPULL;
-  GPIO_PWMStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_PWMStruct.Alternate = DATA_PIN_AF;
-  HAL_GPIO_Init(DATA_PORT, &GPIO_PWMStruct);
-
-  // Timer
+  // Enable
   SET_BIT(RCC->APB1ENR, TIMER_RCC_BIT);
-
   htim.Instance = TIMER;
   htim.Init.Prescaler = 0;
   htim.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim.Init.Period = (SystemCoreClock / SIGNAL_HZ) - 1;
   htim.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  htim.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   HAL_TIM_PWM_Init(&htim);
 
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
@@ -293,21 +343,8 @@ void timer_init() {
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
   sConfigOC.Pulse = 0;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-  sConfigOC.OCFastMode = TIM_OCFAST_ENABLE;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
   HAL_TIM_PWM_ConfigChannel(&htim, &sConfigOC, TIMER_CHANNEL);
-
-  // Enable the update request DMA event
-  // (it will update the PWM value faster then capture/compare)
-  SET_BIT(TIMER->DIER, TIM_DIER_UDE);
-
-  // Disable capture/compare DMA event
-  CLEAR_BIT(TIMER->DIER, TIM_DIER_CC1DE);
-
-  // Enable capture/compare output
-  SET_BIT(TIMER->CCER, TIM_CCER_CC1E);
-
-  // Enable the timer
-  __HAL_TIM_ENABLE(&htim);
 
   // Save the binary 1 & 0 PWM values so we don't need to calculate them at runtime
   binary_1 = ceil(htim.Init.Period * BINARY_1_DUTY_MULTIPLIER);
@@ -318,9 +355,19 @@ void timer_init() {
  * @brief Setup the DMA to Timer
  */
 void dma_init() {
-  __HAL_RCC_DMA1_CLK_ENABLE();
+  if (DMA == DMA1) {
+    __HAL_RCC_DMA1_CLK_ENABLE();
+  } else if (DMA == DMA2) {
+    __HAL_RCC_DMA2_CLK_ENABLE();
+  }
+
+#ifdef DMA_STREAM
+  hdma_tim.Instance = DMA_STREAM;
+  hdma_tim.Init.Channel = DMA_CHANNEL;
+#else
   hdma_tim.Instance = DMA_CHANNEL;
   hdma_tim.Init.Request = DMA_REQUEST;
+#endif
   hdma_tim.Init.Direction = DMA_MEMORY_TO_PERIPH;
   hdma_tim.Init.PeriphInc = DMA_PINC_DISABLE;
   hdma_tim.Init.MemInc = DMA_MINC_ENABLE;
@@ -328,18 +375,39 @@ void dma_init() {
   hdma_tim.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
   hdma_tim.Init.Mode = DMA_CIRCULAR;
   hdma_tim.Init.Priority = DMA_PRIORITY_VERY_HIGH;
-
-  hdma_tim.XferCpltCallback = dma_transfer_complete_handler;
-  hdma_tim.XferHalfCpltCallback = dma_half_transfer_handler;
+#ifdef DMA_FIFOMODE_DISABLE
+  hdma_tim.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+#endif
 
   HAL_DMA_Init(&hdma_tim);
-  __HAL_LINKDMA(&htim, hdma[DMA_HANDLE_INDEX], hdma_tim);
+
+  uint32_t dmaIdCC;
+  switch (TIMER_CHANNEL) {
+    case TIM_CHANNEL_1:
+      dmaIdCC = TIM_DMA_ID_CC1;
+      break;
+    case TIM_CHANNEL_2:
+      dmaIdCC = TIM_DMA_ID_CC2;
+      break;
+    case TIM_CHANNEL_3:
+      dmaIdCC = TIM_DMA_ID_CC3;
+      break;
+    case TIM_CHANNEL_4:
+      dmaIdCC = TIM_DMA_ID_CC4;
+      break;
+    default:
+      return;
+  }
+  __HAL_LINKDMA(&htim, hdma[dmaIdCC], hdma_tim);
+
+  HAL_TIM_RegisterCallback(&htim, HAL_TIM_PWM_PULSE_FINISHED_CB_ID, dma_transfer_complete_handler);
+  HAL_TIM_RegisterCallback(&htim, HAL_TIM_PWM_PULSE_FINISHED_HALF_CB_ID, dma_half_transfer_handler);
 }
 
 /**
- * @brief  Update the color of all the LEDs in the strip
+ * @brief Update the color of all the LEDs in the strip
  */
-void update_leds() {
+void ws2812_update() {
   if (output_state != OUTPUT_IDLE) {
     return;
   }
@@ -353,9 +421,8 @@ void update_leds() {
   }
 
   // Start output
-  output_state = OUTPUT_DATA;
   needs_update = 0;
-  start_output(PWM_BUFFER_SIZE);
+  start_output(OUTPUT_DATA, PWM_BUFFER_SIZE);
 }
 
 /**
@@ -366,21 +433,22 @@ void update_leds() {
  * If an update is not happening, this kicks off a new update.
  */
 void should_update(size_t led) {
+#if (AUTO_UPDATE == 1)
   if (output_state == OUTPUT_IDLE) {
-    update_leds();
+    ws2812_update();
   } else if (led <= current_led) {
     needs_update = 1;
   }
+#endif
 }
 
 /**
  * @brief  Start reset pulse sequence
  */
-static void led_start_reset_pulse() {
+static void led_start_reset_pulse(void) {
   reset_counter = 0;
-  output_state = OUTPUT_RESET;
   pwm_led_data[0] = 0;
-  start_output(1);
+  start_output(OUTPUT_RESET, 1);
 }
 
 /**
@@ -461,7 +529,7 @@ static void led_update_sequence(uint8_t tc) {
 
       // Start a new update cycle
       if (needs_update) {
-        update_leds();
+        ws2812_update();
       }
     }
 
@@ -499,14 +567,16 @@ static void led_update_sequence(uint8_t tc) {
 /**
  * The DMA data half transfer complete interrupt handler
  */
-static void dma_half_transfer_handler(DMA_HandleTypeDef *hdma) {
+static void dma_half_transfer_handler(TIM_HandleTypeDef *htim) {
+  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
   led_update_sequence(0);
 }
 
 /**
  * The DMA data transfer complete interrupt handler
  */
-static void dma_transfer_complete_handler(DMA_HandleTypeDef *hdma) {
+static void dma_transfer_complete_handler(TIM_HandleTypeDef *htim) {
+  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_4);
   led_update_sequence(1);
 }
 
@@ -514,5 +584,6 @@ static void dma_transfer_complete_handler(DMA_HandleTypeDef *hdma) {
  * @brief Handles the DMA interrupts
  */
 void ws2812b_interrupt_handler(void) {
+  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_6);
   HAL_DMA_IRQHandler(&hdma_tim);
 }

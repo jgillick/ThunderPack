@@ -1,7 +1,7 @@
 /*
   Provides a series of light/fade programs to the first
-  LED. 
-   - Use the button to switch between programs. 
+  LED.
+   - Use the button to switch between programs.
    - The last program used will be remembered at the next start.
 */
 
@@ -49,7 +49,7 @@ int main(void) {
   // Update the program when the button is pressed
   unsigned int lastBtnVal = 0;
   while (1) {
-    unsigned int btnVal = palReadLine(LINE_USER_BTN);
+    unsigned int btnVal = palReadLine(LINE_BUTTON);
     if (btnVal && btnVal != lastBtnVal) {
       progCtrl.incrementProgram();
     }
