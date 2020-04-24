@@ -2,7 +2,7 @@ import time
 import board
 import neopixel
 
-pixel_pin = board.A6
+pixel_pin = board.A7
 num_pixels = 16
 
 # The order of the pixel colors - RGB or GRB. Some NeoPixels have red and green reversed!

@@ -18,11 +18,11 @@ Put the board into bootloader (DFU) mode by pressing the user button while turni
 If you're using dfu-util, run this command (be sure the path to the `.bin` file is correct):
 
 ```bash
-dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D ./circuitpy-thunderpack.bin
+dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D ./adafruit-circuitpython-thunderpack-en_US-5.2.0.bin
 ```
 
 #### STM32CubeProg
-If your're using STM32Cube, open the application and use it to program the [circuitpy-thunderpack.bin](./circuitpy-thunderpack.bin) file to the board.
+If your're using STM32Cube, open the application and use it to program [the binary](https://circuitpython.org/board/thunderpack/) to the board.
 
 You can see comprehensive instructions with screenshots [here](https://learn.adafruit.com/adafruit-stm32f405-feather-express/dfu-bootloader-details).
 
