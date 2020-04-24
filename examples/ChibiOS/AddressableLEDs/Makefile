@@ -26,6 +26,26 @@ CUBEMX_DRIVERS = ../common/drivers
 # should contain halconf.h, mcuconf.h, chconf.h
 CONFDIR = ../common/conf
 
+###############################################################################
+# STM32 Libraries
+STM32F4_HAL = ../../STM32Cube/shared/Drivers/STM32F4xx_HAL_Driver
+CMSIS =  ../../STM32Cube/shared/Drivers/CMSIS/Device/ST/STM32L4xx
+
+UDEFS = -DSTM32F411xE -DUSE_HAL_DRIVER
+
+CSRC += $(STM32F4_HAL)/Src/stm32f4xx_hal.c \
+        $(STM32F4_HAL)/Src/stm32f4xx_hal_flash.c \
+        $(STM32F4_HAL)/Src/stm32f4xx_hal_flash_ex.c \
+        $(STM32F4_HAL)/Src/stm32f4xx_hal_tim.c \
+        $(STM32F4_HAL)/Src/stm32f4xx_hal_tim_ex.c \
+        $(STM32F4_HAL)/Src/stm32f4xx_hal_dma.c \
+        $(STM32F4_HAL)/Src/stm32f4xx_hal_gpio.c \
+        $(STM32F4_HAL)/Src/stm32f4xx_hal_cortex.c
+
+ALLINC += $(STM32F4_HAL)/Inc \
+          $(CMSIS)/Include \
+          $(CMSIS)/Device/ST/STM32F4xx/Include/
+
 ##############################################################################
 
 include ../common/Makefile
