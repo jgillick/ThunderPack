@@ -1,3 +1,5 @@
+dist/
+
 # Kicad
 *.kicad_pcb-bak
 *.sch-bak

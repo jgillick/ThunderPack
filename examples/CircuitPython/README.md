@@ -10,7 +10,7 @@ Then use the following setup instructions to learn how to get this binary runnin
 First make sure you have either [dfu-util](http://dfu-util.sourceforge.net/) or [STM32CubeProg](https://www.st.com/en/development-tools/stm32cubeprog.html) installed on your computer.
 
 ### Enter DFU bootloader mode
-Put the board into bootloader (DFU) mode by pressing the user button while turning the board on.
+Put the ThunderPack in bootloader mode by pressing the tactile button *while* you turn it on. (i.e. press both buttons at the same time)
 
 ### Updating the board
 

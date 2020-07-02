@@ -1,15 +1,18 @@
 # ChibiOS Examples
 
-These examples are written using the [ChibiOS RTOS](http://chibios.org/dokuwiki/doku.php). 
+These examples are written using the [ChibiOS RTOS](http://chibios.org/dokuwiki/doku.php).
 
 ## Prerequisites
 
 ### Software
 
- * GCC build essentials
- * [The ARM gcc toolchain, 7.3.1 or above](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm)
- * [dfu-util](http://dfu-util.sourceforge.net/)
- * ChibiOS Supporting Files (see below)
+* GCC build essentials.
+  * Mac: Run `xcode-select --install` in your terminal.
+  * Linux: Install [build-essential](https://packages.ubuntu.com/xenial/build-essential)
+  * Windows: [make](http://gnuwin32.sourceforge.net/packages/make.htm) or via [cygwin](http://www.cygwin.com/)
+* [The ARM gcc toolchain, 7.3.1 or above](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm)
+* [dfu-util](http://dfu-util.sourceforge.net/)
+* ChibiOS Supporting Files (see below)
 
 ### ChibiOS Library
 

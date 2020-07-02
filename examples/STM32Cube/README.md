@@ -1,6 +1,6 @@
 # STM32Cube
 
-Examples written using [STM32Cube](https://www.st.com/content/st_com/en/products/embedded-software/mcu-mpu-embedded-software/stm32-embedded-software/stm32cube-mcu-mpu-packages/stm32cubef4.html#overview), which are the official hardware extraction layer (HAL) and libraries from ST.
+Examples written using [STM32Cube](https://www.st.com/content/st_com/en/products/embedded-software/mcu-mpu-embedded-software/stm32-embedded-software/stm32cube-mcu-mpu-packages/stm32cubef4.html#overview), which are the official hardware extraction layer (HAL) and libraries from STMicroelectronics.
 
 The base configurations (clock, gpio, etc) are generated using the [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html) code generator.
 
@@ -8,16 +8,19 @@ The base configurations (clock, gpio, etc) are generated using the [STM32CubeMX]
 
 ### Software
 
- * GCC build essentials.
- * [The ARM gcc toolchain, 7.3.1 or above](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm)
- * [dfu-util](http://dfu-util.sourceforge.net/)
+* GCC build essentials.
+  * Mac: Run `xcode-select --install` in your terminal.
+  * Linux: Install [build-essential](https://packages.ubuntu.com/xenial/build-essential)
+  * Windows: [make](http://gnuwin32.sourceforge.net/packages/make.htm) or via [cygwin](http://www.cygwin.com/)
+* [The ARM gcc toolchain, 7.3.1 or above](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm)
+* [dfu-util](http://dfu-util.sourceforge.net/)
 
 ## Compile
 
 To compile each example, you should only need to run `make` from within the example directory.
 
 ```bash
-cd examples/STM32Cube/Blink
+cd ./Blink
 
 make
 ```
