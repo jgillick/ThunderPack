@@ -2,6 +2,8 @@
 
 <img src="https://cdn.hackaday.io/images/5175201571795557825.JPG" alt="ThunderPack Board" width="500" />
 
+<a href="https://www.tindie.com/stores/jeremy/?ref=offsite_badges&utm_source=sellers_jeremy&utm_medium=badges&utm_campaign=badge_large"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png" alt="I sell on Tindie" width="200" height="104"></a>
+
 A kick-ass microcontroller board with everything you need in a compact package that fits in your pocket. Integrated battery, power management system, Arm microcontroller, USB bootloader, 4 high-power PWM outputs, and 12 GPIOs.
 
 Why? After years of wiring together portable LED controllers that all consisted of a lithum batter, charge controller, power switch, and an arduino nano (or similar), I wanted something better. I always found those versions to be janky and fragile -- not to mention concerned that damaging the pouch cell battery might make it explode! This board has everything I need with room to expand.
