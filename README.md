@@ -15,7 +15,7 @@ Why? After years of wiring together portable LED controllers that all consisted 
 
 ## Features
 
-* 32-bit microcontroller with frequency up to 100Mhz ([STM32F11xx](https://www.st.com/resource/en/datasheet/stm32f411ce.pdf))
+* 32-bit microcontroller with frequency up to 100Mhz ([STM32F411xx](https://www.st.com/resource/en/datasheet/stm32f411ce.pdf))
 * High-capacity 18650 lithium battery with integrated 500mA charger
 * 4 high-current PWM outputs (2.3A per channel!) with an LED on each for debugging.
 * Additional 12 GPIOs (USART, I2C, SPI, USB)
