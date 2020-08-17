@@ -1,4 +1,4 @@
-18918883915536697
+18928463849258658
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -54586,6 +54586,13 @@ LED diameter 5.0mm 2 pins diameter 5.0mm 3 pins diameter 5.0mm 4 pins RGB RGBLED
 4
 4
 Jeremy
+QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm
+QFN, 48 Pin (http://www.st.com/resource/en/datasheet/stm32f042k6.pdf#page=94), generated with kicad-footprint-generator ipc_dfn_qfn_generator.py
+QFN DFN_QFN
+0
+53
+49
+Jeremy
 Solderpad_Long_Round
 SMT Test Point- Micro Miniature 5015, http://www.keyelco.com/product-pdf.cfm?p=1353
 Test Point
@@ -54594,13 +54601,20 @@ Test Point
 1
 Jeremy
 Switch_L068-A-DC30V1A
+Small micro self locking switch. DC30V1A 8x8x8.4 https://www.aliexpress.com/item/32966597068.html
 
-
 0
-0
-0
+2
+2
 Jeremy
 Switch_LG-15F
+
+
+0
+2
+2
+Jeremy
+Switch_LG-15F_SMD
 
 
 0
@@ -54634,6 +54648,34 @@ USB USB_B USB_micro USB_OTG
 0
 12
 6
+Jeremy Button/Switch
+SW_L068-A
+Small micro self locking switch. DC30V1A 8x8x8.4 https://www.aliexpress.com/item/32966597068.html
+
+0
+2
+2
+Jeremy Button/Switch
+SW_LG-15F_PHT
+PUSH BUTTON SWITCH 12V/0.5A - https://www.adafruit.com/product/3870
+
+0
+2
+2
+Jeremy Button/Switch
+SW_LG-15F_SMD
+PUSH BUTTON SWITCH 12V/0.5A - https://www.adafruit.com/product/3870
+
+0
+2
+2
+Jeremy Button/Switch
+SW_SPST_FSMSM
+http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1437566-3&DocType=Customer+Drawing&DocLang=English
+SPST button tactile switch
+0
+2
+2
 Jumper
 SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm
 SMD Solder Jumper, 1x1.5mm Pads, 0.3mm gap, bridged with 2 copper strips
