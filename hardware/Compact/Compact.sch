@@ -30,10 +30,6 @@ Text Label 850  1000 1    50   ~ 0
 VUSB
 Text Notes 8200 4200 0    50   ~ 0
 Battery Charger
-Text Label 4300 6850 0    50   ~ 0
-USB_D+
-Text Label 4300 6950 0    50   ~ 0
-USB_D-
 $Comp
 L power:GND #PWR0107
 U 1 1 5BD804C3
@@ -373,14 +369,12 @@ AR Path="/5BD64BD8/5BD682B3" Ref="D?"  Part="1"
 AR Path="/5BD682B3" Ref="D1"  Part="1" 
 F 0 "D1" V 900 1100 50  0000 R CNN
 F 1 "20V2A" V 850 1450 50  0000 R CNN
-F 2 "Diode_SMD:D_SOD-323_HandSoldering" V 850 1150 50  0001 C CNN
+F 2 "Diode_SMD:D_SOD-323" V 850 1150 50  0001 C CNN
 F 3 "~" V 850 1150 50  0001 C CNN
 F 4 "SMD22WS-TP" H 850 1150 50  0001 C CNN "MPN"
 	1    850  1150
 	0    -1   -1   0   
 $EndComp
-Text Label 4300 6650 0    50   ~ 0
-VUSB
 $Comp
 L Jeremy:AP2210-3.3TRG1 U2
 U 1 1 5CD3E552
@@ -544,18 +538,9 @@ Wire Notes Line
 Wire Wire Line
 	2750 7350 2750 7400
 Wire Notes Line
-	4650 6350 4650 7700
-Wire Notes Line
-	2500 6350 4650 6350
-Wire Notes Line
-	2500 7700 4650 7700
-Wire Notes Line
 	2500 6350 2500 7700
 Wire Wire Line
 	3450 7050 3450 6650
-Connection ~ 3450 6650
-Wire Wire Line
-	3450 6650 4300 6650
 $Comp
 L power:GND #PWR0104
 U 1 1 5DB201E4
@@ -581,7 +566,7 @@ AR Path="/5BD64BD8/5BE0C7B2" Ref="D?"  Part="1"
 AR Path="/5BE0C7B2" Ref="D2"  Part="1" 
 F 0 "D2" V 1100 1100 50  0000 R CNN
 F 1 "20V2A" V 1000 1100 50  0000 R CNN
-F 2 "Diode_SMD:D_SOD-323_HandSoldering" V 1050 1150 50  0001 C CNN
+F 2 "Diode_SMD:D_SOD-323" V 1050 1150 50  0001 C CNN
 F 3 "~" V 1050 1150 50  0001 C CNN
 F 4 "SMD22WS-TP" H 1050 1150 50  0001 C CNN "MPN"
 	1    1050 1150
@@ -886,7 +871,7 @@ P 900 5950
 AR Path="/5BD64BD8/5BF9E96B" Ref="R?"  Part="1" 
 AR Path="/5BF9E96B" Ref="R1"  Part="1" 
 F 0 "R1" V 980 5950 50  0000 C CNN
-F 1 "270" V 900 5950 50  0000 C CNN
+F 1 "330" V 900 5950 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 830 5950 50  0001 C CNN
 F 3 "" H 900 5950 50  0001 C CNN
 F 4 "0603" V 900 5950 50  0001 C CNN "Package"
@@ -1303,7 +1288,7 @@ P 9250 5050
 AR Path="/5BD64BD8/5F01DEFD" Ref="R?"  Part="1" 
 AR Path="/5F01DEFD" Ref="R6"  Part="1" 
 F 0 "R6" H 9100 5100 50  0000 L CNN
-F 1 "680" H 9050 5000 50  0000 L CNN
+F 1 "2k" H 9100 5000 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" H 9250 5050 50  0001 C CNN
 F 3 "" H 9250 5050 50  0001 C CNN
 F 4 "0603" H 900 -450 50  0001 C CNN "Package"
@@ -1496,10 +1481,6 @@ Connection ~ 3650 1350
 Wire Wire Line
 	3650 1350 3850 1350
 Wire Wire Line
-	3100 6850 4300 6850
-Wire Wire Line
-	3100 6950 4300 6950
-Wire Wire Line
 	5900 4750 5900 4600
 Wire Wire Line
 	5900 4600 6350 4600
@@ -1657,4 +1638,26 @@ Wire Wire Line
 	850  1000 850  1050
 Wire Wire Line
 	3100 6650 3450 6650
+Connection ~ 3450 6650
+Wire Wire Line
+	2900 6650 3100 6650
+Text Label 3750 6650 0    50   ~ 0
+VUSB
+Text Label 3750 6950 0    50   ~ 0
+USB_D-
+Text Label 3750 6850 0    50   ~ 0
+USB_D+
+Connection ~ 3100 6650
+Wire Wire Line
+	3100 6850 3750 6850
+Wire Wire Line
+	3100 6950 3750 6950
+Wire Wire Line
+	3450 6650 3750 6650
+Wire Notes Line
+	2500 6350 4100 6350
+Wire Notes Line
+	4100 6350 4100 7700
+Wire Notes Line
+	4100 7700 2500 7700
 $EndSCHEMATC
