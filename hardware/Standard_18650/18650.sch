@@ -1922,9 +1922,9 @@ AR Path="/5BD64BD8/5BD6823A" Ref="SW?"  Part="1"
 AR Path="/5BD6823A" Ref="SW2"  Part="1" 
 F 0 "SW2" H 1300 1575 50  0000 C CNN
 F 1 "Power" H 1300 1350 50  0000 C CNN
-F 2 "Jeremy:Switch_L068-A-DC30V1A" H 1300 1450 50  0001 C CNN
-F 3 "https://www.aliexpress.com/item/32966597068.html" H 1300 1450 50  0001 C CNN
-F 4 "L068-A" H 1300 1450 60  0001 C CNN "MPN"
+F 2 "Jeremy Button/Switch:SW_KAN-15_PHT" H 1300 1450 50  0001 C CNN
+F 3 "https://www.aliexpress.com/item/32965072924.html" H 1300 1450 50  0001 C CNN
+F 4 "LG-15F" H 1300 1450 60  0001 C CNN "MPN"
 	1    1300 1450
 	1    0    0    -1  
 $EndComp
