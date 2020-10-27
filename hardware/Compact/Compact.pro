@@ -1,4 +1,4 @@
-update=Friday, July 03, 2020 at 12:50:25 AM
+update=Monday, October 26, 2020 at 11:58:30 PM
 version=1
 last_client=kicad
 [general]
@@ -20,7 +20,7 @@ SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=
 SpiceAjustPassiveValues=0
-LabSize=50
+LabSize=22
 ERC_TestSimilarLabels=1
 [pcbnew]
 version=1
@@ -48,8 +48,8 @@ dPairWidth1=0.254
 dPairGap1=0.1524
 dPairViaGap1=0.25
 SilkLineWidth=0.15
-SilkTextSizeV=0.5
-SilkTextSizeH=0.5
+SilkTextSizeV=0.5499999999999999
+SilkTextSizeH=0.5499999999999999
 SilkTextSizeThickness=0.09999999999999999
 SilkTextItalic=0
 SilkTextUpright=1
@@ -62,8 +62,8 @@ CopperTextUpright=1
 EdgeCutLineWidth=0.15
 CourtyardLineWidth=0.05
 OthersLineWidth=0.15
-OthersTextSizeV=0.5
-OthersTextSizeH=0.5
+OthersTextSizeV=0.5499999999999999
+OthersTextSizeH=0.5499999999999999
 OthersTextSizeThickness=0.09999999999999999
 OthersTextItalic=0
 OthersTextUpright=1
