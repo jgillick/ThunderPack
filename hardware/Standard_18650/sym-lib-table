@@ -1,2 +1,3 @@
 (sym_lib_table
+  (lib (name 18650-rescue)(type Legacy)(uri ${KIPRJMOD}/18650-rescue.lib)(options "")(descr ""))
 )
