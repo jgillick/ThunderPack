@@ -134,7 +134,6 @@ class TwinkleCtrl(AnimationCtrl):
 animations = [
     TwinkleCtrl(board.PA9, board.PA13),
     TwinkleCtrl(board.PA14, board.PB5),
-    TwinkleCtrl(board.PA7, board.PA8),
     FadeCtrl(board.LED1),
     FadeCtrl(board.LED2),
     FadeCtrl(board.LED3),
