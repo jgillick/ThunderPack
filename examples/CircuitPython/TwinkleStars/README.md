@@ -2,6 +2,8 @@
 
 This is a CircuitPython program which uses 6 outputs and some fairy string lights to produce a twinkling stars effect. The result will have a bunch of LEDs which are flickerig and some which are fading on and off.
 
+![Twinkling](./twinkling.gif)
+
 ## How Fairy String LED Lights Work
 
 Often fairy string lights wire up their LEDs parallel with alternating polarities. This way, when wire 1 is positive and wire 2 is negative, every second LED is illuminated. When the polarity of the wires reverses (wire 1: negative, wire 2: positive) the other LEDs turn on, instead. This let's fairy string lights do a few differet flashing animations by swapping power polarities at different rates.
