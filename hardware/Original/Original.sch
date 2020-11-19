@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L 18650-rescue:USB_B_Micro-Connector J4
+L Connector:USB_B_Micro J4
 U 1 1 5BD51321
 P 2800 6850
 F 0 "J4" H 2950 6450 50  0000 C CNN
