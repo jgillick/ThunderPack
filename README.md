@@ -4,7 +4,7 @@
 
 A kick-ass microcontroller board with everything you need in a tiny package that fits in your pocket. Integrated battery & power management system, fast ARM microcontroller, USB bootloader, 4 high-power PWM outputs, 12 GPIOs, satisfying pushbutton switch, and more.
 
-After years of wiring together portable LED controllers that all consisted of a lithum batter, charge controller, shitty slide power switch, and an arduino nano (or similar), I wanted something better. I always found those versions to be janky and fragile -- not to mention concerned that damaging the pouch cell battery might make it explode in my pocket! This board has everything I need with room to expand.
+After years of wiring together portable LED controllers that all consisted of a lithium battery, charge controller, shitty slide power switch, and an Arduino nano (or similar), I wanted something better. I always found those versions to be janky and fragile -- not to mention concerned that damaging the pouch cell battery might make it explode in my pocket! This board has everything I need with room to expand.
 
 <a href="https://www.tindie.com/stores/jeremy/?ref=offsite_badges&utm_source=sellers_jeremy&utm_medium=badges&utm_campaign=badge_small"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-smalls.png" alt="I sell on Tindie" width="200" height="55"></a>
 
