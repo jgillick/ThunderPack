@@ -18,7 +18,7 @@ After years of wiring together portable LED controllers that all consisted of a 
 
 <img src="./images/compact.jpg" alt="ThunderPack Board" width="500" />
 
-* Fast 90Mhz 32-bit microcontroller ([STM32F11xx](https://www.st.com/resource/en/datasheet/stm32f411ce.pdf))
+* Fast 96Mhz 32-bit ARM microcontroller ([STM32F11xx](https://www.st.com/resource/en/datasheet/stm32f411ce.pdf))
 * Integrated high power 500mA lithium battery charger
 * 4 high-current PWM outputs (1.4 - 2.3A per channel!) with an LED on each for debugging.
 * Additional 12 GPIOs (USART, I2C, SPI, USB)
