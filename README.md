@@ -2,7 +2,7 @@
 
 <img src="./images/original_and_compact.jpg" alt="ThunderPack Board" width="550" />
 
-A kick-ass microcontroller board with everything you need in a tiny package that fits in your pocket. Integrated battery & power management system, fast A microcontroller, USB bootloader, 4 high-power PWM outputs, 12 GPIOs, satisfying pushbutton switch, and more.
+A kick-ass microcontroller board with everything you need in a tiny package that fits in your pocket. Integrated battery & power management system, fast ARM microcontroller, USB bootloader, 4 high-power PWM outputs, 12 GPIOs, satisfying pushbutton switch, and more.
 
 After years of wiring together portable LED controllers that all consisted of a lithum batter, charge controller, shitty slide power switch, and an arduino nano (or similar), I wanted something better. I always found those versions to be janky and fragile -- not to mention concerned that damaging the pouch cell battery might make it explode in my pocket! This board has everything I need with room to expand.
 

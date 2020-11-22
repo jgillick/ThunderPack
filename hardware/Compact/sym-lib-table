@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name Compact-rescue)(type Legacy)(uri ${KIPRJMOD}/Compact-rescue.lib)(options "")(descr ""))
+  (lib (name DigiKey-Battery)(type Legacy)(uri /Users/Jeremy/Documents/KiCad/digikey-kicad-library/digikey-symbols/dk_PMIC-Battery-Chargers.lib)(options "")(descr ""))
 )
