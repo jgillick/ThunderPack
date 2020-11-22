@@ -30,7 +30,7 @@ After years of wiring together portable LED controllers that all consisted of a 
 * Breadboard friendly
 * Supports Arduino & CircuitPython.
 
-<img src="./images/breadboard.jpg" alt="On the breadboard" width="400" />
+<img src="./images/breadboard_compact.jpg" alt="On the breadboard" width="400" />
 
 ## Board & Pinout
 
