@@ -1,6 +1,6 @@
+import time
 import digitalio
 from board import *
-import time
 
 # Pin list
 leds = [
@@ -12,22 +12,23 @@ leds = [
 btn = digitalio.DigitalInOut(BUTTON)
 btn.direction = digitalio.Direction.INPUT
 
-# Set LEDs to output
+# Set all LEDs to output
 for l in leds:
     l.direction = digitalio.Direction.OUTPUT
 
 # Loop through LEDs
 i = 0
+num_leds = len(leds)
 while True:
     leds[i].value = not leds[i].value
-    
+
     # Faster when button pressed
     if btn.value:
         time.sleep(.05)
     else:
-        time.sleep(.150)
-    
+        time.sleep(.125)
+
     # Increment
     i += 1
-    i = i % len(leds) # wrap around back to 0 when we get to the end
-    
+    if i >= num_leds:
+        i = 0

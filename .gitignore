@@ -5,6 +5,7 @@ dist/
 *.sch-bak
 *.bak
 fp-info-cache
+_autosave-*
 
 # C/CPP Code
 build/
