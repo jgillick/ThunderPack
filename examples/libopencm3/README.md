@@ -6,9 +6,12 @@ Examples written using the [libopencm3](https://github.com/libopencm3/libopencm3
 
 ### Software
 
- * GCC build essentials.
- * [The ARM gcc toolchain, 7.3.1 or above](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm)
- * [dfu-util](http://dfu-util.sourceforge.net/)
+* GCC build essentials.
+  * Mac: Run `xcode-select --install` in your terminal.
+  * Linux: Install [build-essential](https://packages.ubuntu.com/xenial/build-essential)
+  * Windows: [make](http://gnuwin32.sourceforge.net/packages/make.htm) or via [cygwin](http://www.cygwin.com/)
+* [The ARM gcc toolchain, 7.3.1 or above](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm)
+* [dfu-util](http://dfu-util.sourceforge.net/)
 
 ### LibOpenCM3 Library
 
