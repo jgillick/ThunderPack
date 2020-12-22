@@ -830,7 +830,7 @@ $EndComp
 Text Label 4300 6650 0    50   ~ 0
 VUSB
 $Comp
-L Jeremy:AP2210-3.3TRG1 U2
+L Original-rescue:AP2210-3.3TRG1-Jeremy U2
 U 1 1 5CD3E552
 P 5650 6950
 F 0 "U2" H 5750 6650 50  0000 C CNN
@@ -1036,7 +1036,7 @@ Wire Wire Line
 Wire Wire Line
 	3100 6950 3800 6950
 $Comp
-L Jeremy:ESD7002WTT1G U4
+L Original-rescue:ESD7002WTT1G-Jeremy U4
 U 1 1 5DA9EA0D
 P 4200 7300
 F 0 "U4" H 4450 7200 50  0000 C CNN
@@ -1305,21 +1305,11 @@ F 6 "0603" H -550 -250 50  0001 C CNN "Package"
 	1    4100 1450
 	1    0    0    -1  
 $EndComp
-Connection ~ 3850 1350
-Wire Wire Line
-	3550 1350 3850 1350
 Wire Wire Line
 	3650 1850 3650 1750
-Wire Wire Line
-	3850 1350 4100 1350
 Connection ~ 4100 1350
 Wire Wire Line
-	3850 1550 3850 1600
-Wire Wire Line
-	3850 1600 4100 1600
-Wire Wire Line
 	4100 1550 4100 1600
-Connection ~ 4100 1600
 Connection ~ 4400 1350
 Wire Wire Line
 	4400 1350 4650 1350
@@ -1408,20 +1398,6 @@ Wire Wire Line
 	2250 2800 2500 2800
 Wire Wire Line
 	2150 2700 1750 2700
-$Comp
-L Device:C_Small C15
-U 1 1 5E4C30F8
-P 3850 1450
-F 0 "C15" H 3900 1450 50  0000 L CNN
-F 1 "100nF" H 3850 1350 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 3850 1450 50  0001 C CNN
-F 3 "~" H 3850 1450 50  0001 C CNN
-F 4 "AVX" H 3850 1450 50  0001 C CNN "MFN"
-F 5 "06035C104K4T2A" H 3850 1450 50  0001 C CNN "MPN"
-F 6 "0603" H -500 -250 50  0001 C CNN "Package"
-	1    3850 1450
-	1    0    0    -1  
-$EndComp
 NoConn ~ 3100 7050
 $Comp
 L power:GND #PWR0111
@@ -1801,7 +1777,7 @@ Wire Wire Line
 	8850 4150 8850 4050
 Connection ~ 8850 4050
 $Comp
-L Jeremy:GD25Q16CEIGR U5
+L Original-rescue:GD25Q16CEIGR-Jeremy U5
 U 1 1 5F002A37
 P 8100 4100
 F 0 "U5" H 7800 3800 50  0000 C CNN
@@ -1831,7 +1807,7 @@ Connection ~ 3750 6850
 Wire Wire Line
 	3750 6850 4300 6850
 $Comp
-L jg_Battery_Management:MCP73830 U3
+L Original-rescue:MCP73830-jg_Battery_Management U3
 U 1 1 5F52DFD0
 P 9700 5600
 F 0 "U3" H 9600 5100 50  0000 C CNN
@@ -1926,6 +1902,30 @@ F 2 "Jeremy Button/Switch:SW_KAN-15_PHT" H 1300 1450 50  0001 C CNN
 F 3 "https://www.aliexpress.com/item/32965072924.html" H 1300 1450 50  0001 C CNN
 F 4 "LG-15F" H 1300 1450 60  0001 C CNN "MPN"
 	1    1300 1450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3850 1550 3850 1600
+Connection ~ 4100 1600
+Wire Wire Line
+	3850 1600 4100 1600
+Wire Wire Line
+	3850 1350 4100 1350
+Wire Wire Line
+	3550 1350 3850 1350
+Connection ~ 3850 1350
+$Comp
+L Device:C_Small C15
+U 1 1 5E4C30F8
+P 3850 1450
+F 0 "C15" H 3900 1450 50  0000 L CNN
+F 1 "100nF" H 3850 1350 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 3850 1450 50  0001 C CNN
+F 3 "~" H 3850 1450 50  0001 C CNN
+F 4 "AVX" H 3850 1450 50  0001 C CNN "MFN"
+F 5 "06035C104K4T2A" H 3850 1450 50  0001 C CNN "MPN"
+F 6 "0603" H -500 -250 50  0001 C CNN "Package"
+	1    3850 1450
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC

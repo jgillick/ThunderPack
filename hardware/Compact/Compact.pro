@@ -1,4 +1,4 @@
-update=Monday, October 26, 2020 at 11:58:30 PM
+update=Tuesday, November 24, 2020 at 11:00:18 AM
 version=1
 last_client=kicad
 [general]
@@ -25,7 +25,7 @@ ERC_TestSimilarLabels=1
 [pcbnew]
 version=1
 PageLayoutDescrFile=
-LastNetListRead=STM32L0xx_18650.net
+LastNetListRead=
 CopperLayerCount=2
 BoardThickness=1.6
 AllowMicroVias=0
